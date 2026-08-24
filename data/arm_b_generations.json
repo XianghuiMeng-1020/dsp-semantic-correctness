@@ -1,0 +1,386 @@
+[
+  {
+    "generation_id": "decimation_alias_frequency__qwen-2.5-72b-instruct__rep0",
+    "task": "decimation_alias_frequency",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 0,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Calculate the one-sided physical frequency in Hz of a real cosine tone \n    originally at f Hz when the sequence is downsampled by integer M with NO \n    anti-alias filter. The original sampling rate is fs Hz. The result must \n    lie in [0, fs/(2*M)].\n\n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n\n    Returns:\n    float: Aliased frequency in Hz.\n    \"\"\"\n    new_fs = fs / M\n    aliased_f = abs(f % new_fs - new_fs / 2) - new_fs / 2\n    if aliased_f < 0:\n        aliased_f += new_fs\n    return aliased_f\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__qwen-2.5-72b-instruct__rep1",
+    "task": "decimation_alias_frequency",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 1,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Calculate the one-sided physical frequency in Hz of a real cosine tone \n    originally at f Hz when the sequence is downsampled by integer M with NO \n    anti-alias filter. The original sampling rate is fs Hz.\n    \n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n    \n    Returns:\n    float: Aliased frequency in Hz, within the range [0, fs/(2*M)].\n    \"\"\"\n    new_fs = fs / M\n    k = int(f / (new_fs / 2))\n    aliased_f = abs(f - k * (new_fs / 2))\n    return min(aliased_f, new_fs / 2 - aliased_f)\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__qwen-2.5-72b-instruct__rep2",
+    "task": "decimation_alias_frequency",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 2,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Returns the one-sided physical frequency in Hz of a real cosine tone originally at f Hz \n    when the sequence is downsampled by integer M with NO anti-alias filter. The original \n    sampling rate is fs Hz. The result must lie in [0, fs/(2*M)].\n    \n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n    \n    Returns:\n    float: The aliased frequency in Hz.\n    \"\"\"\n    fs_downsampled = fs / M\n    f_normalized = f / fs_downsampled\n    f_alias = abs(f_normalized - round(f_normalized)) * fs_downsampled\n    return f_alias\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__qwen-2.5-72b-instruct__rep3",
+    "task": "decimation_alias_frequency",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 3,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    # Calculate the effective frequency after downsampling\n    f_effective = f % (fs / M)\n    \n    # Apply the folding identity to get the aliased frequency\n    if f_effective > (fs / (2 * M)):\n        f_effective = (fs / M) - f_effective\n    \n    return f_effective\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__llama-3.3-70b-instruct__rep0",
+    "task": "decimation_alias_frequency",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 0,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Calculate the one-sided physical frequency in Hz of a real cosine tone \n    originally at f Hz when the sequence is downsampled by integer M with NO \n    anti-alias filter.\n\n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n\n    Returns:\n    float: Aliased frequency in Hz.\n    \"\"\"\n    # Calculate the aliased frequency using the folding identity\n    aliased_f = f % (fs / M)\n    return aliased_f\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__llama-3.3-70b-instruct__rep1",
+    "task": "decimation_alias_frequency",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 1,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Calculate the aliased frequency of a real cosine tone after downsampling.\n\n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n\n    Returns:\n    float: Aliased frequency in Hz.\n    \"\"\"\n    # Calculate the new sampling rate after downsampling\n    new_fs = fs / M\n    \n    # Calculate the aliased frequency using the standard folding identity\n    aliased_f = f % (new_fs / 2)\n    \n    # Ensure the result lies in [0, fs/(2*M)]\n    if aliased_f > new_fs / 2:\n        aliased_f = new_fs - aliased_f\n    \n    return aliased_f\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__llama-3.3-70b-instruct__rep2",
+    "task": "decimation_alias_frequency",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 2,
+    "code": "def aliased_frequency_hz(f, fs, M!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \n    aliased_f = f % (fs / M)\n    if aliased_f > fs / (2 * M):\n        aliased_f = fs / M - aliased_f\n    return aliased_f\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__llama-3.3-70b-instruct__rep3",
+    "task": "decimation_alias_frequency",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 3,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Calculate the one-sided physical frequency in Hz of a real cosine tone \n    originally at f Hz when the sequence is downsampled by integer M with \n    NO anti-alias filter.\n\n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n\n    Returns:\n    float: Aliased frequency in Hz.\n    \"\"\"\n    # Calculate the aliased frequency using the folding identity\n    aliased_f = abs(f % (fs / M))\n    \n    # Ensure the result lies in [0, fs/(2*M)]\n    if aliased_f > fs / (2 * M):\n        aliased_f = fs / M - aliased_f\n    \n    return aliased_f\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__deepseek-chat__rep0",
+    "task": "decimation_alias_frequency",
+    "model": "deepseek/deepseek-chat",
+    "rep": 0,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Compute the one-sided physical frequency in Hz of a real cosine tone originally at f Hz\n    when the sequence is downsampled by integer M with NO anti-alias filter.\n    \n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n    \n    Returns:\n    float: Aliased frequency in Hz, lying in [0, fs/(2*M)].\n    \"\"\"\n    new_fs = fs / M\n    folded_f = abs(f) % new_fs\n    aliased_f = min(folded_f, new_fs - folded_f)\n    return aliased_f\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__deepseek-chat__rep1",
+    "task": "decimation_alias_frequency",
+    "model": "deepseek/deepseek-chat",
+    "rep": 1,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Compute the one-sided physical frequency in Hz of a real cosine tone after downsampling by M.\n    \n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n    \n    Returns:\n    float: Aliased frequency in Hz, lying in [0, fs/(2*M)].\n    \"\"\"\n    new_fs = fs / M\n    nyquist = new_fs / 2\n    \n    # Compute the aliased frequency using the folding identity\n    aliased_f = f % new_fs\n    if aliased_f > nyquist:\n        aliased_f = new_fs - aliased_f\n    \n    return aliased_f\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__deepseek-chat__rep2",
+    "task": "decimation_alias_frequency",
+    "model": "deepseek/deepseek-chat",
+    "rep": 2,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Calculate the one-sided physical frequency in Hz of a real cosine tone originally at f Hz\n    when the sequence is downsampled by integer M with NO anti-alias filter.\n    \n    Parameters:\n    f (float): Original frequency in Hz.\n    fs (float): Original sampling rate in Hz.\n    M (int): Downsampling factor.\n    \n    Returns:\n    float: Aliased frequency in Hz within [0, fs/(2*M)].\n    \"\"\"\n    new_fs = fs / M\n    # Compute the aliased frequency using the folding identity\n    aliased_f = abs(f) % new_fs\n    # Ensure the frequency is within the one-sided Nyquist range [0, new_fs/2]\n    if aliased_f > new_fs / 2:\n        aliased_f = new_fs - aliased_f\n    return aliased_f\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "decimation_alias_frequency__deepseek-chat__rep3",
+    "task": "decimation_alias_frequency",
+    "model": "deepseek/deepseek-chat",
+    "rep": 3,
+    "code": "def aliased_frequency_hz(f, fs, M):\n    \"\"\"\n    Returns the one-sided physical frequency in Hz of a real cosine tone originally at `f` Hz\n    when the sequence is downsampled by integer `M` with NO anti-alias filter. The original\n    sampling rate is `fs` Hz. The result lies in [0, fs/(2*M)].\n    \"\"\"\n    new_fs = fs / M  # New sampling rate after downsampling\n    f_alias = f % new_fs  # Fold the frequency into the new Nyquist range\n    if f_alias > new_fs / 2:\n        f_alias = new_fs - f_alias  # Reflect frequencies above Nyquist\n    return f_alias\n",
+    "func_name": "aliased_frequency_hz"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__qwen-2.5-72b-instruct__rep0",
+    "task": "digital_frequency_rescale",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 0,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    # Calculate the physical frequency\n    f_physical = f_hat * fs_in\n    \n    # Calculate the new digital frequency after resampling\n    f_new_digital = f_physical / fs_out\n    \n    # Ensure the frequency is within the range [0, 0.5]\n    return f_new_digital\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__qwen-2.5-72b-instruct__rep1",
+    "task": "digital_frequency_rescale",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 1,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    # Calculate the physical frequency in Hz\n    f_physical = f_hat * fs_in\n    \n    # Calculate the new digital frequency in cycles/sample at the new rate\n    f_hat_new = f_physical / fs_out\n    \n    return f_hat_new\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__qwen-2.5-72b-instruct__rep2",
+    "task": "digital_frequency_rescale",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 2,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    # Calculate the physical frequency\n    f_physical = f_hat * fs_in\n    \n    # Calculate the new digital frequency at the output sampling rate\n    f_new_digital = f_physical / fs_out\n    \n    # Ensure the new digital frequency is within [0, 0.5]\n    if f_new_digital < 0:\n        f_new_digital = 0\n    elif f_new_digital > 0.5:\n        f_new_digital = 0.5\n    \n    return f_new_digital\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__qwen-2.5-72b-instruct__rep3",
+    "task": "digital_frequency_rescale",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 3,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    # Calculate the physical frequency\n    f_physical = f_hat * fs_in\n    \n    # Calculate the new digital frequency at the new sampling rate\n    f_new_digital = f_physical / fs_out\n    \n    return f_new_digital\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__llama-3.3-70b-instruct__rep0",
+    "task": "digital_frequency_rescale",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 0,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    \"\"\"\n    Calculate the digital frequency after resampling.\n\n    Parameters:\n    f_hat (float): Digital frequency in cycles/sample at sampling rate fs_in.\n    fs_in (float): Input sampling rate.\n    fs_out (float): Output sampling rate.\n\n    Returns:\n    float: Digital frequency in cycles/sample at the new rate.\n    \"\"\"\n    # Calculate the physical frequency of the tone\n    f_physical = f_hat * fs_in\n    \n    # Calculate the digital frequency at the new sampling rate\n    f_hat_out = f_physical / fs_out\n    \n    # Ensure the output is within the valid range [0, 0.5]\n    return min(max(f_hat_out, 0.0), 0.5)\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__llama-3.3-70b-instruct__rep1",
+    "task": "digital_frequency_rescale",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 1,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    \"\"\"\n    Calculate the digital frequency in cycles/sample after ideal resampling.\n\n    Parameters:\n    f_hat (float): Digital frequency in cycles/sample at sampling rate fs_in.\n    fs_in (float): Input sampling rate.\n    fs_out (float): Output sampling rate.\n\n    Returns:\n    float: Digital frequency in cycles/sample at the new sampling rate fs_out.\n    \"\"\"\n    # Calculate the physical frequency\n    f_physical = f_hat * fs_in\n    \n    # Calculate the digital frequency at the new sampling rate\n    f_hat_out = f_physical / fs_out\n    \n    # Ensure the digital frequency is within the valid range [0, 0.5]\n    return min(max(f_hat_out, 0.0), 0.5)\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__llama-3.3-70b-instruct__rep2",
+    "task": "digital_frequency_rescale",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 2,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    \"\"\"\n    Calculate the digital frequency after ideal resampling.\n\n    Parameters:\n    f_hat (float): Digital frequency in cycles/sample at sampling rate fs_in.\n    fs_in (float): Input sampling rate.\n    fs_out (float): Output sampling rate.\n\n    Returns:\n    float: Digital frequency in cycles/sample at the new rate fs_out.\n    \"\"\"\n    # Calculate the physical frequency of the tone\n    physical_freq = f_hat * fs_in\n    \n    # Calculate the digital frequency at the new sampling rate\n    digital_freq_out = physical_freq / fs_out\n    \n    # Ensure the output is within the valid range [0, 0.5]\n    return min(max(digital_freq_out, 0.0), 0.5)\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__llama-3.3-70b-instruct__rep3",
+    "task": "digital_frequency_rescale",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 3,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    \"\"\"\n    Calculate the digital frequency in cycles/sample at the new sampling rate fs_out\n    after ideal resampling without aliasing.\n\n    Args:\n    f_hat (float): Digital frequency in cycles/sample at sampling rate fs_in.\n    fs_in (float): Input sampling rate.\n    fs_out (float): Output sampling rate.\n\n    Returns:\n    float: Digital frequency in cycles/sample at the new sampling rate fs_out.\n    \"\"\"\n    # Calculate the physical frequency of the tone\n    physical_freq = f_hat * fs_in\n    \n    # Check if the physical frequency lies below the new Nyquist frequency\n    assert physical_freq < fs_out / 2, \"Physical frequency exceeds the new Nyquist frequency\"\n    \n    # Calculate the digital frequency at the new sampling rate\n    digital_freq_out = physical_freq / fs_out\n    \n    # Ensure the digital frequency is within the valid range [0, 0.5)\n    return min(max(digital_freq_out, 0.0), 0.5)\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__deepseek-chat__rep0",
+    "task": "digital_frequency_rescale",
+    "model": "deepseek/deepseek-chat",
+    "rep": 0,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    \"\"\"\n    Compute the digital frequency after resampling while preserving the same physical tone.\n    \n    Parameters:\n    f_hat (float): Digital frequency in cycles/sample at the original sampling rate fs_in (0 <= f_hat < 0.5).\n    fs_in (float): Original sampling rate in Hz.\n    fs_out (float): New sampling rate in Hz.\n    \n    Returns:\n    float: Digital frequency in cycles/sample at the new sampling rate fs_out (0 <= result <= 0.5).\n    \"\"\"\n    physical_freq = f_hat * fs_in\n    f_hat_out = physical_freq / fs_out\n    return f_hat_out\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__deepseek-chat__rep1",
+    "task": "digital_frequency_rescale",
+    "model": "deepseek/deepseek-chat",
+    "rep": 1,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    \"\"\"\n    Compute the digital frequency after resampling while preserving the same physical tone.\n    \n    Parameters:\n    f_hat (float): Digital frequency in cycles/sample at the original sampling rate fs_in (0 <= f_hat < 0.5).\n    fs_in (float): Original sampling rate in Hz.\n    fs_out (float): New sampling rate in Hz.\n    \n    Returns:\n    float: Digital frequency in cycles/sample at the new sampling rate fs_out (0 <= f_hat_out < 0.5).\n    \"\"\"\n    physical_freq = f_hat * fs_in\n    f_hat_out = physical_freq / fs_out\n    return f_hat_out\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__deepseek-chat__rep2",
+    "task": "digital_frequency_rescale",
+    "model": "deepseek/deepseek-chat",
+    "rep": 2,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    \"\"\"\n    Compute the digital frequency after resampling a signal from fs_in to fs_out.\n    \n    Parameters:\n    f_hat (float): Digital frequency in cycles/sample at the original sampling rate fs_in (0 <= f_hat < 0.5).\n    fs_in (float): Original sampling rate in Hz.\n    fs_out (float): New sampling rate in Hz.\n    \n    Returns:\n    float: Digital frequency in cycles/sample at the new sampling rate fs_out.\n    \"\"\"\n    # Compute the physical frequency in Hz\n    f_physical = f_hat * fs_in\n    # Compute the new digital frequency at fs_out\n    f_hat_out = f_physical / fs_out\n    return f_hat_out\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "digital_frequency_rescale__deepseek-chat__rep3",
+    "task": "digital_frequency_rescale",
+    "model": "deepseek/deepseek-chat",
+    "rep": 3,
+    "code": "def digital_freq_after_rate_change(f_hat, fs_in, fs_out):\n    # Calculate the physical frequency (Hz)\n    physical_freq = f_hat * fs_in\n    # Compute the new digital frequency (cycles/sample) at fs_out\n    f_hat_new = physical_freq / fs_out\n    return f_hat_new\n",
+    "func_name": "digital_freq_after_rate_change"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__qwen-2.5-72b-instruct__rep0",
+    "task": "zero_insertion_spectral_images",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 0,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    image_freqs = np.array([omega0 + (2 * np.pi * k) / L for k in range(L)])\n    image_freqs = np.mod(image_freqs, 2 * np.pi)\n    image_freqs = image_freqs[image_freqs <= np.pi]\n    return np.sort(image_freqs)\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__qwen-2.5-72b-instruct__rep1",
+    "task": "zero_insertion_spectral_images",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 1,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    # Calculate the image frequencies\n    image_freqs = np.abs(np.fft.fftfreq(L, 1/L) * 2 * np.pi)\n    # Adjust for the original frequency\n    image_freqs = np.mod(image_freqs + omega0, 2 * np.pi)\n    # Filter out frequencies greater than pi and adjust them\n    image_freqs[image_freqs > np.pi] = 2 * np.pi - image_freqs[image_freqs > np.pi]\n    # Sort the frequencies\n    image_freqs = np.sort(image_freqs)\n    return image_freqs\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__qwen-2.5-72b-instruct__rep2",
+    "task": "zero_insertion_spectral_images",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 2,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    image_freqs = np.sort(np.abs(np.fft.fftfreq(L, 1/L) * 2 * np.pi))\n    image_freqs = np.mod(image_freqs + omega0, np.pi)\n    return image_freqs[image_freqs <= np.pi]\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__qwen-2.5-72b-instruct__rep3",
+    "task": "zero_insertion_spectral_images",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 3,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    image_frequencies = np.sort(np.abs(np.fft.fftfreq(L, 1/L) * 2 * np.pi))\n    image_frequencies = np.mod(image_frequencies + omega0, np.pi)\n    return np.sort(image_frequencies)\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__llama-3.3-70b-instruct__rep0",
+    "task": "zero_insertion_spectral_images",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 0,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    \"\"\"\n    Compute the L distinct image frequencies of a real cosine after zero insertion.\n\n    Parameters:\n    omega0 (float): The original digital frequency in radians/sample.\n    L (int): The number of zeros inserted between samples.\n\n    Returns:\n    numpy.ndarray: A 1-D array of length L containing the image frequencies in radians/sample.\n    \"\"\"\n    # Calculate the image frequencies\n    image_freqs = (omega0 + 2 * np.pi * np.arange(L)) / L\n    \n    # Ensure frequencies are within [0, pi]\n    image_freqs = np.mod(image_freqs, 2 * np.pi)\n    image_freqs = np.minimum(image_freqs, 2 * np.pi - image_freqs)\n    \n    return image_freqs\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__llama-3.3-70b-instruct__rep1",
+    "task": "zero_insertion_spectral_images",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 1,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    \"\"\"\n    Calculate the L distinct image frequencies of a real cosine after zero insertion.\n\n    Parameters:\n    omega0 (float): The original digital frequency in radians/sample (0 < omega0 < pi).\n    L (int): The number of samples to insert zeros between.\n\n    Returns:\n    numpy.ndarray: A 1-D array of length L, containing the L distinct image frequencies in radians/sample, sorted, each in [0, pi].\n    \"\"\"\n    image_freqs = []\n    for k in range(L):\n        image_freq = (omega0 + 2 * np.pi * k) / L\n        if image_freq > np.pi:\n            image_freq = 2 * np.pi - image_freq\n        image_freqs.append(image_freq)\n    return np.sort(np.array(image_freqs))\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__llama-3.3-70b-instruct__rep2",
+    "task": "zero_insertion_spectral_images",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 2,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    \"\"\"\n    Calculate the L distinct image frequencies of an expanded real cosine.\n\n    Parameters:\n    omega0 (float): Original digital frequency in radians/sample (0 < omega0 < pi).\n    L (int): Number of zeros inserted between samples.\n\n    Returns:\n    numpy.ndarray: A 1-D array of length L, containing the L distinct image frequencies in radians/sample, sorted, each in [0, pi].\n    \"\"\"\n    image_freqs = np.array([(omega0 + 2 * np.pi * k) / L for k in range(L)])\n    image_freqs = np.mod(image_freqs, 2 * np.pi)  # Handle frequencies outside [0, 2*pi)\n    image_freqs[np.greater(image_freqs, np.pi)] = 2 * np.pi - image_freqs[np.greater(image_freqs, np.pi)]\n    return np.sort(image_freqs)\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__llama-3.3-70b-instruct__rep3",
+    "task": "zero_insertion_spectral_images",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 3,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    \"\"\"\n    Returns the L distinct image frequencies of the expanded real cosine.\n\n    Parameters:\n    omega0 (float): The original digital frequency in radians/sample.\n    L (int): The number of zeros inserted between samples.\n\n    Returns:\n    numpy.ndarray: A 1-D numpy array of length L, containing the image frequencies in radians/sample.\n    \"\"\"\n    image_freqs = np.array([(omega0 + 2 * np.pi * k) / L for k in range(L)])\n    image_freqs = np.mod(image_freqs, 2 * np.pi)  # Ensure frequencies are within [0, 2*pi]\n    image_freqs = np.minimum(image_freqs, 2 * np.pi - image_freqs)  # Map to [0, pi]\n    return np.sort(image_freqs)\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__deepseek-chat__rep0",
+    "task": "zero_insertion_spectral_images",
+    "model": "deepseek/deepseek-chat",
+    "rep": 0,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    \"\"\"\n    Compute the L distinct image frequencies after inserting L-1 zeros between samples\n    of a real cosine signal with original digital frequency omega0.\n    \n    Parameters:\n    omega0 (float): Original digital frequency in radians/sample, 0 < omega0 < pi.\n    L (int): Upsampling factor (number of samples, including zeros, inserted per original sample).\n    \n    Returns:\n    numpy.ndarray: Array of L distinct image frequencies in [0, pi], sorted.\n    \"\"\"\n    # The image frequencies are given by (omega0 + 2*pi*k)/L for k = 0, ..., L-1\n    # We then take modulo 2pi and map to [0, pi] by considering aliases\n    k_values = np.arange(L)\n    image_freqs = (omega0 + 2 * np.pi * k_values) / L\n    \n    # Map each frequency to its principal alias in [0, pi]\n    principal_freqs = np.abs(np.mod(image_freqs + np.pi, 2 * np.pi) - np.pi)\n    \n    # Remove duplicates and sort\n    unique_freqs = np.unique(principal_freqs)\n    \n    return unique_freqs\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__deepseek-chat__rep1",
+    "task": "zero_insertion_spectral_images",
+    "model": "deepseek/deepseek-chat",
+    "rep": 1,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    # Calculate the base frequency after expansion\n    base_freq = omega0 / L\n    \n    # Generate the L distinct image frequencies\n    image_freqs = np.array([(base_freq + 2 * np.pi * k / L) % (2 * np.pi) for k in range(L)])\n    \n    # Ensure frequencies are within [0, pi] for real signals\n    image_freqs = np.where(image_freqs > np.pi, 2 * np.pi - image_freqs, image_freqs)\n    \n    # Sort the frequencies in ascending order\n    image_freqs.sort()\n    \n    return image_freqs\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__deepseek-chat__rep2",
+    "task": "zero_insertion_spectral_images",
+    "model": "deepseek/deepseek-chat",
+    "rep": 2,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    \"\"\"\n    Compute the L distinct image frequencies after inserting L-1 zeros between samples of a real cosine with frequency omega0.\n    \n    Parameters:\n    omega0 (float): Original digital frequency in radians/sample (0 < omega0 < pi).\n    L (int): Expansion factor (number of samples becomes L times the original).\n    \n    Returns:\n    numpy.ndarray: Sorted array of L distinct image frequencies in [0, pi].\n    \"\"\"\n    # The original frequency and its alias in [-pi, pi]\n    original_freq = omega0\n    \n    # The image frequencies are (original_freq + 2*pi*k)/L for k = 0, ..., L-1\n    # Then take modulo 2pi and map to [0, pi] by considering aliases for real signals\n    image_freqs = []\n    for k in range(L):\n        freq = (original_freq + 2 * np.pi * k) / L\n        # Map to [0, pi] by taking modulo 2pi and considering the smallest absolute frequency\n        freq_mod = np.mod(freq, 2 * np.pi)\n        if freq_mod > np.pi:\n            freq_mod = 2 * np.pi - freq_mod  # alias for real signals\n        image_freqs.append(freq_mod)\n    \n    # Remove duplicates (due to aliasing) and sort\n    unique_freqs = np.unique(np.round(image_freqs, 10))  # rounded to avoid floating point errors\n    # Ensure we have exactly L frequencies (some may alias to the same freq)\n    # If not, it means some frequencies are repeated due to symmetry, but for L distinct, we proceed as follows:\n    # The above code should already give L distinct frequencies in [0, pi] for 0 < omega0 < pi.\n    \n    return np.sort(unique_freqs)\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "zero_insertion_spectral_images__deepseek-chat__rep3",
+    "task": "zero_insertion_spectral_images",
+    "model": "deepseek/deepseek-chat",
+    "rep": 3,
+    "code": "import numpy as np\n\ndef zero_insert_image_freqs(omega0, L):\n    \"\"\"\n    Compute the L distinct image frequencies after zero insertion.\n    \n    Parameters:\n    omega0 (float): Original digital frequency in radians/sample (0 < omega0 < pi).\n    L (int): The expansion factor (number of zeros inserted + 1).\n    \n    Returns:\n    numpy.ndarray: Sorted array of L distinct image frequencies in [0, pi].\n    \"\"\"\n    # Compute the base image frequency: omega0 / L\n    base_freq = omega0 / L\n    \n    # Generate all L candidate frequencies: (omega0 + 2*pi*k) / L for k in 0..L-1\n    k_values = np.arange(L)\n    candidate_freqs = (omega0 + 2 * np.pi * k_values) / L\n    \n    # Fold each candidate frequency into [0, pi]\n    image_freqs = np.abs(np.mod(candidate_freqs, 2 * np.pi))\n    image_freqs = np.where(image_freqs > np.pi, 2 * np.pi - image_freqs, image_freqs)\n    \n    # Get unique frequencies and sort them\n    unique_freqs = np.unique(image_freqs)\n    \n    return np.sort(unique_freqs)\n",
+    "func_name": "zero_insert_image_freqs"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__qwen-2.5-72b-instruct__rep0",
+    "task": "rational_resample_dc_preservation",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 0,
+    "code": "import numpy as np\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a real 1-D array x by the rational factor L/M.\n    The length of x must be a multiple of M.\n    \n    Parameters:\n    x (numpy.ndarray): Input 1-D array.\n    L (int): Upsampling factor.\n    M (int): Downsampling factor.\n    \n    Returns:\n    numpy.ndarray: Resampled array.\n    \"\"\"\n    # Ensure the length of x is a multiple of M\n    assert len(x) % M == 0, \"Length of x must be a multiple of M\"\n    \n    # Upsample by L\n    x_upsampled = np.zeros(len(x) * L)\n    x_upsampled[::L] = x\n    \n    # Apply a low-pass filter to remove aliasing\n    window_size = 2 * max(L, M) - 1\n    h = np.sinc(np.linspace(-L + 1, L - 1, window_size) / L)\n    h /= h.sum()  # Normalize the filter to preserve DC gain\n    x_filtered = np.convolve(x_upsampled, h, mode='same')\n    \n    # Downsample by M\n    y = x_filtered[::M]\n    \n    return y\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__qwen-2.5-72b-instruct__rep1",
+    "task": "rational_resample_dc_preservation",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 1,
+    "code": "import numpy as np\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a real 1-D array x by the rational factor L/M.\n    \n    Parameters:\n    x (np.array): Input 1-D array.\n    L (int): Upsampling factor.\n    M (int): Downsampling factor.\n    \n    Returns:\n    np.array: Resampled 1-D array.\n    \"\"\"\n    # Upsample\n    x_up = np.zeros(len(x) * L)\n    x_up[::L] = x\n    \n    # Low-pass filter (simple boxcar filter for simplicity)\n    h = np.ones(L) / L\n    x_filtered = np.convolve(x_up, h, mode='same')\n    \n    # Downsample\n    y = x_filtered[:len(x) * L // M * M:L // M]\n    \n    return y\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__qwen-2.5-72b-instruct__rep2",
+    "task": "rational_resample_dc_preservation",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 2,
+    "code": "import numpy as np\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a real 1-D array x by the rational factor L/M.\n    The output sampling rate is L/M times the input rate.\n    L and M are positive integers.\n    len(x) is a multiple of M.\n    A constant input must remain that same constant (DC / interpolation gain preserved).\n\n    Parameters:\n    x (numpy array): Input 1-D array.\n    L (int): Upsampling factor.\n    M (int): Downsampling factor.\n\n    Returns:\n    numpy array: Resampled 1-D array.\n    \"\"\"\n    # Upsample by L\n    x_up = np.zeros(len(x) * L)\n    x_up[::L] = x\n\n    # Low-pass filter (simple boxcar filter for simplicity)\n    num_taps = 2 * max(L, M) + 1\n    h = np.sinc(np.linspace(-L, L, num_taps) / L)\n    h /= np.sum(h)\n\n    # Apply the filter\n    x_filtered = np.convolve(x_up, h, mode='same')\n\n    # Downsample by M\n    y = x_filtered[::M]\n\n    return y\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__qwen-2.5-72b-instruct__rep3",
+    "task": "rational_resample_dc_preservation",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "rep": 3,
+    "code": "import numpy as np\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a real 1-D array x by the rational factor L/M.\n    \n    Parameters:\n    x (np.array): Input 1-D array.\n    L (int): Upsampling factor.\n    M (int): Downsampling factor.\n    \n    Returns:\n    np.array: Resampled 1-D array.\n    \"\"\"\n    # Upsample by L\n    x_upsampled = np.zeros(len(x) * L)\n    x_upsampled[::L] = x\n    \n    # Apply a low-pass filter (simple boxcar filter for simplicity)\n    filter_len = L * M\n    filter_coeffs = np.ones(filter_len) / filter_len\n    x_filtered = np.convolve(x_upsampled, filter_coeffs, mode='same')\n    \n    # Downsample by M\n    y = x_filtered[:len(x) * L // M * M:L][::M]\n    \n    return y\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__llama-3.3-70b-instruct__rep0",
+    "task": "rational_resample_dc_preservation",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 0,
+    "code": "import numpy as np\nfrom scipy.signal import resample\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a real 1-D array x by the rational factor L/M.\n\n    Args:\n        x (numpy array): Input array.\n        L (int): Numerator of the rational factor.\n        M (int): Denominator of the rational factor.\n\n    Returns:\n        numpy array: Resampled array.\n    \"\"\"\n    return resample(x, num=len(x)*L//M)\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__llama-3.3-70b-instruct__rep1",
+    "task": "rational_resample_dc_preservation",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 1,
+    "code": "import numpy as np\nfrom scipy.signal import resample\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a real 1-D array x by the rational factor L/M.\n    \n    Parameters:\n    x (numpy array): Input array\n    L (int): Numerator of the resampling factor\n    M (int): Denominator of the resampling factor\n    \n    Returns:\n    numpy array: Resampled array\n    \"\"\"\n    return resample(x, num=int(len(x)*L/M), window=None) if L != M else x\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__llama-3.3-70b-instruct__rep2",
+    "task": "rational_resample_dc_preservation",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 2,
+    "code": "import numpy as np\nfrom scipy.signal import resample_poly\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a real 1-D array by the rational factor L/M.\n\n    Parameters:\n    x (numpy array): Input array to be resampled.\n    L (int): Numerator of the rational resampling factor.\n    M (int): Denominator of the rational resampling factor.\n\n    Returns:\n    numpy array: Resampled array with length len(x)*L//M.\n    \"\"\"\n    return resample_poly(x, L, M)\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__llama-3.3-70b-instruct__rep3",
+    "task": "rational_resample_dc_preservation",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "rep": 3,
+    "code": "import numpy as np\nfrom scipy.signal import resample\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a real 1-D array by the rational factor L/M.\n\n    Parameters:\n    x (numpy array): Input array.\n    L (int): Numerator of the rational factor.\n    M (int): Denominator of the rational factor.\n\n    Returns:\n    numpy array: Resampled array.\n    \"\"\"\n    return resample(x, len(x)*L//M)\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__deepseek-chat__rep0",
+    "task": "rational_resample_dc_preservation",
+    "model": "deepseek/deepseek-chat",
+    "rep": 0,
+    "code": "import numpy as np\nfrom scipy.signal import upfirdn\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resample a 1-D array x by a rational factor L/M.\n    \n    Parameters:\n    x (numpy.ndarray): Input 1-D array.\n    L (int): Upsampling factor.\n    M (int): Downsampling factor.\n    \n    Returns:\n    numpy.ndarray: Resampled array of length len(x)*L//M.\n    \"\"\"\n    return upfirdn([1.0], x, L, M)\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__deepseek-chat__rep1",
+    "task": "rational_resample_dc_preservation",
+    "model": "deepseek/deepseek-chat",
+    "rep": 1,
+    "code": "import numpy as np\nfrom scipy.signal import resample\n\ndef rational_resample(x, L, M):\n    # Upsample by factor L\n    upsampled = np.zeros(len(x) * L)\n    upsampled[::L] = x\n    \n    # Apply low-pass filter (scipy's resample function handles this)\n    resampled = resample(upsampled, len(x) * L // M)\n    \n    return resampled\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__deepseek-chat__rep2",
+    "task": "rational_resample_dc_preservation",
+    "model": "deepseek/deepseek-chat",
+    "rep": 2,
+    "code": "import numpy as np\nfrom scipy.signal import resample_poly\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resamples a 1-D array `x` by a rational factor L/M.\n    \n    Parameters:\n    x (numpy.ndarray): Input 1-D array.\n    L (int): Upsampling factor.\n    M (int): Downsampling factor.\n    \n    Returns:\n    numpy.ndarray: Resampled array of length len(x)*L//M.\n    \"\"\"\n    if len(x) % M != 0:\n        raise ValueError(\"Length of x must be a multiple of M.\")\n    \n    # Perform rational resampling using scipy's resample_poly\n    return resample_poly(x, L, M)\n",
+    "func_name": "rational_resample"
+  },
+  {
+    "generation_id": "rational_resample_dc_preservation__deepseek-chat__rep3",
+    "task": "rational_resample_dc_preservation",
+    "model": "deepseek/deepseek-chat",
+    "rep": 3,
+    "code": "import numpy as np\nfrom scipy.signal import upfirdn\n\ndef rational_resample(x, L, M):\n    \"\"\"\n    Resample a 1-D array x by a rational factor L/M.\n    \n    Parameters:\n    x : 1-D numpy array\n        Input signal to be resampled.\n    L : int\n        Interpolation factor.\n    M : int\n        Decimation factor.\n        \n    Returns:\n    numpy array\n        Resampled signal with length len(x)*L//M.\n    \"\"\"\n    # Upsample by L, apply anti-imaging/anti-aliasing filter, then downsample by M\n    return upfirdn([1], x, L, M)\n",
+    "func_name": "rational_resample"
+  }
+]

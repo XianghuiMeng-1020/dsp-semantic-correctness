@@ -1,0 +1,793 @@
+[
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 7.401486830834377e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "frozen_reference",
+    "input": "N1024_k128_A1",
+    "residual": 4.440892098500626e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "frozen_reference",
+    "input": "N4096_k512_A2p5",
+    "residual": 1.0658141036401502e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "frozen_reference",
+    "input": "N2048_k64_A0p5",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "frozen_reference",
+    "input": "weak_noise_on_tone",
+    "residual": 0.00013986181805936138,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "fft_full_then_rfft_slice",
+    "input": "canonical",
+    "residual": 7.401486830834377e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "fft_full_then_rfft_slice",
+    "input": "N1024_k128_A1",
+    "residual": 4.440892098500626e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "fft_full_then_rfft_slice",
+    "input": "N4096_k512_A2p5",
+    "residual": 1.0658141036401502e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "fft_full_then_rfft_slice",
+    "input": "N2048_k64_A0p5",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "fft_full_then_rfft_slice",
+    "input": "weak_noise_on_tone",
+    "residual": 0.00013986181805936138,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "rfft_double_then_halve_dc_nyquist",
+    "input": "canonical",
+    "residual": 7.401486830834377e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "rfft_double_then_halve_dc_nyquist",
+    "input": "N1024_k128_A1",
+    "residual": 4.440892098500626e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "rfft_double_then_halve_dc_nyquist",
+    "input": "N4096_k512_A2p5",
+    "residual": 1.0658141036401502e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "rfft_double_then_halve_dc_nyquist",
+    "input": "N2048_k64_A0p5",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_one_sided",
+    "implementation": "rfft_double_then_halve_dc_nyquist",
+    "input": "weak_noise_on_tone",
+    "residual": 0.00013986181805936138,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 7.401486830834377e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "frozen_reference",
+    "input": "N1024_k128_A1",
+    "residual": 4.440892098500626e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "frozen_reference",
+    "input": "N4096_k512_A2p5",
+    "residual": 1.0658141036401502e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "frozen_reference",
+    "input": "N2048_k64_A0p5",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "frozen_reference",
+    "input": "weak_noise_on_tone",
+    "residual": 0.00013986181805936138,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "fftshift_instead_of_argsort",
+    "input": "canonical",
+    "residual": 7.401486830834377e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "fftshift_instead_of_argsort",
+    "input": "N1024_k128_A1",
+    "residual": 4.440892098500626e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "fftshift_instead_of_argsort",
+    "input": "N4096_k512_A2p5",
+    "residual": 1.0658141036401502e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "fftshift_instead_of_argsort",
+    "input": "N2048_k64_A0p5",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "fft_amplitude_two_sided",
+    "implementation": "fftshift_instead_of_argsort",
+    "input": "weak_noise_on_tone",
+    "residual": 0.00013986181805936138,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 1.5509872416418486e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "frozen_reference",
+    "input": "seed8_N2048",
+    "residual": 1.4842350448777266e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "frozen_reference",
+    "input": "seed9_N512",
+    "residual": 1.508273738110769e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "frozen_reference",
+    "input": "seed21_N4096",
+    "residual": 3.0397999315869354e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "frozen_reference",
+    "input": "white_N2048",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "onesided_energy_from_full_fft",
+    "input": "canonical",
+    "residual": 1.5509872416418486e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "onesided_energy_from_full_fft",
+    "input": "seed8_N2048",
+    "residual": 2.968470089755453e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "onesided_energy_from_full_fft",
+    "input": "seed9_N512",
+    "residual": 1.508273738110769e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "onesided_energy_from_full_fft",
+    "input": "seed21_N4096",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "parseval_energy_check",
+    "implementation": "onesided_energy_from_full_fft",
+    "input": "white_N2048",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "db_power_amplitude_convention",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "db_power_amplitude_convention",
+    "implementation": "frozen_reference",
+    "input": "amp_v2",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "db_power_amplitude_convention",
+    "implementation": "frozen_reference",
+    "input": "power_v1",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "db_power_amplitude_convention",
+    "implementation": "frozen_reference",
+    "input": "power_v2",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "db_power_amplitude_convention",
+    "implementation": "ln_over_ln10",
+    "input": "canonical",
+    "residual": 8.881784197001253e-17,
+    "failed_exec": false
+  },
+  {
+    "task": "db_power_amplitude_convention",
+    "implementation": "ln_over_ln10",
+    "input": "amp_v2",
+    "residual": 1.7763568394002506e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "db_power_amplitude_convention",
+    "implementation": "ln_over_ln10",
+    "input": "power_v1",
+    "residual": 8.881784197001253e-17,
+    "failed_exec": false
+  },
+  {
+    "task": "db_power_amplitude_convention",
+    "implementation": "ln_over_ln10",
+    "input": "power_v2",
+    "residual": 1.7763568394002506e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "freq_axis_mapping",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "freq_axis_mapping",
+    "implementation": "frozen_reference",
+    "input": "fs_44100",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "freq_axis_mapping",
+    "implementation": "frozen_reference",
+    "input": "fs_16000",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "freq_axis_mapping",
+    "implementation": "frozen_reference",
+    "input": "fs_1000",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "freq_axis_mapping",
+    "implementation": "regrouped_constants",
+    "input": "canonical",
+    "residual": 1.1368683772161603e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "freq_axis_mapping",
+    "implementation": "regrouped_constants",
+    "input": "fs_44100",
+    "residual": 1.6498770100189175e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "freq_axis_mapping",
+    "implementation": "regrouped_constants",
+    "input": "fs_16000",
+    "residual": 1.1368683772161603e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "freq_axis_mapping",
+    "implementation": "regrouped_constants",
+    "input": "fs_1000",
+    "residual": 1.1368683772161603e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 0.0017062591301592507,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "frozen_reference",
+    "input": "seed7_N4096",
+    "residual": 0.0034083221153895092,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "frozen_reference",
+    "input": "seed99_N8000",
+    "residual": 0.0007601953282502636,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "frozen_reference",
+    "input": "seed3_N2048",
+    "residual": 0.014205988897270686,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "frozen_reference",
+    "input": "seed13_N16000",
+    "residual": 0.007259014094135414,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "frozen_reference",
+    "input": "colored_N4096",
+    "residual": 0.023935794354388997,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "welch_explicit_density_flag",
+    "input": "canonical",
+    "residual": 0.0017062591301592507,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "welch_explicit_density_flag",
+    "input": "seed7_N4096",
+    "residual": 0.0034083221153895092,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "welch_explicit_density_flag",
+    "input": "seed99_N8000",
+    "residual": 0.0007601953282502636,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "welch_explicit_density_flag",
+    "input": "seed3_N2048",
+    "residual": 0.014205988897270686,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "welch_explicit_density_flag",
+    "input": "seed13_N16000",
+    "residual": 0.007259014094135414,
+    "failed_exec": false
+  },
+  {
+    "task": "welch_psd_normalization",
+    "implementation": "welch_explicit_density_flag",
+    "input": "colored_N4096",
+    "residual": 0.023935794354388997,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 0.00011143109932617081,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "frozen_reference",
+    "input": "seed42_N8000",
+    "residual": 2.0049397620787408e-05,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "frozen_reference",
+    "input": "seed7_N2048",
+    "residual": 0.0019274297295823807,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "frozen_reference",
+    "input": "seed5_N1024",
+    "residual": 3.0236168026514877e-06,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "frozen_reference",
+    "input": "colored_N4096",
+    "residual": 8.760651857097672e-11,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "manual_rfft_density_periodogram",
+    "input": "canonical",
+    "residual": 7.943030520258645e-05,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "manual_rfft_density_periodogram",
+    "input": "seed42_N8000",
+    "residual": 2.7965709106161462e-05,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "manual_rfft_density_periodogram",
+    "input": "seed7_N2048",
+    "residual": 0.0010258995552448421,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "manual_rfft_density_periodogram",
+    "input": "seed5_N1024",
+    "residual": 2.758503950690396e-05,
+    "failed_exec": false
+  },
+  {
+    "task": "psd_naive_periodogram",
+    "implementation": "manual_rfft_density_periodogram",
+    "input": "colored_N4096",
+    "residual": 0.001298964800839007,
+    "failed_exec": false
+  },
+  {
+    "task": "window_power_normalization",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 4.440892098500626e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "window_power_normalization",
+    "implementation": "frozen_reference",
+    "input": "N2048_k256_A3",
+    "residual": 5.921189464667501e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "window_power_normalization",
+    "implementation": "frozen_reference",
+    "input": "N1024_k128_A1",
+    "residual": 1.1102230246251565e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "window_power_normalization",
+    "implementation": "frozen_reference",
+    "input": "N4096_k256_A0p8",
+    "residual": 4.163336342344337e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "window_power_normalization",
+    "implementation": "coherent_gain_via_sum_win",
+    "input": "canonical",
+    "residual": 4.440892098500626e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "window_power_normalization",
+    "implementation": "coherent_gain_via_sum_win",
+    "input": "N2048_k256_A3",
+    "residual": 5.921189464667501e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "window_power_normalization",
+    "implementation": "coherent_gain_via_sum_win",
+    "input": "N1024_k128_A1",
+    "residual": 1.1102230246251565e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "window_power_normalization",
+    "implementation": "coherent_gain_via_sum_win",
+    "input": "N4096_k256_A0p8",
+    "residual": 4.163336342344337e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fir_unity_dc_gain",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 1.3322676295501878e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "fir_unity_dc_gain",
+    "implementation": "frozen_reference",
+    "input": "taps31_fc80_fs400",
+    "residual": 8.881784197001252e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fir_unity_dc_gain",
+    "implementation": "frozen_reference",
+    "input": "taps101_fc20_fs200",
+    "residual": 8.881784197001252e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fir_unity_dc_gain",
+    "implementation": "frozen_reference",
+    "input": "taps21_fc0p15",
+    "residual": 1.5543122344752192e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "fir_unity_dc_gain",
+    "implementation": "dc_norm_via_sum_of_taps",
+    "input": "canonical",
+    "residual": 1.3322676295501878e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "fir_unity_dc_gain",
+    "implementation": "dc_norm_via_sum_of_taps",
+    "input": "taps31_fc80_fs400",
+    "residual": 8.881784197001252e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fir_unity_dc_gain",
+    "implementation": "dc_norm_via_sum_of_taps",
+    "input": "taps101_fc20_fs200",
+    "residual": 6.661338147750939e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "fir_unity_dc_gain",
+    "implementation": "dc_norm_via_sum_of_taps",
+    "input": "taps21_fc0p15",
+    "residual": 1.4432899320127035e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "butterworth_3db_gain",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 1.1102230246251565e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "butterworth_3db_gain",
+    "implementation": "frozen_reference",
+    "input": "ord2_fc30_fs200",
+    "residual": 1.1102230246251565e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "butterworth_3db_gain",
+    "implementation": "frozen_reference",
+    "input": "ord6_fc50_fs400",
+    "residual": 1.1102230246251565e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "butterworth_3db_gain",
+    "implementation": "frozen_reference",
+    "input": "ord3_fc80_fs1000",
+    "residual": 1.1102230246251565e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "butterworth_3db_gain",
+    "implementation": "sosfreqz_equivalent",
+    "input": "canonical",
+    "residual": 1.1102230246251565e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "butterworth_3db_gain",
+    "implementation": "sosfreqz_equivalent",
+    "input": "ord2_fc30_fs200",
+    "residual": 1.1102230246251565e-15,
+    "failed_exec": false
+  },
+  {
+    "task": "butterworth_3db_gain",
+    "implementation": "sosfreqz_equivalent",
+    "input": "ord6_fc50_fs400",
+    "residual": 9.992007221626409e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "butterworth_3db_gain",
+    "implementation": "sosfreqz_equivalent",
+    "input": "ord3_fc80_fs1000",
+    "residual": 9.992007221626409e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "freqz_db_magnitude",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "freqz_db_magnitude",
+    "implementation": "frozen_reference",
+    "input": "fir21_fc0p1",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "freqz_db_magnitude",
+    "implementation": "frozen_reference",
+    "input": "fir81_fc40_fs200",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "freqz_db_magnitude",
+    "implementation": "frozen_reference",
+    "input": "fir31_fc0p2",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "freqz_db_magnitude",
+    "implementation": "10log10_of_power_equals_20log10_mag",
+    "input": "canonical",
+    "residual": 1.261644617056617e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "freqz_db_magnitude",
+    "implementation": "10log10_of_power_equals_20log10_mag",
+    "input": "fir21_fc0p1",
+    "residual": 1.3114157602311644e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "freqz_db_magnitude",
+    "implementation": "10log10_of_power_equals_20log10_mag",
+    "input": "fir81_fc40_fs200",
+    "residual": 1.2185758599015056e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "freqz_db_magnitude",
+    "implementation": "10log10_of_power_equals_20log10_mag",
+    "input": "fir31_fc0p2",
+    "residual": 1.218810519535424e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "iir_impulse_energy",
+    "implementation": "frozen_reference",
+    "input": "canonical",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "iir_impulse_energy",
+    "implementation": "frozen_reference",
+    "input": "butter2",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "iir_impulse_energy",
+    "implementation": "frozen_reference",
+    "input": "butter5",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "iir_impulse_energy",
+    "implementation": "frozen_reference",
+    "input": "butter3",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "iir_impulse_energy",
+    "implementation": "energy_via_dot_product",
+    "input": "canonical",
+    "residual": 2.7601140318214027e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "iir_impulse_energy",
+    "implementation": "energy_via_dot_product",
+    "input": "butter2",
+    "residual": 0.0,
+    "failed_exec": false
+  },
+  {
+    "task": "iir_impulse_energy",
+    "implementation": "energy_via_dot_product",
+    "input": "butter5",
+    "residual": 1.382706060634705e-16,
+    "failed_exec": false
+  },
+  {
+    "task": "iir_impulse_energy",
+    "implementation": "energy_via_dot_product",
+    "input": "butter3",
+    "residual": 0.0,
+    "failed_exec": false
+  }
+]
