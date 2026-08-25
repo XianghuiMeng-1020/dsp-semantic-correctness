@@ -216,7 +216,7 @@ def reproduce_arm_b_conservative(core_rows: list[dict], failures: list[str]) -> 
     print(f"  affected models {len(models_hit)}/3")
     check(k == 9, "conservative CORE 9/48", failures)
     check(len(tasks_hit) == 3, "conservative tasks 3/4", failures)
-    check(len(models_hit) == 2, "conservative models 2/3 (Llama excluded)", failures)
+    check(len(models_hit) == 2, "conservative sources with a witness 2/3", failures)
 
 
 def reproduce_arm_n(failures: list[str]) -> None:
@@ -315,7 +315,7 @@ def reproduce_arm_n(failures: list[str]) -> None:
     check(n_core == 5, "CORE 5/48 (passband/stopband failures distinct from Q2)", failures)
     check(len(q2_rows) == 9, "Q2 9/14 eligible", failures)
     check(len(q2_tasks) == 4, "Q2 tasks 4/4", failures)
-    check(len(q2_models) == 2, "Q2 models 2/3 (Llama contributes none)", failures)
+    check(len(q2_models) == 2, "Q2 sources with a witness 2/3", failures)
     check(len(q2_cells) == 6, "Q2 cells 6/12", failures)
 
     # Pre-generation freeze checks: 12 valid controls pass S_t, 12 mutants fail S_t.

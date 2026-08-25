@@ -17,23 +17,23 @@ $^{\ast}$Corresponding author: \texttt{jionghao@hku.hk}}
 \begin{abstract}
 A reference filter is one valid solution of a design specification, not
 a definition of the solution set.
-We evaluate generated DSP implementations by specification-set
-membership: a candidate is correct if it satisfies a frozen
-passband, stopband, and stability contract, independently of whether
-its coefficients match a canonical design.
+On specification-defined filter-design tasks that admit more than one
+valid realization, we score a candidate by specification-set
+membership: $S_t=1$ if it meets a frozen passband, stopband, and
+stability contract, independently of whether its coefficients match a
+canonical design.
 On four FIR/IIR tasks at $f_s=8\,\mathrm{kHz}$, nine generated
 implementations meet the contract while failing coefficient agreement
-with \texttt{firwin} or \texttt{butter} ($4/4$ tasks, $2/3$ model
-families, $6/12$ cells).
+with \texttt{firwin} or \texttt{butter} ($4/4$ tasks, $6/12$ cells).
 The same contracts accept $12/12$ distinct valid controls and reject
 $12/12$ mechanism mutants.
 First-principles windowed-sinc and frequency-sampling designs occupy
 the same set without library designers; a tighter mask still admits
 two distinct same-order occupants.
-Coefficient and response-to-reference oracles false-reject
-tone-validated implementations that the specification accepts.
-Correctness is membership in the feasible set, not agreement with one
-realization.
+Coefficient and response-to-reference oracles reject implementations
+that satisfy the specification.
+On these tasks, specification-set membership is the correctness
+criterion we use, not agreement with one realization.
 Our code is available at:
 \url{https://github.com/XianghuiMeng-1020/dsp-semantic-correctness}.
 \end{abstract}
@@ -80,7 +80,8 @@ We freeze a specification $S_t$, collect generated and first-principles
 occupants of $\mathcal{V}_t=\{h:S_t(h)=1\}$, and compare three oracles:
 coefficient concordance with one valid reference, constrained-band
 response similarity to that reference, and specification membership.
-The last is the correctness object.
+When the task is specification-defined and $\lvert\mathcal{V}_t\rvert>1$,
+membership is the correctness criterion used below.
 
 \section{Specification-set evaluation}
 \label{sec:method}
@@ -109,8 +110,8 @@ R_{t,r}(h)
 with frozen $\tau_R=0.05$.
 $R_{t,r}(h)=1$ asks whether $h$ is the same realization as $h_r$.
 $S_t(h)=1$ asks whether $h$ is an admissible realization of $t$.
-These coincide if and only if $\mathcal{V}_t$ is a singleton up to
-$\tau_R$.
+If $\mathcal{V}_t$ contains two realizations more than $\tau_R$ apart,
+then $S_t=1$ does not imply $R_{t,r}=1$.
 
 $S_t$ is a magnitude-mask residual on a $4096$-point \texttt{freqz}
 grid at $f_s=8\,\mathrm{kHz}$.
@@ -156,9 +157,10 @@ Transition bands are unconstrained, as in the classical approximation
 problem~\cite{oppenheim2010dsp,rabiner1975fir}.
 Linear phase is not required.
 
-Three oracles are scored against a signal-domain battery $T$: real
-cosines of length $8192$ are passed through \texttt{lfilter}, and
-steady-state Hilbert envelopes are compared with the same mask.
+A tone battery $T$ checks consistency of the same mask on sinusoids:
+real cosines of length $8192$ are passed through \texttt{lfilter}, and
+steady-state Hilbert envelopes are compared with the contract bands.
+$T$ is not an independent gold oracle.
 Low-pass probes are $50$, $400$, $800$~(pass), $1400$~(transition),
 and $2000$, $3000$, $3900\,\mathrm{Hz}$~(stop); band-pass, band-stop,
 and IIR probes are the analogous edges and midpoints of
@@ -190,8 +192,11 @@ Canonical references are Hamming \texttt{firwin} (FIR) and
 \texttt{butter} (IIR)~\cite{virtanen2020scipy}.
 Before generation, three independently written valid controls per task
 (\texttt{firwin}/\texttt{remez}/\texttt{firls};
-\texttt{butter}/\texttt{cheby1}/\texttt{ellip}) all satisfy $S_t$,
-while every control pair exceeds $\tau_R$.
+\texttt{butter}/\texttt{cheby1}/\texttt{ellip}) all satisfy $S_t$.
+Most same-order control pairs exceed $\tau_R$; the exceptions are
+band-stop \texttt{firls}--\texttt{remez} ($\ell_2=0.005$) and IIR
+\texttt{cheby1}--\texttt{ellip} ($\ell_2=0.044$).
+Both exception pairs remain in $\mathcal{V}_t$.
 Twelve mechanism mutants (band swap, shifted cutoff, truncated length,
 unstable pole, Nyquist coded as $1\,\mathrm{Hz}$) all fail $S_t$.
 The planned design is $4\times 3\times 4=48$ generations.
@@ -234,7 +239,7 @@ at a common odd length.
 
 \noindent\textbf{RQ4 --- oracle disagreement.}
 On the $14$ software-eligible generated implementations, Oracles A--C
-are scored against $T$.
+are compared with each other and with the tone consistency check $T$.
 
 \section{Results}
 \label{sec:results}
@@ -245,8 +250,8 @@ Counts are occupancy under a frozen protocol, not prevalence.
 Of $48$ requests, $20$ executed and $14$ passed the type/shape screen.
 Nine of those $14$ satisfy $S_t$; all nine fail Oracle~A
 (Table~\ref{tab:n}).
-The event occupies $4/4$ tasks, $2/3$ model families (Llama contributes
-none), and $6/12$ cells.
+The event occupies $4/4$ tasks and $6/12$ generation cells;
+execution outcomes are heterogeneous across cells.
 Distinct occupants include a $128$-tap \texttt{firwin2} low-pass and a
 $20$-tap \texttt{remez} low-pass; two $101$-tap band-stops with
 relative $\ell_2>0.05$ versus \texttt{firwin}; and elliptic $(3,3)$
@@ -257,7 +262,7 @@ On the specification bands, FIR occupants remain close in
 $\lvert H\rvert$ to the canonical design (RMSE $0.0007$--$0.0045$).
 Different-order FIR occupants differ in passband group delay by
 $13.5$--$30.5$ samples.
-The elliptic pair is not gold-equivalent on the mask:
+The elliptic pair is not equivalent to the Butterworth reference on the mask:
 constrained-band $\lvert H\rvert$ RMSE versus Butterworth is $0.065$
 against a control-pair maximum of $0.019$.
 Two of the nine programs have the same length as \texttt{firwin}; one
@@ -296,17 +301,19 @@ A fivefold / twofold tightening of the frozen numbers does not collapse
 $\mathcal{V}_t$ to a singleton.
 
 \noindent\textbf{RQ4.}
-Table~\ref{tab:oracle} compares oracles with $T$.
-Oracle~C coincides with $T$ on all $14$ eligible implementations
-($9/9$ specification-valid filters are fully in-mask; $5/5$
-specification failures miss at least one constrained tone).
-Oracle~A agrees on $5/14$ and false-rejects every tone-valid
-implementation ($\mathrm{FRR}=1$, $\mathrm{FAR}=0$).
-Oracle~B agrees on $8/14$ and still false-rejects $6/9$ tone-valid
-filters ($\mathrm{FRR}=0.67$), namely the different-order FIR designs
+Table~\ref{tab:oracle} reports agreement of each oracle with the tone
+consistency check $T$ (same bands as $S_t$; not an external gold).
+Oracle~C and $T$ agree on all $14$ eligible implementations
+($9/9$ with $S_t=1$ are fully in-mask; $5/5$ with $S_t=0$ miss at
+least one constrained tone), as expected for two readings of one mask.
+Oracle~A agrees with $T$ on $5/14$ and rejects every implementation
+that is in-mask on $T$ ($9/9$).
+Oracle~B agrees with $T$ on $8/14$ and still rejects $6/9$
+in-mask implementations, namely the different-order FIR designs
 and the elliptic pair.
-The three tone-valid filters that pass Oracle~B---two same-order
-band-stops and the Butterworth $(4,4)$---still fail Oracle~A.
+The three filters that are in-mask on $T$ and pass Oracle~B---two
+same-order band-stops and the Butterworth $(4,4)$---still fail
+Oracle~A.
 A reference protocol therefore accepts $0$ of $48$ planned generations
 and $0/4$ tasks; the specification protocol accepts $9$ generations
 and $4/4$ tasks.
@@ -341,7 +348,7 @@ Quantity & Value \\
 Planned / executed / eligible & $48$ / $20$ / $14$ \\
 $S_t=1$ & $9$ \\
 $S_t=1$ and $R_{t,r}=0$ & $9$ \\
-Tasks / models / cells & $4/4$ / $2/3$ / $6/12$ \\
+Tasks / sources with a witness / cells & $4/4$ / $2/3$ / $6/12$ \\
 Pre-generation controls ($S_t=1$) & $12/12$ \\
 Pre-generation mutants ($S_t=0$) & $12/12$ \\
 Constrained tones, $S_t=1$ / controls & $63/63$ / $90/90$ \\
@@ -371,17 +378,18 @@ RQ3 tight LP, $N=57$, WS vs.\ FS & $2/2$ & $2/2$ & $1/1$ pair \\
 \end{table}
 
 \begin{table}[t]
-\caption{RQ4: oracles versus the constrained-tone battery $T$
+\caption{RQ4: agreement with the tone consistency check $T$
 ($n=14$ eligible implementations).
-False rejection is oracle fail and $T$ pass; false acceptance is
-oracle pass and $T$ fail.}
+$T$ uses the same bands as $S_t$.
+$T{+}{\wedge}$oracle$-$ is oracle fail and $T$ pass;
+$T{-}{\wedge}$oracle$+$ is oracle pass and $T$ fail.}
 \label{tab:oracle}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.2pt}
 \begin{tabular}{@{}lccc@{}}
 \hline
-Oracle & Agree with $T$ & FRR & FAR \\
+Oracle & Agree with $T$ & $T{+}{\wedge}$orc.$-$ & $T{-}{\wedge}$orc.$+$ \\
 \hline
 A \ (coefficients vs.\ $h_r$) & $5/14$ & $1.00$ & $0$ \\
 B \ (band $\lvert H\rvert$ vs.\ $h_r$) & $8/14$ & $0.67$ & $0$ \\
@@ -393,17 +401,17 @@ C \ (specification membership) & $14/14$ & $0$ & $0$ \\
 \section{Conclusion}
 \label{sec:conc}
 
-When a DSP specification admits multiple valid realizations, a
-reference implementation is one point in $\mathcal{V}_t$.
+When a specification-defined DSP task admits multiple valid
+realizations, a reference implementation is one point in
+$\mathcal{V}_t$.
 Generated filters, first-principles windowed-sinc and
 frequency-sampling designs, and a tightened magnitude mask all exhibit
 the same structure: $S_t=1$ does not imply coefficient or
 response agreement with a single canonical occupant.
 Coefficient matching and response-to-reference matching remain useful
 as realization diagnostics.
-They are not correctness tests.
-Correctness of a generated DSP implementation is specification-set
-membership.
+On such tasks they are not, by themselves, correctness tests.
+The correctness criterion used here is specification-set membership.
 
 \vspace{4pt}
 \noindent\textbf{Compliance with ethical standards.}

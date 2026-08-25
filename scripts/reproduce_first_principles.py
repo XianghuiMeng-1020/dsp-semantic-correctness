@@ -41,55 +41,36 @@ def rel_l2(a, b):
 
 
 def best_windowed(kind, n):
-    best = None
+    # Frozen P2A same-order placements (length locked to firwin).
     if kind == "lp":
-        for fc in np.linspace(900.0, 1400.0, 21):
-            h = windowed_sinc_lowpass(n, float(fc), FS)
-            r = float(spec_residual(h, FIR_LOWPASS_BANDS))
-            if best is None or r < best[0]:
-                best = (r, h)
-    elif kind == "bp":
-        for f1, f2 in ((1100, 2700), (1200, 2600), (1000, 2800)):
-            h = windowed_sinc_bandpass(n, f1, f2, FS, 1850.0)
-            r = float(spec_residual(h, FIR_BANDPASS_BANDS))
-            if best is None or r < best[0]:
-                best = (r, h)
-    else:
-        for f1, f2 in ((900, 2700), (1000, 2600), (1100, 2500)):
-            h = windowed_sinc_bandstop(n, f1, f2, FS)
-            r = float(spec_residual(h, FIR_BANDSTOP_BANDS))
-            if best is None or r < best[0]:
-                best = (r, h)
-    return best
+        h = windowed_sinc_lowpass(n, 1400.0, FS)
+        return float(spec_residual(h, FIR_LOWPASS_BANDS)), h
+    if kind == "bp":
+        h = windowed_sinc_bandpass(n, 1000.0, 2700.0, FS, 1850.0)
+        return float(spec_residual(h, FIR_BANDPASS_BANDS)), h
+    h = windowed_sinc_bandstop(n, 1000.0, 2600.0, FS)
+    return float(spec_residual(h, FIR_BANDSTOP_BANDS)), h
 
 
 def best_freq(kind, n):
-    best = None
+    # Frozen P2A same-order frequency-sampling grids.
     if kind == "lp":
-        grids = ((800.0, 2000.0), (800.0, 1800.0), (750.0, 2000.0))
-        for a, b in grids:
-            h = frequency_sampling(n, lambda f, x=a, y=b: mag_lowpass(f, x, y), FS)
-            s = float(np.sum(h))
-            if abs(s) > 1e-18:
-                h = h / s
-            r = float(spec_residual(h, FIR_LOWPASS_BANDS))
-            if best is None or r < best[0]:
-                best = (r, h)
-    elif kind == "bp":
-        grids = ((500, 1500, 2200, 3200), (400, 1500, 2200, 3300))
-        for g in grids:
-            h = frequency_sampling(n, lambda f, gg=g: mag_bandpass(f, *gg), FS)
-            r = float(spec_residual(h, FIR_BANDPASS_BANDS))
-            if best is None or r < best[0]:
-                best = (r, h)
-    else:
-        grids = ((600, 1400, 2200, 3000), (600, 1300, 2300, 3000))
-        for g in grids:
-            h = frequency_sampling(n, lambda f, gg=g: mag_bandstop(f, *gg), FS)
-            r = float(spec_residual(h, FIR_BANDSTOP_BANDS))
-            if best is None or r < best[0]:
-                best = (r, h)
-    return best
+        h = frequency_sampling(n, lambda f: mag_lowpass(f, 800.0, 2000.0), FS)
+        s = float(np.sum(h))
+        if abs(s) > 1e-18:
+            h = h / s
+        return float(spec_residual(h, FIR_LOWPASS_BANDS)), h
+    if kind == "bp":
+        h = frequency_sampling(n, lambda f: mag_bandpass(f, 500.0, 1500.0, 2200.0, 3200.0), FS)
+        g = float(np.abs(np.dot(h, np.exp(-1j * 2.0 * np.pi * 1850.0 * np.arange(len(h)) / FS))))
+        if g > 1e-12:
+            h = h / g
+        return float(spec_residual(h, FIR_BANDPASS_BANDS)), h
+    h = frequency_sampling(n, lambda f: mag_bandstop(f, 600.0, 1400.0, 2200.0, 3000.0), FS)
+    s = float(np.sum(h))
+    if abs(s) > 1e-18:
+        h = h / s
+    return float(spec_residual(h, FIR_BANDSTOP_BANDS)), h
 
 
 def main():
@@ -110,7 +91,7 @@ def main():
             print(f"  {method} {kind} n={n}: S={ok} residual={resid:.3e} l2={d:.4f}")
     print(f"same-order in V_t: {n_s}/6")
     print(f"same-order coeff-discordant: {n_disc}/6")
-    if n_s != 6:
+    if n_s != 6 or n_disc != 5:
         raise SystemExit("FIRST_PRINCIPLES_SAMEORDER: FAIL")
     print("FIRST_PRINCIPLES_SAMEORDER: PASS")
 
