@@ -1,0 +1,420 @@
+% ICASSP 2027 manuscript: official SPS conference template (spconf.sty / IEEEbib.bst).
+\documentclass{article}
+\usepackage{spconf,amsmath,amssymb,hyperref}
+
+\title{Beyond Reference Matching: Specification-Based Evaluation\\
+of Generated DSP Implementations}
+
+\name{Xianghui Meng$^{1}$ and Jionghao Lin$^{1,2,\ast}$}
+\address{$^{1}$The University of Hong Kong \\
+$^{2}$Carnegie Mellon University \\
+\texttt{margretmeng1020@gmail.com} \\
+$^{\ast}$Corresponding author: \texttt{jionghao@hku.hk}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A reference filter is one valid solution of a design specification, not
+a definition of the solution set.
+We evaluate generated DSP implementations by specification-set
+membership: a candidate is correct if it satisfies a frozen
+passband, stopband, and stability contract, independently of whether
+its coefficients match a canonical design.
+On four FIR/IIR tasks at $f_s=8\,\mathrm{kHz}$, nine generated
+implementations meet the contract while failing coefficient agreement
+with \texttt{firwin} or \texttt{butter} ($4/4$ tasks, $2/3$ model
+families, $6/12$ cells).
+The same contracts accept $12/12$ distinct valid controls and reject
+$12/12$ mechanism mutants.
+First-principles windowed-sinc and frequency-sampling designs occupy
+the same set without library designers; a tighter mask still admits
+two distinct same-order occupants.
+Coefficient and response-to-reference oracles false-reject
+tone-validated implementations that the specification accepts.
+Correctness is membership in the feasible set, not agreement with one
+realization.
+Our code is available at:
+\url{https://github.com/XianghuiMeng-1020/dsp-semantic-correctness}.
+\end{abstract}
+
+\begin{keywords}
+Filter design, specification testing, generated implementations, FIR, IIR
+\end{keywords}
+
+\section{Introduction}
+\label{sec:intro}
+
+DSP implementations are increasingly written by program synthesizers
+and large language models~\cite{chen2021codex,liu2023evalplus}.
+The default evaluation reflex is to compare the emitted coefficients,
+or the emitted frequency response, with a trusted reference
+implementation~\cite{virtanen2020scipy,huuhtanen2015dsp}.
+That comparison is exact when the specification is a singleton: one
+correct integer delay, one declared Fourier convention, one alias
+period.
+It is not exact for classical filter design.
+
+A magnitude mask with a free transition band defines a
+\emph{feasible set} of filters, not a unique coefficient
+vector~\cite{oppenheim2010dsp,proakis2007dsp,mitra2011dsp,rabiner1975theory}.
+Windowed truncation~\cite{kaiser1974window,harris1978windows},
+frequency sampling~\cite{rabiner1970freqsamp},
+equiripple Parks--McClellan design~\cite{parks1972chebyshev,mcclellan1973computer,rabiner1975fir,herrmann1973linear},
+and IIR Butterworth or elliptic approximations~\cite{butterworth1930,constantinides1970,jackson1996filters,antoniou2006filters,vaidyanathan1993multirate}
+can all meet the same passband, stopband, and stability bounds while
+remaining far apart as impulse responses.
+A canonical library call---Hamming \texttt{firwin}, or a Butterworth
+section---is one occupant of that set.
+
+This paper treats generated DSP code as an evaluation setting for that
+structure, not as a model leaderboard.
+The methodological claim is
+\begin{equation}
+\text{reference agreement}\;\neq\;\text{DSP correctness}
+\quad\text{when}\quad
+\lvert\mathcal{V}_t\rvert>1.
+\label{eq:claim}
+\end{equation}
+We freeze a specification $S_t$, collect generated and first-principles
+occupants of $\mathcal{V}_t=\{h:S_t(h)=1\}$, and compare three oracles:
+coefficient concordance with one valid reference, constrained-band
+response similarity to that reference, and specification membership.
+The last is the correctness object.
+
+\section{Specification-set evaluation}
+\label{sec:method}
+
+Let $t$ be a design task and $h$ a realized filter (FIR taps, or an
+IIR pair $(b,a)$).
+A frozen contract returns $S_t(h)\in\{0,1\}$.
+The feasible set is
+\begin{equation}
+\mathcal{V}_t=\{h:S_t(h)=1\}.
+\label{eq:vt}
+\end{equation}
+Any valid reference $h_r$ satisfies $h_r\in\mathcal{V}_t$ and nothing
+stronger.
+Write $\tilde h$ for the coefficient vector of $h$, or the
+concatenation $(b,a)$, truncated to the shorter length when orders
+differ.
+Coefficient concordance with $h_r$ is
+\begin{equation}
+R_{t,r}(h)
+=\mathbf{1}\!\left[
+\frac{\lVert \tilde h-\tilde h_r\rVert_2}{\lVert\tilde h_r\rVert_2}
+\le\tau_R\right],
+\label{eq:r}
+\end{equation}
+with frozen $\tau_R=0.05$.
+$R_{t,r}(h)=1$ asks whether $h$ is the same realization as $h_r$.
+$S_t(h)=1$ asks whether $h$ is an admissible realization of $t$.
+These coincide if and only if $\mathcal{V}_t$ is a singleton up to
+$\tau_R$.
+
+$S_t$ is a magnitude-mask residual on a $4096$-point \texttt{freqz}
+grid at $f_s=8\,\mathrm{kHz}$.
+For each constrained band $[f_0,f_1]$ with bounds $[\ell,u]$,
+\begin{equation}
+\rho=\max_{f\in[f_0,f_1]}
+\max\bigl(\rho_\ell(f),\rho_u(f)\bigr),
+\label{eq:rho}
+\end{equation}
+where $\rho_\ell=(\ell-\lvert H\rvert)_+/(u-\ell)$ and
+$\rho_u=(\lvert H\rvert-u)_+/(u-\ell)$ with a $10^{-6}$ floor on
+the denominator,
+and $S_t$ uses the worst $\rho$ over bands.
+FIR contracts pass at residual $\le 10^{-6}$; the IIR contract also
+requires every pole radius $<0.999$ and passes at residual
+$\le 10^{-3}$.
+Neither floor was fit to generated residuals.
+The four frozen masks are
+\begin{align}
+\text{LP }&
+\lvert H\rvert\in[0.95,1.05]\ \mathrm{on}\ [0,800],
+\nonumber\\
+&\lvert H\rvert\le 0.05\ \mathrm{on}\ [2000,4000];
+\label{eq:lp}\\
+\text{BP }&
+\lvert H\rvert\le 0.06\ \mathrm{on}\ [0,500]\cup[3200,4000],
+\nonumber\\
+&\lvert H\rvert\in[0.95,1.05]\ \mathrm{on}\ [1500,2200];
+\label{eq:bp}\\
+\text{BS }&
+\lvert H\rvert\in[0.95,1.05]\ \mathrm{on}\ [0,600]\cup[3000,4000],
+\nonumber\\
+&\lvert H\rvert\le 0.06\ \mathrm{on}\ [1400,2200];
+\label{eq:bs}\\
+\text{IIR }&
+\lvert H\rvert\in[0.90,1.10]\ \mathrm{on}\ [0,600],
+\nonumber\\
+&\lvert H\rvert\le 0.10\ \mathrm{on}\ [2400,4000],
+\label{eq:iir}
+\end{align}
+with frequencies in hertz.
+Transition bands are unconstrained, as in the classical approximation
+problem~\cite{oppenheim2010dsp,rabiner1975fir}.
+Linear phase is not required.
+
+Three oracles are scored against a signal-domain battery $T$: real
+cosines of length $8192$ are passed through \texttt{lfilter}, and
+steady-state Hilbert envelopes are compared with the same mask.
+Low-pass probes are $50$, $400$, $800$~(pass), $1400$~(transition),
+and $2000$, $3000$, $3900\,\mathrm{Hz}$~(stop); band-pass, band-stop,
+and IIR probes are the analogous edges and midpoints of
+\eqref{eq:bp}--\eqref{eq:iir}.
+A chirp envelope is not used as a mask residual (valid controls fail
+that estimator on stopbands).
+\begin{itemize}
+\item \textbf{Oracle A} (reference coefficients): $R_{t,r}$.
+\item \textbf{Oracle B} (response similarity): constrained-band
+$\lvert H\rvert$ RMSE versus $h_r$ no larger than the maximum
+same-order control--control RMSE on that task.
+\item \textbf{Oracle C} (specification membership): $S_t$.
+\end{itemize}
+Oracle~B is a DSP-native comparison and remains a comparison to
+\emph{one} element of $\mathcal{V}_t$.
+Oracle~C is membership in $\mathcal{V}_t$.
+
+\section{Experimental design}
+\label{sec:design}
+
+Generation used Qwen-2.5-72B-Instruct, Llama-3.3-70B-Instruct,
+and DeepSeek-Chat at temperature $0.7$, with four draws per
+task$\times$model cell.
+The prompt is the contract statement.
+No outcome triggered regeneration.
+
+\noindent\textbf{RQ1 --- generated implementations.}
+Canonical references are Hamming \texttt{firwin} (FIR) and
+\texttt{butter} (IIR)~\cite{virtanen2020scipy}.
+Before generation, three independently written valid controls per task
+(\texttt{firwin}/\texttt{remez}/\texttt{firls};
+\texttt{butter}/\texttt{cheby1}/\texttt{ellip}) all satisfy $S_t$,
+while every control pair exceeds $\tau_R$.
+Twelve mechanism mutants (band swap, shifted cutoff, truncated length,
+unstable pole, Nyquist coded as $1\,\mathrm{Hz}$) all fail $S_t$.
+The planned design is $4\times 3\times 4=48$ generations.
+Same-order control pairs already realize $\lvert\mathcal{V}_t\rvert>1$:
+FIR coefficient $\ell_2$ ranges are $0.14$--$0.27$ (LP),
+$0.26$--$0.38$ (BP), and $0.005$--$0.051$ (BS); IIR
+$(b,a)$ $\ell_2$ ranges are $0.044$--$0.611$.
+Constrained-band $\lvert H\rvert$ RMSE among those pairs stays
+below $0.001$ (FIR) and $0.019$ (IIR); full-grid RMSE is
+$0.074$--$0.236$ (FIR) because the transition is free.
+Equal-order FIR controls share group delay.
+
+\noindent\textbf{RQ2 --- first-principles occupants.}
+Two textbook FIR constructions are formed with \texttt{numpy} only.
+The Type-I Hamming windowed-sinc low-pass of odd length $N$ and cutoff
+$f_c$ is
+\begin{equation}
+h[n]=\frac{w[n]}{\sum_k w[k]}\,
+2f_c\,\mathrm{sinc}\!\bigl(2f_c(n-M)\bigr),
+\label{eq:sinc}
+\end{equation}
+$M=(N-1)/2$, $w[n]=0.54-0.46\cos(2\pi n/(N-1))$,
+$f_c$ in cycles/sample~\cite{kaiser1974window,harris1978windows}.
+Band-pass and band-stop designs are complementary differences of
+\eqref{eq:sinc}.
+Frequency sampling assigns a linear-transition desired magnitude
+$A[k]$ on the $N$-point DFT grid, applies the Type-I factor
+$e^{-j\pi(N-1)k/N}$, and inverts~\cite{rabiner1970freqsamp}.
+SciPy design symbols are forbidden in that module.
+Search is over odd $N$ and cutoff/transition placement until the
+frozen residual is $\le 10^{-6}$.
+
+\noindent\textbf{RQ3 --- tighter mask.}
+One low-pass analysis mask tightens~\eqref{eq:lp} to
+$\lvert H\rvert\in[0.99,1.01]$ on $[0,800]\,\mathrm{Hz}$ and
+$\lvert H\rvert\le 0.01$ on $[1400,4000]\,\mathrm{Hz}$
+(fivefold ripple and stop, twofold narrower free transition).
+\texttt{firwin}, \eqref{eq:sinc}, and frequency sampling are compared
+at a common odd length.
+
+\noindent\textbf{RQ4 --- oracle disagreement.}
+On the $14$ software-eligible generated implementations, Oracles A--C
+are scored against $T$.
+
+\section{Results}
+\label{sec:results}
+
+Counts are occupancy under a frozen protocol, not prevalence.
+
+\noindent\textbf{RQ1.}
+Of $48$ requests, $20$ executed and $14$ passed the type/shape screen.
+Nine of those $14$ satisfy $S_t$; all nine fail Oracle~A
+(Table~\ref{tab:n}).
+The event occupies $4/4$ tasks, $2/3$ model families (Llama contributes
+none), and $6/12$ cells.
+Distinct occupants include a $128$-tap \texttt{firwin2} low-pass and a
+$20$-tap \texttt{remez} low-pass; two $101$-tap band-stops with
+relative $\ell_2>0.05$ versus \texttt{firwin}; and elliptic $(3,3)$
+and Butterworth $(4,4)$ IIR designs, both stable and in-band.
+Constrained tones through the nine filters are in-mask on $63/63$
+probes; the twelve valid controls are in-mask on $90/90$.
+On the specification bands, FIR occupants remain close in
+$\lvert H\rvert$ to the canonical design (RMSE $0.0007$--$0.0045$).
+Different-order FIR occupants differ in passband group delay by
+$13.5$--$30.5$ samples.
+The elliptic pair is not gold-equivalent on the mask:
+constrained-band $\lvert H\rvert$ RMSE versus Butterworth is $0.065$
+against a control-pair maximum of $0.019$.
+Two of the nine programs have the same length as \texttt{firwin}; one
+of those two still exceeds $\tau_R$ ($0.057$).
+A post-hoc swap of $h_r$ among the three frozen controls leaves $7/9$
+discordant with all three; the two same-length band-stops become
+concordant with \texttt{remez}/\texttt{firls} while remaining
+discordant with \texttt{firwin}.
+The swap relocates a program to a different element of $\mathcal{V}_t$,
+not out of $\mathcal{V}_t$.
+
+\noindent\textbf{RQ2.}
+Both first-principles methods enter $\mathcal{V}_t$ on all three FIR
+tasks ($6/6$ shortest designs; Table~\ref{tab:fp}).
+Locked to the canonical length ($81$ low-pass, $101$ band-pass and
+band-stop), all six still satisfy $S_t$; five of six exceed
+$\tau_R$ versus \texttt{firwin}.
+Hamming windowed-sinc at $101$ taps on the band-stop is the same
+method as \texttt{firwin} (coefficient $\ell_2=0.0013$,
+$\Delta\mathrm{GD}=0$).
+Frequency sampling at that length remains in $\mathcal{V}_t$ with
+coefficient $\ell_2$ of $0.18$--$0.39$.
+Every constrained tone is in-mask.
+Multiplicity is a property of the mask, not of library-API diversity.
+
+\noindent\textbf{RQ3.}
+On the tighter low-pass, the shortest passing lengths are $43$
+(\texttt{firwin} and windowed-sinc; numerically identical) and $57$
+(frequency sampling).
+At common length $N=57$, both distinct methods satisfy the tight
+contract, pass $7/7$ constrained tones, share a $28$-sample group
+delay, and differ by coefficient $\ell_2=0.115$ and full-grid
+$\lvert H\rvert$ RMSE $0.057$, with spec-band RMSE $0.0014$
+(Table~\ref{tab:fp}).
+A fivefold / twofold tightening of the frozen numbers does not collapse
+$\mathcal{V}_t$ to a singleton.
+
+\noindent\textbf{RQ4.}
+Table~\ref{tab:oracle} compares oracles with $T$.
+Oracle~C coincides with $T$ on all $14$ eligible implementations
+($9/9$ specification-valid filters are fully in-mask; $5/5$
+specification failures miss at least one constrained tone).
+Oracle~A agrees on $5/14$ and false-rejects every tone-valid
+implementation ($\mathrm{FRR}=1$, $\mathrm{FAR}=0$).
+Oracle~B agrees on $8/14$ and still false-rejects $6/9$ tone-valid
+filters ($\mathrm{FRR}=0.67$), namely the different-order FIR designs
+and the elliptic pair.
+The three tone-valid filters that pass Oracle~B---two same-order
+band-stops and the Butterworth $(4,4)$---still fail Oracle~A.
+A reference protocol therefore accepts $0$ of $48$ planned generations
+and $0/4$ tasks; the specification protocol accepts $9$ generations
+and $4/4$ tasks.
+On band-pass and IIR cells, ranking by coefficient distance elevates a
+specification-failing implementation above a specification-valid one.
+The band-pass case is a $101$-tap \texttt{firwin2} with coefficient
+$\ell_2=0.401$ and residual $0.352$ (tones $5/9$) ranked above a
+$128$-tap specification-valid \texttt{firwin2} with $\ell_2=1.369$
+and residual $0$.
+The IIR case is a specification-failing design with
+$\ell_2=0.499$ versus \texttt{butter} ranked above elliptic
+$(3,3)$ and Butterworth $(4,4)$ occupants with residual $0$.
+Kendall $\tau$ between coefficient distance and specification residual
+on the $14$ eligible rows is $0.38$.
+Oracle~B calibration maxima (control-pair constrained
+$\lvert H\rvert$ RMSE) are $8.6\times 10^{-4}$ (LP),
+$1.0\times 10^{-3}$ (BP), $7.4\times 10^{-4}$ (BS), and
+$1.9\times 10^{-2}$ (IIR).
+
+\begin{table}[t]
+\caption{RQ1 occupancy on the frozen specification-set arm.
+$S_t=1$ is contract membership; $R_{t,r}=0$ is coefficient
+discordance with the canonical reference.}
+\label{tab:n}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{@{}lc@{}}
+\hline
+Quantity & Value \\
+\hline
+Planned / executed / eligible & $48$ / $20$ / $14$ \\
+$S_t=1$ & $9$ \\
+$S_t=1$ and $R_{t,r}=0$ & $9$ \\
+Tasks / models / cells & $4/4$ / $2/3$ / $6/12$ \\
+Pre-generation controls ($S_t=1$) & $12/12$ \\
+Pre-generation mutants ($S_t=0$) & $12/12$ \\
+Constrained tones, $S_t=1$ / controls & $63/63$ / $90/90$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\caption{RQ2 and RQ3.
+WS: Hamming windowed-sinc.
+FS: frequency sampling.
+Same-order lengths are the frozen \texttt{firwin} lengths (RQ2) or
+$N=57$ (RQ3).}
+\label{tab:fp}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{@{}lcccc@{}}
+\hline
+Setting & In $\mathcal{V}_t$ & Same-order $S_t$ & $\ell_2>\tau_R$ \\
+\hline
+RQ2 shortest WS/FS (3 FIR tasks) & $6/6$ & --- & $6/6$ \\
+RQ2 same-order WS/FS & --- & $6/6$ & $5/6$ \\
+RQ3 tight LP, $N=57$, WS vs.\ FS & $2/2$ & $2/2$ & $1/1$ pair \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\caption{RQ4: oracles versus the constrained-tone battery $T$
+($n=14$ eligible implementations).
+False rejection is oracle fail and $T$ pass; false acceptance is
+oracle pass and $T$ fail.}
+\label{tab:oracle}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{@{}lccc@{}}
+\hline
+Oracle & Agree with $T$ & FRR & FAR \\
+\hline
+A \ (coefficients vs.\ $h_r$) & $5/14$ & $1.00$ & $0$ \\
+B \ (band $\lvert H\rvert$ vs.\ $h_r$) & $8/14$ & $0.67$ & $0$ \\
+C \ (specification membership) & $14/14$ & $0$ & $0$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Conclusion}
+\label{sec:conc}
+
+When a DSP specification admits multiple valid realizations, a
+reference implementation is one point in $\mathcal{V}_t$.
+Generated filters, first-principles windowed-sinc and
+frequency-sampling designs, and a tightened magnitude mask all exhibit
+the same structure: $S_t=1$ does not imply coefficient or
+response agreement with a single canonical occupant.
+Coefficient matching and response-to-reference matching remain useful
+as realization diagnostics.
+They are not correctness tests.
+Correctness of a generated DSP implementation is specification-set
+membership.
+
+\vspace{4pt}
+\noindent\textbf{Compliance with ethical standards.}
+No funding was received for conducting this study.
+The authors have no relevant financial or nonfinancial interests
+to disclose.
+The study did not involve human participants, animal subjects, or
+personally identifiable data.
+
+\clearpage
+\bibliographystyle{IEEEbib}
+\bibliography{refs}
+
+\end{document}
