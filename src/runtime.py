@@ -7,7 +7,7 @@ import cmath
 import io
 import math
 import statistics
-from contextlib import redirect_stderr
+from contextlib import redirect_stderr, redirect_stdout
 
 import numpy as np
 from scipy import signal as sp_signal
@@ -35,7 +35,7 @@ def exec_function(code: str, func_name: str):
         "statistics": statistics,
     }
     try:
-        with redirect_stderr(io.StringIO()):
+        with redirect_stderr(io.StringIO()), redirect_stdout(io.StringIO()):
             exec(compile(code, "<generated>", "exec"), ns)
     except Exception as exc:
         return None, f"EXEC_ERROR: {exc}"

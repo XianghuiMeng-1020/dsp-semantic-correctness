@@ -1,40 +1,83 @@
 # DSP Semantic Correctness for Generated Code
 
-Generated digital signal processing (DSP) programs can execute and satisfy ordinary software checks while violating theory-defined signal-processing identities. This repository provides the minimal scoring code and frozen extracted implementations needed to reproduce that finding.
+Code accompanying "Executable Is Not Signal-Processing Correct: Specification
+versus Reference Testing of Generated DSP Code" (ICASSP 2027).
+
+Generated digital signal processing (DSP) programs can execute, return a
+finite array of the expected shape, and pass ordinary software checks while
+still violating a theory-defined signal-processing identity. On design tasks
+that admit more than one valid realization, agreement with a single gold
+implementation is not itself a complete definition of correctness. This
+repository provides the frozen semantic contracts and the extracted
+generated implementations needed to reproduce every published count.
 
 ## Why this matters
 
 Three correctness layers are easy to conflate:
 
-- **Executable / software correctness.** The routine runs, returns a finite array of the expected shape, and passes coarse type or range checks.
-- **Differential / reference correctness.** The output is close to a trusted implementation when a unique algebraic residual exists.
-- **DSP semantic correctness.** The implementation obeys a named identity: an observable, a reference quantity, a valid domain, and a tolerance written independently of model outputs.
-
-Differential comparison is strong when a trusted implementation exists. Semantic contracts add an explicit DSP-level specification of the identity that failed. They are not offered as a universally higher-recall detector.
+- **Executable / software correctness.** The routine runs, returns a finite
+  array of the expected shape, and passes coarse type or range checks.
+- **Differential / reference correctness.** The output agrees with a trusted
+  implementation. This is a legitimate proxy when the task has a unique
+  correct output.
+- **DSP semantic correctness.** The implementation satisfies a named
+  identity or specification, written independently of any model output. On
+  tasks with a non-unique correct answer (classical filter design, for
+  instance), this is the only object that characterizes correctness.
 
 ## What this repository provides
 
-- Frozen semantic contracts for a historical spectral/filter suite and two prospective families (convolution/correlation; sampling/resampling).
-- Extracted implementations from the completed generation runs.
-- A single reproduction entry point that recomputes the published CORE summaries.
+- Frozen semantic contracts for the primary prospective filter-specification
+  arm (Arm N) and three supporting arms: a historical spectral/filter suite
+  (Arm H), a frozen convolution/correlation holdout (Arm P), and a frozen
+  sampling/resampling suite (Arm B).
+- The extracted implementations from every scored generation in all four
+  arms.
+- A single entry point that re-scores every generation against the frozen
+  contracts and checks the result against every count published in the
+  paper.
 
-Model generation itself is not shipped. Re-running the study against new models would require an external API and is outside this release.
+Model generation itself is not shipped: re-running the study against new
+models would require live API access and is outside this release. Every
+number below is computed deterministically from the already-generated code
+that is included in `data/`.
 
 ## Main empirical findings
 
-The three arms are reported separately and are not pooled.
+The four arms are reported separately and are never pooled.
 
-| Arm | Family | Design | CORE | Tasks | Models | Software | Differential |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| Historical | spectral / filter | confirmatory | 16/144 | 4/12 | 3/3 | 0/16 | 15/16 |
-| Prospective | convolution / correlation | frozen before generation | 11/48 | 1/4 | 3/3 | 0/11 | 11/11 |
-| Prospective | sampling / resampling | sequential, frozen before generation | 11/48 | 3/4 | 3/3 | 0/11 | 11/11 |
+| Arm | Family | Design | Headline evidence | Tasks | Models |
+| --- | --- | --- | --- | ---: | ---: |
+| N (primary) | FIR/IIR filter design | frozen before generation | 9 programs satisfy the mask while disagreeing with a valid reference | 4/4 | 2/3 |
+| H | spectral / filter identities | historical confirmatory | CORE 16/144 | 4/12 | 3/3 |
+| P | convolution / correlation | frozen before generation | CORE 11/48 | 1/4 | 3/3 |
+| B | sampling / resampling | frozen before generation | CORE 9/48 (conservative; 11/48 original) | 3/4 | 2/3 |
 
-The historical event is mechanism-selective: eight of twelve tasks contribute no validated CORE, valid-control evaluations show 0/113 observed false positives, and 13/13 controlled mutants are detected. Removing the highest-failure task leaves 11/132. The first prospective arm concentrates in one delay-sign / correlation-order task. The second prospective arm covers both predefined mechanism groups, with task counts 1/12, 0/12, 3/12, and 7/12. The contribution is the explicit theory-grounded correctness layer, not universal superiority over differential checking.
+Arm N is the central result: classical FIR and IIR filter design admits many
+coefficient vectors that satisfy the same passband/stopband/stability mask.
+Nine naturally generated programs satisfy the frozen specification while
+disagreeing with the selected valid reference by more than the frozen
+tolerance — a single-reference rule would reject programs that a DSP
+specification accepts. Before any natural generation, the same contracts
+accepted 12/12 independently constructed valid controls and rejected 12/12
+mechanism mutants.
+
+Arms H, P, and B test whether executable, software-eligible programs can
+violate defining identities outside filter design (spectral normalization,
+delay sign, alias mapping, resampling gain). Differential testing remains
+strong on these unique-output tasks: a trusted reference detects 15/16,
+11/11, and 11/11 of the respective CORE cases. Arm B's preferred count
+excludes two DC-preservation cases whose residual matches an unpadded
+polyphase-FIR transient on a short constant; both readings are reproduced
+below.
 
 ## DSP mechanisms
 
-Representative identities include spectral normalization (Parseval scaling, one-sided versus two-sided density, window-power periodograms, frequency-response decibels), correlation delay and sign, alias-frequency mapping, spectral images of a zero inserter, and resampling DC gain.
+Arm N: FIR/IIR passband, stopband, and pole-radius stability specifications.
+Arm H: spectral normalization (Parseval scaling, one-sided versus two-sided
+density, window-power periodograms, frequency-response decibels). Arm P:
+correlation delay and sign convention. Arm B: alias-frequency mapping,
+spectral images under zero insertion, and resampling DC/interpolation gain.
 
 ## Quick start
 
@@ -48,46 +91,71 @@ python scripts/reproduce_all.py
 
 ## Reproducing the results
 
-`python scripts/reproduce_all.py` should print:
+`python scripts/reproduce_all.py` re-executes every generated function under
+a restricted namespace (`numpy`/`scipy` only), scores it against the frozen
+contracts, and checks the result against every published count. It should
+end with:
 
 ```text
-Historical validated CORE: 16/144
-Prospective convolution/correlation CORE: 11/48
-Prospective sampling/resampling CORE: 11/48
 ALL_PUBLISHED_COUNTS_MATCH: YES
 ```
 
-The historical summary is obtained from the frozen confirmatory table after applying the published artifact-adjustment list. Prospective rows are re-executed from extracted code against the frozen contracts. Wilson 95% intervals are recomputed by the same formula used in the study.
+Arm N scoring additionally recomputes the coefficient/`(b, a)` vector for
+each eligible generation and its relative-L2 distance to the frozen valid
+control, reproducing the specification-pass / reference-concordance
+quadrant used to identify the nine Q2 (specification-valid,
+reference-discordant) witnesses. The historical (Arm H) summary is obtained
+from the frozen confirmatory table after applying the published
+artifact-adjustment list; Arm P, Arm B, and Arm N are re-executed directly
+from extracted code against the frozen contracts. Wilson 95% intervals are
+recomputed by the same formula used in the study.
 
 ## Repository structure
 
 ```text
 README.md
+LICENSE
 requirements.txt
 src/
-    contracts_conv_corr.py
-    contracts_samp_resamp.py
-    runtime.py
-    stats.py
+    contracts_arm_n.py         Arm N: FIR/IIR filter-specification contracts
+    contracts_conv_corr.py     Arm P: convolution/correlation contracts
+    contracts_samp_resamp.py   Arm B: sampling/resampling contracts
+    runtime.py                 restricted-namespace exec + generic scorer
+    stats.py                   Wilson score interval
 scripts/
-    reproduce_all.py
+    reproduce_all.py           single entry point; reproduces every count
 data/
-    historical_generations.csv
+    arm_n_generations.json         Arm N: all 48 scored generations
+    arm_n_valid_controls/          Arm N: 12 pre-generation valid controls
+    arm_n_mutants/                 Arm N: 12 pre-generation mechanism mutants
+    arm_n_thresholds.json          Arm N: frozen numerical floors
+    historical_generations.csv     Arm H: all 144 scored generations
     historical_artifact_adjustment.json
     historical_control_residuals.json
     historical_mutant_residuals.json
     historical_thresholds.json
-    arm_p_generations.json
-    arm_b_generations.json
+    arm_p_generations.json         Arm P: all 48 scored generations
+    arm_b_generations.json         Arm B: all 48 scored generations
 ```
 
 ## Reproducibility notes
 
-- Semantic contracts, thresholds, and input batteries were frozen before the corresponding generations were scored.
-- Prospective scoring is deterministic given the extracted implementations and the contract seeds.
-- Raw provider transcripts and API credentials are not included.
-- The three arm totals must not be added into a single prevalence.
+- Semantic contracts, thresholds, valid controls, and mechanism mutants were
+  frozen before the corresponding generations were scored.
+- Scoring is deterministic given the extracted implementations and the
+  frozen contracts. One Arm N generation does not terminate; scoring wraps
+  each call in a 15-second process timeout and records a hang as an
+  execution failure, exactly as in the original harness.
+- Raw provider transcripts and API credentials are not included; the code
+  strings in `data/*.json` are the immutable extracted implementations that
+  were scored.
+- Arm totals must not be added into a single prevalence estimate. Each arm's
+  CORE or Q2 count is an existence result on its own frozen design, not a
+  sample from a shared population.
 
 ## Citation
 
-A formal citation will be added after archival publication.
+A formal citation will be added after publication. In the meantime, please
+cite the ICASSP 2027 paper "Executable Is Not Signal-Processing Correct:
+Specification versus Reference Testing of Generated DSP Code" by Xianghui
+Meng and Jionghao Lin.
