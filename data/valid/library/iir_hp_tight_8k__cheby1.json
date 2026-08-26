@@ -1,0 +1,30 @@
+{
+  "task_id": "iir_hp_tight_8k",
+  "source": "library",
+  "method": "cheby1",
+  "parameters": {
+    "order": 6,
+    "cutoff": [
+      2265.0
+    ],
+    "rp_db": 0.1,
+    "rs_db": null
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.8585144677024543,
+    "mag_rmse_band": 0.004896977668800397,
+    "mag_rmse_full": 0.048650628383135164,
+    "same_order": false
+  },
+  "path": "data/valid/library/iir_hp_tight_8k__cheby1.npz",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_b": 7,
+  "n_a": 7
+}

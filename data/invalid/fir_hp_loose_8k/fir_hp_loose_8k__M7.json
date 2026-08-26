@@ -1,0 +1,18 @@
+{
+  "task_id": "fir_hp_loose_8k",
+  "mechanism": "M7",
+  "source_parameters": {
+    "designed_fs": 48000.0,
+    "scored_fs": 8000.0,
+    "n": 51
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 19.06420369998384,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M7.npy"
+}

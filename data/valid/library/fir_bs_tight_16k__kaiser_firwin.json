@@ -1,0 +1,30 @@
+{
+  "task_id": "fir_bs_tight_16k",
+  "source": "library",
+  "method": "kaiser_firwin",
+  "parameters": {
+    "n": 47,
+    "cutoff": [
+      1600.0,
+      5600.0
+    ],
+    "window": "kaiser",
+    "beta": 3.20553629437661
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.4633748862209435,
+    "mag_rmse_band": 0.004816523562163734,
+    "mag_rmse_full": 0.005317746257325688,
+    "same_order": false
+  },
+  "path": "data/valid/library/fir_bs_tight_16k__kaiser_firwin.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 47
+}

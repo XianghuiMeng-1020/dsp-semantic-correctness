@@ -1,0 +1,16 @@
+{
+  "task_id": "iir_lp_tight_8k",
+  "mechanism": "M6",
+  "source_parameters": {
+    "target_pass_gain": 0.2
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 19.520283371935967,
+    "stopband_error": 0.806275355737345,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M6.npz"
+}

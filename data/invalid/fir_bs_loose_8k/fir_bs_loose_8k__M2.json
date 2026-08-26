@@ -1,0 +1,21 @@
+{
+  "task_id": "fir_bs_loose_8k",
+  "mechanism": "M2",
+  "source_parameters": {
+    "cutoff": [
+      1800.0,
+      3500.0
+    ],
+    "n": 51,
+    "into": "stop"
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 9.499943064625645,
+    "stopband_error": 15.692547410543556,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_bs_loose_8k/fir_bs_loose_8k__M2.npy"
+}

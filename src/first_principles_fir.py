@@ -113,12 +113,28 @@ def frequency_sampling(n_taps: int, mag_of_hz, fs: float) -> np.ndarray:
     return np.asarray(h, float)
 
 
+def windowed_sinc_highpass(n_taps: int, fc_hz: float, fs: float) -> np.ndarray:
+    """Type-I highpass via complementary lowpass, Nyquist-normalized."""
+    m = (n_taps - 1) // 2
+    delta = np.zeros(n_taps, dtype=float)
+    delta[m] = 1.0
+    h = delta - windowed_sinc_lowpass(n_taps, fc_hz, fs)
+    g = dtft_gain(h, 0.5 * fs, fs)
+    if g < 1e-12:
+        raise ValueError("highpass gain at Nyquist is zero")
+    return h / g
+
+
 def mag_lowpass(f, f_pass, f_stop):
     if f <= f_pass:
         return 1.0
     if f >= f_stop:
         return 0.0
     return float((f_stop - f) / (f_stop - f_pass))
+
+
+def mag_highpass(f, f_stop, f_pass):
+    return 1.0 - mag_lowpass(f, f_stop, f_pass)
 
 
 def mag_bandpass(f, f_s1, f_p1, f_p2, f_s2):

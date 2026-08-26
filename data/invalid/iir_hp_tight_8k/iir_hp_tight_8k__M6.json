@@ -1,0 +1,16 @@
+{
+  "task_id": "iir_hp_tight_8k",
+  "mechanism": "M6",
+  "source_parameters": {
+    "target_pass_gain": 0.2
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 19.63544663157459,
+    "stopband_error": 1.271555183367429,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M6.npz"
+}

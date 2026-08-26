@@ -1,0 +1,25 @@
+{
+  "task_id": "fir_lp_loose_16k",
+  "source": "first_principles",
+  "method": "frequency_sampling",
+  "parameters": {
+    "n": 21,
+    "variant": "shortest"
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.07041073934269527,
+    "mag_rmse_band": 0.007282885898140158,
+    "mag_rmse_full": 0.03902373928792288,
+    "same_order": true
+  },
+  "path": "data/valid/first_principles/fir_lp_loose_16k__frequency_sampling__shortest.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 21
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "iir_lp_tight_8k",
+  "mechanism": "M3",
+  "source_parameters": {
+    "order": 1,
+    "cutoff": 1050.0
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 2.580684708416065,
+    "stopband_error": 26.38539925369437,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M3.npz"
+}

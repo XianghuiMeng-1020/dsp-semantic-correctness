@@ -1,0 +1,17 @@
+{
+  "task_id": "iir_hp_tight_8k",
+  "mechanism": "M5",
+  "source_parameters": {
+    "cutoff_hz_as_if_nyquist_1": 0.4875,
+    "order": 4
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 49.0,
+    "stability_error": 1.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M5.npz"
+}

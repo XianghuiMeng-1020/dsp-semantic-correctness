@@ -1,0 +1,28 @@
+{
+  "task_id": "fir_hp_loose_8k",
+  "source": "first_principles",
+  "method": "windowed_sinc",
+  "parameters": {
+    "n": 21,
+    "cutoff": [
+      1400.0
+    ],
+    "variant": "shortest"
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.001922552444022409,
+    "mag_rmse_band": 0.0013033725473182115,
+    "mag_rmse_full": 0.0014112426647605637,
+    "same_order": true
+  },
+  "path": "data/valid/first_principles/fir_hp_loose_8k__windowed_sinc__shortest.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 21
+}

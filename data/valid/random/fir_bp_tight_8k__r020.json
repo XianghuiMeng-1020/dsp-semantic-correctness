@@ -1,0 +1,30 @@
+{
+  "task_id": "fir_bp_tight_8k",
+  "source": "random",
+  "method": "remez",
+  "parameters": {
+    "n": 189,
+    "method": "remez",
+    "weight": [
+      2.3013426165638267,
+      1.0,
+      2.3013426165638267
+    ]
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.9999900618027537,
+    "mag_rmse_band": 0.0026503896919113207,
+    "mag_rmse_full": 0.055297509552245515,
+    "same_order": false
+  },
+  "path": "data/valid/random/fir_bp_tight_8k__r020.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 189
+}

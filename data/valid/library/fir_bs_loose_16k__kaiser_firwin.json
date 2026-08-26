@@ -1,0 +1,30 @@
+{
+  "task_id": "fir_bs_loose_16k",
+  "source": "library",
+  "method": "kaiser_firwin",
+  "parameters": {
+    "n": 25,
+    "cutoff": [
+      1720.0,
+      5480.0
+    ],
+    "window": "kaiser",
+    "beta": 1.2283046742094559
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.2056681563322589,
+    "mag_rmse_band": 0.027591802679741016,
+    "mag_rmse_full": 0.13305380642180217,
+    "same_order": true
+  },
+  "path": "data/valid/library/fir_bs_loose_16k__kaiser_firwin.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 25
+}

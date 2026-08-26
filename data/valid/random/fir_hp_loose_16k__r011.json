@@ -1,0 +1,29 @@
+{
+  "task_id": "fir_hp_loose_16k",
+  "source": "random",
+  "method": "windowed",
+  "parameters": {
+    "n": 95,
+    "method": "windowed",
+    "window": "blackman",
+    "cutoff": [
+      3322.722228868118
+    ]
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.9993796658072628,
+    "mag_rmse_band": 0.003358937547151946,
+    "mag_rmse_full": 0.17063040193846762,
+    "same_order": false
+  },
+  "path": "data/valid/random/fir_hp_loose_16k__r011.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 95
+}

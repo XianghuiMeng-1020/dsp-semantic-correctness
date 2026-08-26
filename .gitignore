@@ -1,10 +1,12 @@
 .venv/
 __pycache__/
 *.pyc
-manuscript/
 *.zip
-paper.tex
-paper.pdf
-refs.bib
-IEEEbib.bst
-spconf.sty
+# Keep only the final ICASSP manuscript tree.
+manuscript/*
+!manuscript/w4/
+!manuscript/w4/**
+manuscript/w4/*.aux
+manuscript/w4/*.log
+manuscript/w4/*.out
+manuscript/w4/*.blg

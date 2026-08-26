@@ -1,0 +1,29 @@
+{
+  "task_id": "fir_bp_tight_8k",
+  "source": "first_principles",
+  "method": "windowed_sinc",
+  "parameters": {
+    "n": 49,
+    "cutoff": [
+      1250.0,
+      2450.0
+    ],
+    "variant": "shortest"
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.0023616167712489666,
+    "mag_rmse_band": 0.001155561945028189,
+    "mag_rmse_full": 0.0011113973854512042,
+    "same_order": true
+  },
+  "path": "data/valid/first_principles/fir_bp_tight_8k__windowed_sinc__shortest.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 49
+}

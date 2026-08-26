@@ -1,0 +1,18 @@
+{
+  "task_id": "fir_bp_tight_8k",
+  "mechanism": "M7",
+  "source_parameters": {
+    "designed_fs": 48000.0,
+    "scored_fs": 8000.0,
+    "n": 51
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 49.49963275921509,
+    "stopband_error": 82.33740593322914,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_bp_tight_8k/fir_bp_tight_8k__M7.npy"
+}

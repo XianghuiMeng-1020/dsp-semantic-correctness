@@ -1,0 +1,29 @@
+{
+  "task_id": "fir_hp_loose_16k",
+  "source": "library",
+  "method": "kaiser_firwin",
+  "parameters": {
+    "n": 21,
+    "cutoff": [
+      2800.0
+    ],
+    "window": "kaiser",
+    "beta": 1.509869637041394
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.07554725836079426,
+    "mag_rmse_band": 0.018477074662556985,
+    "mag_rmse_full": 0.05448039446793826,
+    "same_order": true
+  },
+  "path": "data/valid/library/fir_hp_loose_16k__kaiser_firwin.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 21
+}

@@ -1,0 +1,20 @@
+{
+  "task_id": "fir_hp_tight_8k",
+  "mechanism": "M1",
+  "source_parameters": {
+    "pass_zero": 1,
+    "cutoff": [
+      1700.0
+    ],
+    "n": 51
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 49.4999777514473,
+    "stopband_error": 99.05814081430397,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_hp_tight_8k/fir_hp_tight_8k__M1.npy"
+}

@@ -1,0 +1,24 @@
+{
+  "task_id": "fir_bs_loose_8k",
+  "source": "library",
+  "method": "firwin2",
+  "parameters": {
+    "n": 59
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.0023127098835642,
+    "mag_rmse_band": 0.0032933357511945155,
+    "mag_rmse_full": 0.019825633854913715,
+    "same_order": false
+  },
+  "path": "data/valid/library/fir_bs_loose_8k__firwin2.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 59
+}

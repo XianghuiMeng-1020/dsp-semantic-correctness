@@ -1,0 +1,17 @@
+{
+  "task_id": "iir_hp_tight_8k",
+  "mechanism": "M3",
+  "source_parameters": {
+    "order": 1,
+    "cutoff": 1950.0
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 4.003151532422457,
+    "stopband_error": 27.53370940923614,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M3.npz"
+}

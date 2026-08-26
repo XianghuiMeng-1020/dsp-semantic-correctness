@@ -1,0 +1,24 @@
+{
+  "task_id": "fir_bs_loose_16k",
+  "source": "library",
+  "method": "remez",
+  "parameters": {
+    "n": 21
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.9739262629567721,
+    "mag_rmse_band": 0.013286253209472165,
+    "mag_rmse_full": 0.02071377722398606,
+    "same_order": false
+  },
+  "path": "data/valid/library/fir_bs_loose_16k__remez.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 21
+}

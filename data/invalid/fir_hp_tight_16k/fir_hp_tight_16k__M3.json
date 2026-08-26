@@ -1,0 +1,19 @@
+{
+  "task_id": "fir_hp_tight_16k",
+  "mechanism": "M3",
+  "source_parameters": {
+    "n": 7,
+    "cutoff": [
+      3400.0
+    ]
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 18.32134424237134,
+    "stopband_error": 36.421949374773234,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_hp_tight_16k/fir_hp_tight_16k__M3.npy"
+}

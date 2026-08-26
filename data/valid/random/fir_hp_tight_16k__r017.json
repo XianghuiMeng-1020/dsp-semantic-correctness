@@ -1,0 +1,29 @@
+{
+  "task_id": "fir_hp_tight_16k",
+  "source": "random",
+  "method": "windowed",
+  "parameters": {
+    "n": 119,
+    "method": "windowed",
+    "window": "blackman",
+    "cutoff": [
+      3626.4295818580613
+    ]
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.9983442237223533,
+    "mag_rmse_band": 0.0011412936381479208,
+    "mag_rmse_full": 0.1000867406388889,
+    "same_order": false
+  },
+  "path": "data/valid/random/fir_hp_tight_16k__r017.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 119
+}

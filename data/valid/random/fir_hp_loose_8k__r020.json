@@ -1,0 +1,29 @@
+{
+  "task_id": "fir_hp_loose_8k",
+  "source": "random",
+  "method": "remez",
+  "parameters": {
+    "n": 55,
+    "method": "remez",
+    "weight": [
+      0.3179129371696918,
+      1.0
+    ]
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.002658585848977,
+    "mag_rmse_band": 0.0033556714787368524,
+    "mag_rmse_full": 0.04977469878581541,
+    "same_order": false
+  },
+  "path": "data/valid/random/fir_hp_loose_8k__r020.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 55
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "iir_hp_loose_8k",
+  "mechanism": "M3",
+  "source_parameters": {
+    "order": 1,
+    "cutoff": 1500.0
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 0.0017334616523601014,
+    "stopband_error": 2.37936533255151,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M3.npz"
+}

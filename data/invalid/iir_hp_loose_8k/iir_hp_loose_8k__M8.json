@@ -1,0 +1,21 @@
+{
+  "task_id": "iir_hp_loose_8k",
+  "mechanism": "M8",
+  "source_parameters": {
+    "emitted": "bandpass",
+    "order": 4,
+    "cutoff": [
+      1000.0,
+      2200.0
+    ]
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 4.499999999999963,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M8.npz"
+}

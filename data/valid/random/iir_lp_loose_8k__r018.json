@@ -1,0 +1,31 @@
+{
+  "task_id": "iir_lp_loose_8k",
+  "source": "random",
+  "method": "cheby2",
+  "parameters": {
+    "order": 4,
+    "method": "cheby2",
+    "cutoff": [
+      2173.4768898412385
+    ],
+    "rp_db": 0.39031613625501993,
+    "rs_db": 46.5957595256924
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.031574850333819,
+    "mag_rmse_band": 0.026703790721669927,
+    "mag_rmse_full": 0.10443673796857558,
+    "same_order": false
+  },
+  "path": "data/valid/random/iir_lp_loose_8k__r018.npz",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_b": 5,
+  "n_a": 5
+}

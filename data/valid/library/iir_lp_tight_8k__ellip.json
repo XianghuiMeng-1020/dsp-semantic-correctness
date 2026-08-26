@@ -1,0 +1,30 @@
+{
+  "task_id": "iir_lp_tight_8k",
+  "source": "library",
+  "method": "ellip",
+  "parameters": {
+    "order": 4,
+    "cutoff": [
+      735.0
+    ],
+    "rp_db": 0.1,
+    "rs_db": 33.979400086720375
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.640923670399084,
+    "mag_rmse_band": 0.012503168020969171,
+    "mag_rmse_full": 0.056127669720179164,
+    "same_order": false
+  },
+  "path": "data/valid/library/iir_lp_tight_8k__ellip.npz",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_b": 5,
+  "n_a": 5
+}

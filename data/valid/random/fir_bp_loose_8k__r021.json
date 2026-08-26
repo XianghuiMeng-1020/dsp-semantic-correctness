@@ -1,0 +1,30 @@
+{
+  "task_id": "fir_bp_loose_8k",
+  "source": "random",
+  "method": "remez",
+  "parameters": {
+    "n": 117,
+    "method": "remez",
+    "weight": [
+      1.373444996279795,
+      1.0,
+      1.373444996279795
+    ]
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.0000092575960446,
+    "mag_rmse_band": 0.01015222924283626,
+    "mag_rmse_full": 0.11305031470378198,
+    "same_order": false
+  },
+  "path": "data/valid/random/fir_bp_loose_8k__r021.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 117
+}

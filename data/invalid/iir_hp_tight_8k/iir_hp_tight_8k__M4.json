@@ -1,0 +1,18 @@
+{
+  "task_id": "iir_hp_tight_8k",
+  "mechanism": "M4",
+  "source_parameters": {
+    "pole_radius": 1.02,
+    "order": 2,
+    "cutoff": 1950.0
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 10.361225314150671,
+    "stopband_error": 27.10953116328629,
+    "stability_error": 1.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M4.npz"
+}

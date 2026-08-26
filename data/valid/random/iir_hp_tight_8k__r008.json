@@ -1,0 +1,31 @@
+{
+  "task_id": "iir_hp_tight_8k",
+  "source": "random",
+  "method": "ellip",
+  "parameters": {
+    "order": 6,
+    "method": "ellip",
+    "cutoff": [
+      1747.7637013302026
+    ],
+    "rp_db": 0.06125004507664298,
+    "rs_db": 40.497791973189194
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.613666808296326,
+    "mag_rmse_band": 0.005155417303898245,
+    "mag_rmse_full": 0.2487718840369441,
+    "same_order": false
+  },
+  "path": "data/valid/random/iir_hp_tight_8k__r008.npz",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_b": 7,
+  "n_a": 7
+}

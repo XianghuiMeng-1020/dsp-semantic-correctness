@@ -1,0 +1,16 @@
+{
+  "task_id": "fir_lp_tight_16k",
+  "mechanism": "M6",
+  "source_parameters": {
+    "target_pass_gain": 0.2
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 39.519415347100406,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_lp_tight_16k/fir_lp_tight_16k__M6.npy"
+}

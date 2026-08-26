@@ -1,0 +1,24 @@
+{
+  "task_id": "fir_hp_tight_16k",
+  "source": "library",
+  "method": "firwin2",
+  "parameters": {
+    "n": 367
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.0000054889666703,
+    "mag_rmse_band": 0.001111120705406993,
+    "mag_rmse_full": 0.031240164696071018,
+    "same_order": false
+  },
+  "path": "data/valid/library/fir_hp_tight_16k__firwin2.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 367
+}

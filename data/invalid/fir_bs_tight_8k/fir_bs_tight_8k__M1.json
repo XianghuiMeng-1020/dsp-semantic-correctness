@@ -1,0 +1,21 @@
+{
+  "task_id": "fir_bs_tight_8k",
+  "mechanism": "M1",
+  "source_parameters": {
+    "pass_zero": 0,
+    "cutoff": [
+      800.0,
+      2800.0
+    ],
+    "n": 51
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 49.49997505754255,
+    "stopband_error": 82.6815638754707,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M1.npy"
+}

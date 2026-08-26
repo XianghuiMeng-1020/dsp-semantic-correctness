@@ -1,0 +1,31 @@
+{
+  "task_id": "iir_hp_loose_8k",
+  "source": "random",
+  "method": "butter",
+  "parameters": {
+    "order": 6,
+    "method": "butter",
+    "cutoff": [
+      1282.4985318135282
+    ],
+    "rp_db": 0.29718535841840676,
+    "rs_db": 48.01079933872832
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 3.4222770545938896,
+    "mag_rmse_band": 0.025058487046742732,
+    "mag_rmse_full": 0.16771970775412165,
+    "same_order": false
+  },
+  "path": "data/valid/random/iir_hp_loose_8k__r013.npz",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_b": 7,
+  "n_a": 7
+}

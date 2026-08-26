@@ -1,0 +1,29 @@
+{
+  "task_id": "fir_hp_tight_16k",
+  "source": "library",
+  "method": "kaiser_firwin",
+  "parameters": {
+    "n": 33,
+    "cutoff": [
+      3400.0
+    ],
+    "window": "kaiser",
+    "beta": 3.3953210522614574
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.459381669151268,
+    "mag_rmse_band": 0.002609644537634198,
+    "mag_rmse_full": 0.005290771430300395,
+    "same_order": false
+  },
+  "path": "data/valid/library/fir_hp_tight_16k__kaiser_firwin.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 33
+}

@@ -1,11 +1,15 @@
-# Code repository for the ICASSP 2027 paper
+# Code and manuscript repository for the ICASSP 2027 paper
 
-*Beyond Reference Matching: Specification-Based Evaluation of Generated DSP Implementations*
+*Beyond Reference Matching: Specification-Based Correctness Evaluation for DSP Implementations*
 
-This is the **code repository** for that paper. It ships the frozen
-contracts, extracted implementations, and deterministic designers needed
-to reproduce the published counts. It does **not** contain the
-manuscript sources or the submission PDF.
+Final manuscript: `manuscript/w4/`  
+Submission PDF: `manuscript/w4/submission/paper.pdf`
+
+Frozen constructed-label package: `registry/suite_s.json`,
+`registry/suite_n.json`, `src/spec_checker.py`, Phase 2B/2C scripts
+under `scripts/`, and occupants under `data/valid/` and `data/invalid/`.
+
+Historical Arm N / identity-suite reproduction scripts remain below.
 
 Paper: specification-set membership \(\mathcal{V}_t=\{h:S_t(h)=1\}\)
 on filter-design tasks that admit more than one valid realization.
@@ -89,7 +93,7 @@ data/arm_n_oracle_a_frozen.json        frozen Oracle A distances
 ## Citation
 
 Xianghui Meng and Jionghao Lin, “Beyond Reference Matching:
-Specification-Based Evaluation of Generated DSP Implementations,”
+Specification-Based Correctness Evaluation for DSP Implementations,”
 ICASSP 2027.
 
 ## License

@@ -1,0 +1,29 @@
+{
+  "task_id": "fir_bp_tight_16k",
+  "source": "library",
+  "method": "firwin",
+  "parameters": {
+    "n": 49,
+    "cutoff": [
+      2500.0,
+      4900.0
+    ],
+    "window": "hamming"
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.0,
+    "mag_rmse_band": 0.0,
+    "mag_rmse_full": 0.0,
+    "same_order": true
+  },
+  "path": "data/valid/library/fir_bp_tight_16k__firwin.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 49
+}

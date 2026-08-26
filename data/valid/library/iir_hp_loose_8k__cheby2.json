@@ -1,0 +1,30 @@
+{
+  "task_id": "iir_hp_loose_8k",
+  "source": "library",
+  "method": "cheby2",
+  "parameters": {
+    "order": 2,
+    "cutoff": [
+      870.0
+    ],
+    "rp_db": null,
+    "rs_db": 20.0
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.10300696273440987,
+    "mag_rmse_band": 0.035326846758382865,
+    "mag_rmse_full": 0.03797044243483183,
+    "same_order": true
+  },
+  "path": "data/valid/library/iir_hp_loose_8k__cheby2.npz",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_b": 3,
+  "n_a": 3
+}

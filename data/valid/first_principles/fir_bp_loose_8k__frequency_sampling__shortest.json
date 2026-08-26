@@ -1,0 +1,25 @@
+{
+  "task_id": "fir_bp_loose_8k",
+  "source": "first_principles",
+  "method": "frequency_sampling",
+  "parameters": {
+    "n": 25,
+    "variant": "shortest"
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 1.8603215266565483,
+    "mag_rmse_band": 0.01732570294865396,
+    "mag_rmse_full": 0.026735160725285406,
+    "same_order": false
+  },
+  "path": "data/valid/first_principles/fir_bp_loose_8k__frequency_sampling__shortest.npy",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_taps": 25
+}

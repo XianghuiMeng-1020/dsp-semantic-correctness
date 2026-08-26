@@ -1,0 +1,16 @@
+{
+  "task_id": "fir_bs_tight_8k",
+  "mechanism": "M6",
+  "source_parameters": {
+    "target_pass_gain": 0.2
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 39.86257726114966,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M6.npy"
+}

@@ -1,0 +1,21 @@
+{
+  "task_id": "fir_lp_loose_8k",
+  "mechanism": "M8",
+  "source_parameters": {
+    "emitted": "bandpass",
+    "n": 51,
+    "cutoff": [
+      1000.0,
+      2600.0
+    ]
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 9.499988513845285,
+    "stopband_error": 18.990284844411693,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M8.npy"
+}

@@ -1,0 +1,18 @@
+{
+  "task_id": "iir_lp_tight_8k",
+  "mechanism": "M4",
+  "source_parameters": {
+    "pole_radius": 1.02,
+    "order": 2,
+    "cutoff": 1050.0
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 24.77077690387125,
+    "stopband_error": 16.394108136583966,
+    "stability_error": 1.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M4.npz"
+}

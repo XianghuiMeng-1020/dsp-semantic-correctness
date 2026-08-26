@@ -1,0 +1,2742 @@
+[
+  {
+    "task_id": "fir_lp_loose_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 0,
+      "cutoff": [
+        1400.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499985464488566,
+      "stopband_error": 19.012630353428037,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M1.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        3000.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 19.014122314608255,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M2.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        1400.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 1.063054843037611,
+      "stopband_error": 5.254327630607838,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M3.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.35
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.4999376208609,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M5.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 7.503222629580031,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M6.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499891248933071,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M7.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "n": 51,
+      "cutoff": [
+        1000.0,
+        2600.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499988513845285,
+      "stopband_error": 18.990284844411693,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M8.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 0,
+      "cutoff": [
+        1100.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49997182790727,
+      "stopband_error": 99.26149171253557,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_8k/fir_lp_tight_8k__M1.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        2700.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 99.08922825716924,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_8k/fir_lp_tight_8k__M2.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        1100.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.451066793142934,
+      "stopband_error": 49.13102783447874,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_8k/fir_lp_tight_8k__M3.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.275
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.499693508449816,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_8k/fir_lp_tight_8k__M5.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 39.519415347100406,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_8k/fir_lp_tight_8k__M6.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49990441857076,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_8k/fir_lp_tight_8k__M7.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "n": 51,
+      "cutoff": [
+        1000.0,
+        2600.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49994256922642,
+      "stopband_error": 99.00229220973627,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_8k/fir_lp_tight_8k__M8.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_16k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 0,
+      "cutoff": [
+        2800.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499985464488566,
+      "stopband_error": 19.012630353428037,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_16k/fir_lp_loose_16k__M1.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_16k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        6000.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 19.014122314608255,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_16k/fir_lp_loose_16k__M2.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_16k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        2800.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 1.063054843037611,
+      "stopband_error": 5.254327630607838,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_16k/fir_lp_loose_16k__M3.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_16k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.35
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499939739284478,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_16k/fir_lp_loose_16k__M5.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_16k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 7.503222629580031,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_16k/fir_lp_loose_16k__M6.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_16k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 16000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499429641485134,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_16k/fir_lp_loose_16k__M7.npy"
+  },
+  {
+    "task_id": "fir_lp_loose_16k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "n": 51,
+      "cutoff": [
+        2000.0,
+        5200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499988513845285,
+      "stopband_error": 18.990284844411693,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_loose_16k/fir_lp_loose_16k__M8.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_16k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 0,
+      "cutoff": [
+        2200.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49997182790727,
+      "stopband_error": 99.26149171253557,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_16k/fir_lp_tight_16k__M1.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_16k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        5400.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 99.08922825716924,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_16k/fir_lp_tight_16k__M2.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_16k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        2200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.451066793142934,
+      "stopband_error": 49.13102783447874,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_16k/fir_lp_tight_16k__M3.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_16k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.275
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.4997000474558,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_16k/fir_lp_tight_16k__M5.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_16k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 39.519415347100406,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_16k/fir_lp_tight_16k__M6.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_16k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 16000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49970135012077,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_16k/fir_lp_tight_16k__M7.npy"
+  },
+  {
+    "task_id": "fir_lp_tight_16k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "n": 51,
+      "cutoff": [
+        2000.0,
+        5200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49994256922642,
+      "stopband_error": 99.00229220973627,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_lp_tight_16k/fir_lp_tight_16k__M8.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 1,
+      "cutoff": [
+        1400.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.49999609407219,
+      "stopband_error": 19.00379634499762,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M1.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        400.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 19.01474312752036,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M2.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        1400.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 2.232816294280794,
+      "stopband_error": 4.398785834582852,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M3.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.35
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 19.000177689285486,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M5.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 7.501656650144952,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M6.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 19.06420369998384,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M7.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandstop",
+      "n": 51,
+      "cutoff": [
+        1000.0,
+        2600.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499933194698288,
+      "stopband_error": 19.071595801607888,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M8.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 1,
+      "cutoff": [
+        1700.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.4999777514473,
+      "stopband_error": 99.05814081430397,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_8k/fir_hp_tight_8k__M1.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        700.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 99.0683506276804,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_8k/fir_hp_tight_8k__M2.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        1700.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 18.32134424237134,
+      "stopband_error": 36.421949374773234,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_8k/fir_hp_tight_8k__M3.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.425
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 99.00123548154431,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_8k/fir_hp_tight_8k__M5.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 39.51190528913118,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_8k/fir_hp_tight_8k__M6.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 99.35051692749745,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_8k/fir_hp_tight_8k__M7.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandstop",
+      "n": 51,
+      "cutoff": [
+        1000.0,
+        2600.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49966597349144,
+      "stopband_error": 99.35797900803944,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_8k/fir_hp_tight_8k__M8.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_16k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 1,
+      "cutoff": [
+        2800.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.49999609407219,
+      "stopband_error": 19.00379634499762,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_16k/fir_hp_loose_16k__M1.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_16k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        800.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 19.01474312752036,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_16k/fir_hp_loose_16k__M2.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_16k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        2800.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 2.232816294280794,
+      "stopband_error": 4.398785834582852,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_16k/fir_hp_loose_16k__M3.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_16k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.35
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 19.000088845469715,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_16k/fir_hp_loose_16k__M5.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_16k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 7.501656650144952,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_16k/fir_hp_loose_16k__M6.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_16k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 16000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 19.057967877458267,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_16k/fir_hp_loose_16k__M7.npy"
+  },
+  {
+    "task_id": "fir_hp_loose_16k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandstop",
+      "n": 51,
+      "cutoff": [
+        2000.0,
+        5200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499933194698288,
+      "stopband_error": 19.071595801607888,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_loose_16k/fir_hp_loose_16k__M8.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_16k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 1,
+      "cutoff": [
+        3400.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.4999777514473,
+      "stopband_error": 99.05814081430397,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_16k/fir_hp_tight_16k__M1.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_16k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        1400.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 99.0683506276804,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_16k/fir_hp_tight_16k__M2.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_16k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        3400.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 18.32134424237134,
+      "stopband_error": 36.421949374773234,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_16k/fir_hp_tight_16k__M3.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_16k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.425
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 99.00061774887678,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_16k/fir_hp_tight_16k__M5.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_16k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 39.51190528913118,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_16k/fir_hp_tight_16k__M6.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_16k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 16000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 99.29349939477527,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_16k/fir_hp_tight_16k__M7.npy"
+  },
+  {
+    "task_id": "fir_hp_tight_16k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandstop",
+      "n": 51,
+      "cutoff": [
+        2000.0,
+        5200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49966597349144,
+      "stopband_error": 99.35797900803944,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_hp_tight_16k/fir_hp_tight_16k__M8.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 1,
+      "cutoff": [
+        1000.0,
+        2700.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499910995879414,
+      "stopband_error": 15.73237004867049,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_8k/fir_bp_loose_8k__M1.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        250.0,
+        3600.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 15.679855210746085,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_8k/fir_bp_loose_8k__M2.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        1000.0,
+        2700.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.016228157651662065,
+      "stopband_error": 8.562645659158564,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_8k/fir_bp_loose_8k__M3.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.25,
+        0.675
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499998883265377,
+      "stopband_error": 15.666778842872512,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_8k/fir_bp_loose_8k__M5.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 7.505996254149127,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_8k/fir_bp_loose_8k__M6.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499918568073488,
+      "stopband_error": 15.666746560520698,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_8k/fir_bp_loose_8k__M7.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandstop",
+      "n": 51,
+      "cutoff": [
+        1000.0,
+        2700.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499910995879414,
+      "stopband_error": 15.73237004867049,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_8k/fir_bp_loose_8k__M8.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 1,
+      "cutoff": [
+        1250.0,
+        2450.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49994065257777,
+      "stopband_error": 82.63811282654481,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_8k/fir_bp_tight_8k__M1.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        500.0,
+        3350.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 82.36901365651168,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_8k/fir_bp_tight_8k__M2.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        1250.0,
+        2450.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 2.40798992069605,
+      "stopband_error": 61.38336368888714,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_8k/fir_bp_tight_8k__M3.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.3125,
+        0.6125
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.4999944057733,
+      "stopband_error": 82.33389421456683,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_8k/fir_bp_tight_8k__M5.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 39.55084023759739,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_8k/fir_bp_tight_8k__M6.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49963275921509,
+      "stopband_error": 82.33740593322914,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_8k/fir_bp_tight_8k__M7.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandstop",
+      "n": 51,
+      "cutoff": [
+        1250.0,
+        2450.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49994065257777,
+      "stopband_error": 82.63811282654481,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_8k/fir_bp_tight_8k__M8.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_16k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 1,
+      "cutoff": [
+        2000.0,
+        5400.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499910995879414,
+      "stopband_error": 15.73237004867049,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_16k/fir_bp_loose_16k__M1.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_16k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        500.0,
+        7200.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 15.679855210746085,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_16k/fir_bp_loose_16k__M2.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_16k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        2000.0,
+        5400.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.016228157651662065,
+      "stopband_error": 8.562645659158564,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_16k/fir_bp_loose_16k__M3.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_16k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.25,
+        0.675
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499998835275099,
+      "stopband_error": 15.666694710868564,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_16k/fir_bp_loose_16k__M5.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_16k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 7.505996254149127,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_16k/fir_bp_loose_16k__M6.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_16k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 16000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499986010437427,
+      "stopband_error": 14.532039643368929,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_16k/fir_bp_loose_16k__M7.npy"
+  },
+  {
+    "task_id": "fir_bp_loose_16k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandstop",
+      "n": 51,
+      "cutoff": [
+        2000.0,
+        5400.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499910995879414,
+      "stopband_error": 15.73237004867049,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_loose_16k/fir_bp_loose_16k__M8.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_16k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 1,
+      "cutoff": [
+        2500.0,
+        4900.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49994065257777,
+      "stopband_error": 82.63811282654481,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_16k/fir_bp_tight_16k__M1.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_16k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        1000.0,
+        6700.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 82.36901365651168,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_16k/fir_bp_tight_16k__M2.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_16k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        2500.0,
+        4900.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 2.40798992069605,
+      "stopband_error": 61.38336368888714,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_16k/fir_bp_tight_16k__M3.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_16k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.3125,
+        0.6125
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.499994173736965,
+      "stopband_error": 82.3334735543556,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_16k/fir_bp_tight_16k__M5.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_16k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 39.55084023759739,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_16k/fir_bp_tight_16k__M6.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_16k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 16000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49992518434992,
+      "stopband_error": 82.33458982235653,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_16k/fir_bp_tight_16k__M7.npy"
+  },
+  {
+    "task_id": "fir_bp_tight_16k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandstop",
+      "n": 51,
+      "cutoff": [
+        2500.0,
+        4900.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49994065257777,
+      "stopband_error": 82.63811282654481,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bp_tight_16k/fir_bp_tight_16k__M8.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 0,
+      "cutoff": [
+        1000.0,
+        2600.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499988513845285,
+      "stopband_error": 15.667048701622711,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_8k/fir_bs_loose_8k__M1.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        1800.0,
+        3500.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499943064625645,
+      "stopband_error": 15.692547410543556,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_8k/fir_bs_loose_8k__M2.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        1000.0,
+        2600.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 1.6475113261338021,
+      "stopband_error": 9.688215046267146,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_8k/fir_bs_loose_8k__M3.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.25,
+        0.65
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 15.712152048937874,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_8k/fir_bs_loose_8k__M5.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 7.50039027190561,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_8k/fir_bs_loose_8k__M6.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 6.662068326033806,
+      "stopband_error": 18.40361997706483,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_8k/fir_bs_loose_8k__M7.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "n": 51,
+      "cutoff": [
+        1000.0,
+        2600.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499988513845285,
+      "stopband_error": 15.667048701622711,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_8k/fir_bs_loose_8k__M8.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 0,
+      "cutoff": [
+        800.0,
+        2800.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49997505754255,
+      "stopband_error": 82.6815638754707,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M1.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        1800.0,
+        3500.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49971532312822,
+      "stopband_error": 82.46273705271778,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M2.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        800.0,
+        2800.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 16.02939518036592,
+      "stopband_error": 62.48037297660162,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M3.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.2,
+        0.7
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 82.61807907588616,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M5.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 39.86257726114966,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M6.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 40.39477088688739,
+      "stopband_error": 109.59863981368893,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M7.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "n": 51,
+      "cutoff": [
+        800.0,
+        2800.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49997505754255,
+      "stopband_error": 82.6815638754707,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_8k/fir_bs_tight_8k__M8.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_16k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 0,
+      "cutoff": [
+        2000.0,
+        5200.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499988513845285,
+      "stopband_error": 15.667048701622711,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_16k/fir_bs_loose_16k__M1.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_16k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        3600.0,
+        7000.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499943064625645,
+      "stopband_error": 15.692547410543556,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_16k/fir_bs_loose_16k__M2.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_16k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        2000.0,
+        5200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 1.6475113261338021,
+      "stopband_error": 9.688215046267146,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_16k/fir_bs_loose_16k__M3.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_16k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.25,
+        0.65
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 15.689378641622277,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_16k/fir_bs_loose_16k__M5.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_16k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 7.50039027190561,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_16k/fir_bs_loose_16k__M6.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_16k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 16000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.469171612986615,
+      "stopband_error": 15.636628497220073,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_16k/fir_bs_loose_16k__M7.npy"
+  },
+  {
+    "task_id": "fir_bs_loose_16k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "n": 51,
+      "cutoff": [
+        2000.0,
+        5200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 9.499988513845285,
+      "stopband_error": 15.667048701622711,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_loose_16k/fir_bs_loose_16k__M8.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_16k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "pass_zero": 0,
+      "cutoff": [
+        1600.0,
+        5600.0
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49997505754255,
+      "stopband_error": 82.6815638754707,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_16k/fir_bs_tight_16k__M1.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_16k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        3600.0,
+        7000.0
+      ],
+      "n": 51,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49971532312822,
+      "stopband_error": 82.46273705271778,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_16k/fir_bs_tight_16k__M2.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_16k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "n": 7,
+      "cutoff": [
+        1600.0,
+        5600.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 16.02939518036592,
+      "stopband_error": 62.48037297660162,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_16k/fir_bs_tight_16k__M3.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_16k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": [
+        0.2,
+        0.7
+      ],
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 82.47546560600371,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_16k/fir_bs_tight_16k__M5.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_16k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 39.86257726114966,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_16k/fir_bs_tight_16k__M6.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_16k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 16000.0,
+      "n": 51
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49886280172181,
+      "stopband_error": 82.7694101077631,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_16k/fir_bs_tight_16k__M7.npy"
+  },
+  {
+    "task_id": "fir_bs_tight_16k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "n": 51,
+      "cutoff": [
+        1600.0,
+        5600.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 49.49997505754255,
+      "stopband_error": 82.6815638754707,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/fir_bs_tight_16k/fir_bs_tight_16k__M8.npy"
+  },
+  {
+    "task_id": "iir_lp_loose_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "btype": "high",
+      "order": 4,
+      "cutoff": 1500.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 4.499999999999998,
+      "stopband_error": 9.000000000000007,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M1.npz"
+  },
+  {
+    "task_id": "iir_lp_loose_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        3200.0
+      ],
+      "order": 4,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 8.991988963691103,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M2.npz"
+  },
+  {
+    "task_id": "iir_lp_loose_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "order": 1,
+      "cutoff": 1500.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 3.3660499997054294,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M3.npz"
+  },
+  {
+    "task_id": "iir_lp_loose_8k",
+    "mechanism": "M4",
+    "source_parameters": {
+      "pole_radius": 1.02,
+      "order": 2,
+      "cutoff": 1500.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.8004565368401843,
+      "stopband_error": 0.5510930845788442,
+      "stability_error": 1.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M4.npz"
+  },
+  {
+    "task_id": "iir_lp_loose_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": 0.375,
+      "order": 4
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 4.499999999999289,
+      "stopband_error": 0.0,
+      "stability_error": 1.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M5.npz"
+  },
+  {
+    "task_id": "iir_lp_loose_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 3.5001376265580415,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M6.npz"
+  },
+  {
+    "task_id": "iir_lp_loose_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "order": 4
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 4.358046026222608,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M7.npz"
+  },
+  {
+    "task_id": "iir_lp_loose_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "order": 4,
+      "cutoff": [
+        1000.0,
+        2200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 4.499999999999998,
+      "stopband_error": 1.850751354123983,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M8.npz"
+  },
+  {
+    "task_id": "iir_lp_tight_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "btype": "high",
+      "order": 4,
+      "cutoff": 1050.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 24.499999999999968,
+      "stopband_error": 49.00000000000002,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M1.npz"
+  },
+  {
+    "task_id": "iir_lp_tight_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        2750.0
+      ],
+      "order": 4,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 48.99338319175294,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M2.npz"
+  },
+  {
+    "task_id": "iir_lp_tight_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "order": 1,
+      "cutoff": 1050.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 2.580684708416065,
+      "stopband_error": 26.38539925369437,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M3.npz"
+  },
+  {
+    "task_id": "iir_lp_tight_8k",
+    "mechanism": "M4",
+    "source_parameters": {
+      "pole_radius": 1.02,
+      "order": 2,
+      "cutoff": 1050.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 24.77077690387125,
+      "stopband_error": 16.394108136583966,
+      "stability_error": 1.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M4.npz"
+  },
+  {
+    "task_id": "iir_lp_tight_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": 0.2625,
+      "order": 4
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 24.499999999999126,
+      "stopband_error": 0.0,
+      "stability_error": 1.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M5.npz"
+  },
+  {
+    "task_id": "iir_lp_tight_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 19.520283371935967,
+      "stopband_error": 0.806275355737345,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M6.npz"
+  },
+  {
+    "task_id": "iir_lp_tight_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "order": 4
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 24.330636857563878,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M7.npz"
+  },
+  {
+    "task_id": "iir_lp_tight_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "order": 4,
+      "cutoff": [
+        1000.0,
+        2200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 24.49999999999998,
+      "stopband_error": 49.00000000000006,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M8.npz"
+  },
+  {
+    "task_id": "iir_hp_loose_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "btype": "low",
+      "order": 4,
+      "cutoff": 1500.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 4.499999999999977,
+      "stopband_error": 9.000000000000002,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M1.npz"
+  },
+  {
+    "task_id": "iir_hp_loose_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        300.0
+      ],
+      "order": 4,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 8.98250464033139,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M2.npz"
+  },
+  {
+    "task_id": "iir_hp_loose_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "order": 1,
+      "cutoff": 1500.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0017334616523601014,
+      "stopband_error": 2.37936533255151,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M3.npz"
+  },
+  {
+    "task_id": "iir_hp_loose_8k",
+    "mechanism": "M4",
+    "source_parameters": {
+      "pole_radius": 1.02,
+      "order": 2,
+      "cutoff": 1500.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 1.7771540684450564,
+      "stopband_error": 0.15619537801183525,
+      "stability_error": 1.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M4.npz"
+  },
+  {
+    "task_id": "iir_hp_loose_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": 0.375,
+      "order": 4
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 9.000717115755732,
+      "stability_error": 1.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M5.npz"
+  },
+  {
+    "task_id": "iir_hp_loose_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 3.501532431612311,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M6.npz"
+  },
+  {
+    "task_id": "iir_hp_loose_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "order": 4
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 8.995969001418294,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M7.npz"
+  },
+  {
+    "task_id": "iir_hp_loose_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "order": 4,
+      "cutoff": [
+        1000.0,
+        2200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 4.499999999999963,
+      "stopband_error": 0.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M8.npz"
+  },
+  {
+    "task_id": "iir_hp_tight_8k",
+    "mechanism": "M1",
+    "source_parameters": {
+      "btype": "low",
+      "order": 4,
+      "cutoff": 1950.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 24.499999999999517,
+      "stopband_error": 49.0,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M1.npz"
+  },
+  {
+    "task_id": "iir_hp_tight_8k",
+    "mechanism": "M2",
+    "source_parameters": {
+      "cutoff": [
+        750.0
+      ],
+      "order": 4,
+      "into": "stop"
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 48.95494676045998,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M2.npz"
+  },
+  {
+    "task_id": "iir_hp_tight_8k",
+    "mechanism": "M3",
+    "source_parameters": {
+      "order": 1,
+      "cutoff": 1950.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 4.003151532422457,
+      "stopband_error": 27.53370940923614,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M3.npz"
+  },
+  {
+    "task_id": "iir_hp_tight_8k",
+    "mechanism": "M4",
+    "source_parameters": {
+      "pole_radius": 1.02,
+      "order": 2,
+      "cutoff": 1950.0
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 10.361225314150671,
+      "stopband_error": 27.10953116328629,
+      "stability_error": 1.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M4.npz"
+  },
+  {
+    "task_id": "iir_hp_tight_8k",
+    "mechanism": "M5",
+    "source_parameters": {
+      "cutoff_hz_as_if_nyquist_1": 0.4875,
+      "order": 4
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 49.0,
+      "stability_error": 1.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M5.npz"
+  },
+  {
+    "task_id": "iir_hp_tight_8k",
+    "mechanism": "M6",
+    "source_parameters": {
+      "target_pass_gain": 0.2
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 19.63544663157459,
+      "stopband_error": 1.271555183367429,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M6.npz"
+  },
+  {
+    "task_id": "iir_hp_tight_8k",
+    "mechanism": "M7",
+    "source_parameters": {
+      "designed_fs": 48000.0,
+      "scored_fs": 8000.0,
+      "order": 4
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 0.0,
+      "stopband_error": 48.99995373197504,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M7.npz"
+  },
+  {
+    "task_id": "iir_hp_tight_8k",
+    "mechanism": "M8",
+    "source_parameters": {
+      "emitted": "bandpass",
+      "order": 4,
+      "cutoff": [
+        1000.0,
+        2200.0
+      ]
+    },
+    "S_t": false,
+    "residuals": {
+      "passband_error": 24.4999999999998,
+      "stopband_error": 48.999999971613555,
+      "stability_error": 0.0,
+      "other_constraints": 0.0
+    },
+    "label": "invalid-by-construction",
+    "path": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M8.npz"
+  }
+]

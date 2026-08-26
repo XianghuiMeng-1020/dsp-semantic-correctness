@@ -1,0 +1,20 @@
+{
+  "task_id": "fir_bp_tight_16k",
+  "mechanism": "M5",
+  "source_parameters": {
+    "cutoff_hz_as_if_nyquist_1": [
+      0.3125,
+      0.6125
+    ],
+    "n": 51
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 49.499994173736965,
+    "stopband_error": 82.3334735543556,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_bp_tight_16k/fir_bp_tight_16k__M5.npy"
+}

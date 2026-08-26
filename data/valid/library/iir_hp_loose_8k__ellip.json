@@ -1,0 +1,30 @@
+{
+  "task_id": "iir_hp_loose_8k",
+  "source": "library",
+  "method": "ellip",
+  "parameters": {
+    "order": 2,
+    "cutoff": [
+      1500.0
+    ],
+    "rp_db": 0.5,
+    "rs_db": 20.0
+  },
+  "S_t": true,
+  "label": "valid-by-construction",
+  "distance_to_reference": {
+    "d_coeff": 0.5695131433965658,
+    "mag_rmse_band": 0.04767932554324334,
+    "mag_rmse_full": 0.19874725915961342,
+    "same_order": true
+  },
+  "path": "data/valid/library/iir_hp_loose_8k__ellip.npz",
+  "residuals": {
+    "passband_error": 0.0,
+    "stopband_error": 0.0,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "n_b": 3,
+  "n_a": 3
+}

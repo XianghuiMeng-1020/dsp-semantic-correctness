@@ -1,0 +1,19 @@
+{
+  "task_id": "fir_hp_loose_8k",
+  "mechanism": "M3",
+  "source_parameters": {
+    "n": 7,
+    "cutoff": [
+      1400.0
+    ]
+  },
+  "S_t": false,
+  "residuals": {
+    "passband_error": 2.232816294280794,
+    "stopband_error": 4.398785834582852,
+    "stability_error": 0.0,
+    "other_constraints": 0.0
+  },
+  "label": "invalid-by-construction",
+  "path": "data/invalid/fir_hp_loose_8k/fir_hp_loose_8k__M3.npy"
+}
