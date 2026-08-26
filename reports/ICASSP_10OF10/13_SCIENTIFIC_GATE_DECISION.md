@@ -3,7 +3,7 @@ ICASSP 2027 SPECIFICATION-BASED CORRECTNESS
 
 Baseline commit: a776d3c3f75f1343ed1769a444189f4a939f9a8f
 Strengthening branch: research/icassp-spec-oracle-10of10
-Final scientific commit: (set after this commit)
+Final scientific commit: 303d7ac49fb27d747ef0d149dd11bf31c9c5f5f1
 
 G1 Independent validity:
 PASS
