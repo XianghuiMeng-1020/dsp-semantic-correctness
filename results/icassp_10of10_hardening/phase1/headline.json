@@ -1,0 +1,70 @@
+{
+  "summary_coeff": {
+    "n_tasks": 20,
+    "n_gt0": 0,
+    "n_eq0": 0,
+    "n_lt0": 20,
+    "median": -0.4119846900349782,
+    "min": -0.6572532425529137,
+    "max": -0.04223256176137824,
+    "canonical_nonseparable": 20,
+    "best_observed_nonseparable": 20,
+    "n_separability_status_change": 0,
+    "largest_rescue": {
+      "task_id": "iir_lp_loose_8k",
+      "improvement": 66.49102531173565,
+      "canonical_G": -66.53325787349704,
+      "Gobs_star": -0.04223256176137824
+    }
+  },
+  "summary_resp": {
+    "n_tasks": 20,
+    "n_gt0": 2,
+    "n_eq0": 0,
+    "n_lt0": 18,
+    "median": -0.0034585058569991806,
+    "min": -0.02125465888784194,
+    "max": 0.002817538983676718,
+    "canonical_nonseparable": 19,
+    "best_observed_nonseparable": 18,
+    "n_separability_status_change": 1,
+    "largest_rescue": {
+      "task_id": "iir_lp_loose_8k",
+      "improvement": 0.05212440674803251,
+      "canonical_G": -0.05712130926935302,
+      "Gobs_star": -0.004996902521320512
+    }
+  },
+  "validation": "PASS",
+  "fir_valid": {
+    "total": 1596,
+    "CERTIFIED_VALID": 78,
+    "CERTIFIED_INVALID": 0,
+    "UNDECIDED": 1518
+  },
+  "fir_valid_constructed": {
+    "total": 336,
+    "CERTIFIED_VALID": 68,
+    "CERTIFIED_INVALID": 0,
+    "UNDECIDED": 268
+  },
+  "fir_valid_probe": {
+    "total": 1260,
+    "CERTIFIED_VALID": 10,
+    "CERTIFIED_INVALID": 0,
+    "UNDECIDED": 1250
+  },
+  "fir_mech": {
+    "total": 112,
+    "CERTIFIED_VALID": 0,
+    "CERTIFIED_INVALID": 112,
+    "UNDECIDED": 0
+  },
+  "fir_boundary": {
+    "total": 128,
+    "CERTIFIED_VALID": 0,
+    "CERTIFIED_INVALID": 128,
+    "UNDECIDED": 0
+  },
+  "blocker": 0
+}
