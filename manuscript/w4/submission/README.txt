@@ -21,6 +21,16 @@ Machine Learning and Generative AI
 This folder contains only the files needed to compile or upload the paper.
 It does not contain experimental data, phase reports, or obsolete manuscript variants.
 
+Scientific headlines in this PDF (independently verified labels):
+  412 valid, 144 invalid, 4 label flips
+  task-macro FRR 0.900, 95% CI [0.871, 0.925]
+  pooled descriptive FRR 370/412 = 0.898
+  same-order 20/20; coeff. non-separable 20/20; resp. non-separable 19/20
+  boundary inversion 20/20; reference-choice exact recovery 0/20
+Final labels come from the independent verifier, not the 4096-point
+construction checker. Authoritative reproduction:
+  python -m experiments.icassp_10of10.run_all
+
 Compile:
   pdflatex paper.tex
   bibtex paper

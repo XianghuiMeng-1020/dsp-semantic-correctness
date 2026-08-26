@@ -1,0 +1,140 @@
+f
+|H|
+pass
+free
+stop
+hr
+hval
+hinv
+(a) Magnitude mask
+hr
+hval
+hinv
+DV
+Aτ,r
+Vt
+(b) Reference ball versus Vt
+Fig. 1. Same contract, two spaces. (a) Frequency-domain magnitude mask. (b) Schematic realization space: Aτ,r is a neigh-
+borhood of one valid hr; Vt is schematic and is not a Euclidean ball in the same metric. A valid hval may lie outside every
+useful τ-ball, while a near-boundary invalid hinv may lie closer to hr (an inversion; Gr ≤0).
+Table 1. Study suites after independent verification. Arm G
+is a witness on four original masks and is not added to con-
+structed n.
+Suite Inst.
+Spec. type
+Uniq. Valid Invalid
+Witness
+S
+8
+unique map
+yes
+12
+16
+—
+N
+20
+mag. mask
+no
+412
+144
+Arm G, 4
+Table 2. Finite-universe separability after independent verifi-
+cation. Exact τ means Gr > 0 (some threshold classifies all
+evaluated valids and invalids). FRR is task-macro except the
+pooled descriptive row.
+Diagnostic
+Coeff. d
+Resp. d
+Notes
+N tasks with Gr ≤0
+20/20
+19/20
+finite Ut
+N inversion witnesses
+20/20
+—
+near-boundary
+S tasks with Gr > 0
+8/8
+—
+positive control
+Task-macro FRR (τR = 0.05)
+0.900
+—
+CI [0.871, 0.925]
+Pooled descriptive FRR
+370/412
+—
+secondary
+Gr > 0 on 8/8 tasks (Table 2). The specifications are ef-
+fectively singleton on the evaluated representation; this is not
+a uniqueness proof over all functions. On Suite N, 20/20
+tasks have at least one independently verified valid with
+dcoeff(h, hr) > τR. Task-macro FRR is 0.900 (median 0.907,
+IQR [0.893, 0.947], range [0.727, 0.950]; task-cluster boot-
+strap 95% CI [0.871, 0.925], B = 104, seed 20260826). The
+pooled descriptive rate is 370/412 = 0.898. Random-valid
+occupants contribute 298/300 of that pooled count; the task-
+level 20/20 and the gap results do not depend on how many
+random samples were kept.
+Exact threshold separation. Table 2 reports Gr on the inde-
+pendently verified universe (constructed valids, Type-I probe
+valids, mechanism invalids, and near-boundary invalids).
+Coefficient-space Gr ≤0 on 20/20 Suite N tasks: no scalar
+dcoeff threshold has both zero FRR and zero FAR. Response-
+space Gr ≤0 on 19/20 tasks; one tight IIR instance has a gap
+of order 10−6. Near-boundary inversion witnesses exist on
+20/20 tasks: an independently verified invalid can be closer
+to hr than an independently verified valid.
+The operating
+point τR = 0.05 is therefore not the source of the conclusion.
+Same-order, same-structure alternatives. The Type-I probe
+produced independently verified, non-trivial, same-order
+valids that fail the canonical-reference test on 16/16 FIR
+Table 3. Confirmatory robustness on Suite N (independently
+verified labels). Same-order: Type-I probe (FIR) or equal-
+length library (IIR). Reference choice: any library hr restores
+exact dcoeff separation. Multi-ref: exact separation under dK.
+Test
+Tasks
+Same-order valid and reference-discordant 20/20
+FIR Type-I probe
+16/16
+IIR same-order library
+4/4
+Any library reference exactly separable
+0/20
+K = 1, 3, 5, all-library exact
+0/20
+tasks, including every tight mask. Trivial encodings (zero-
+padding, pure sign flip, pure rescaling) were excluded before
+counting disagreement.
+All four IIR tasks have indepen-
+dently verified same-order library alternatives that remain
+reference-discordant. Same-order / same-structure coverage
+is therefore 20/20 (Table 3). Disagreement is not explained
+by order change alone.
+Reference choice and finite K. Using every independently
+verified library realization as hr in turn never restores exact
+coefficient separation: 0/20 tasks (Table 3). Deterministic
+multi-reference oracles (K = 1, 3, 5, and all library occu-
+pants; firwin/remez/firls/. . ., butter/cheby1/. . .)
+likewise yield 0/20 exact recoveries. A different canonical
+designer, or a small library of them, does not recover Vt ∩Ut
+on this universe.
+Generated-code witness.
+Among existing generated im-
+plementations on the four original loose 8 kHz masks, nine
+remain independently specification-valid and coefficient-
+discordant after canonicalization.
+The event occurs on all
+four of those instances. This is an existence witness, not a
+prevalence estimate and not a model comparison.
+5. DISCUSSION
+A reference-distance oracle answers “near this realization?”
+It answers “in Vt?” only when Gr > 0 on the evaluated uni-
+verse. That happens on Suite S, where the specification is
+effectively singleton in the chosen representation. It does not
+happen on these 20 magnitude-mask instances, for coefficient
+distance or (with one near-tie) response distance, for any li-
+brary choice of hr, or for a finite set of library references.

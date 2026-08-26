@@ -18,7 +18,5 @@ Every kept candidate passed the independent verifier.
 
 Candidates: `data/icassp_10of10/probe_candidates/`.
 
-IIR confirmatory same-order alternatives are independently verified library occupants of the same \((b,a)\) length (no LP). All 4/4 IIR tasks have at least one such reference-discordant alternative.
-
-Combined same-order / same-structure coverage: **20/20** specifications (16/16 FIR Type-I probes + 4/4 IIR library same-order).
+IIR confirmatory same-order alternatives are library same-order occupants only (no LP).
 Ideal 20/20 was a target, not a manufactured outcome.

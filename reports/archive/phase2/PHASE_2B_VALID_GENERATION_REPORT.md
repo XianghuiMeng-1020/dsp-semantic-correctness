@@ -1,3 +1,5 @@
+> **ARCHIVED historical record.** These numbers are not the ICASSP 2027 final results. See the repository root `README.md` and `python -m experiments.icassp_10of10.run_all`.
+
 # PHASE 2B — Constructed valid occupant generation
 
 Suite N only. Admission rule: \(S_t(h)=1\). No mutants. No LLM draws.

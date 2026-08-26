@@ -1,3 +1,5 @@
+> **ARCHIVED historical record.** These numbers are not the ICASSP 2027 final results. See the repository root `README.md`.
+
 # PHASE 3B — Manuscript Rewrite Report
 
 **Status:** `READY_FOR_FINAL_REVIEW`

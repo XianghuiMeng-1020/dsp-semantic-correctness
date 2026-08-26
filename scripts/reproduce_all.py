@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Reproduce the published CORE summaries from frozen extracted implementations."""
+"""HISTORICAL helper. Not the ICASSP 2027 experiment.
+
+Authoritative reproduction: python -m experiments.icassp_10of10.run_all
+
+Reproduce earlier CORE summaries from frozen extracted implementations.
+"""
 
 from __future__ import annotations
 

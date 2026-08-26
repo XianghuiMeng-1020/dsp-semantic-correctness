@@ -16,25 +16,26 @@ $^{\ast}$Corresponding author: \texttt{jionghao@hku.hk}}
 \maketitle
 
 \begin{abstract}
-A reference implementation is commonly used as the correctness target
-for DSP implementations.
-That comparison is exact for a unique map, but a magnitude mask
-defines a feasible set, not one coefficient vector.
-We score a candidate by specification-set membership ($S_t=1$ if it
-meets a frozen contract) and compare coefficient and spec-band
-response agreement to one canonical design.
-On 20 non-unique mask instances, reference matching rejects
-$374/416$ constructed-valid implementations
-($\mathrm{FRR}_{\mathrm{ref}}=0.899$; $0.927$ on tight masks).
-On eight singleton identities, $\mathrm{FRR}_{\mathrm{ref}}=0$.
-Against the same constructed labels, the coefficient oracle has
-$\mathrm{FRR}=0.899$ and $\mathrm{FAR}=0$, and spec-band similarity
-has $\mathrm{FRR}=0.067$ and $\mathrm{FAR}=0$; membership
-$\mathrm{FRR}=\mathrm{FAR}=0$ restates the admission rule.
-The same $S_t=1$, $R_{t,r}=0$ event appears among existing generated
-implementations.
-On these non-unique specifications, reference agreement is a
-realization diagnostic.
+A reference implementation is commonly used as the correctness
+target for a DSP task.
+That test is exact when the specification identifies one realization,
+but a magnitude mask defines a feasible set, not one coefficient
+vector.
+We ask when a scalar reference-distance oracle can recover
+specification membership on an evaluated universe, and give a
+finite-set exactness criterion in terms of a reference-separability
+gap.
+Final labels come from an independent dense-grid verifier, not the
+construction checker.
+On 20 mask instances, no coefficient-distance threshold separates
+independently verified valids from invalids ($20/20$), including
+every library choice of reference and finite reference sets of size
+$K\in\{1,3,5,\mathrm{all}\}$.
+Same-order, same-structure alternatives remain reference-discordant
+on $20/20$ tasks.
+The gap is positive on eight singleton identities.
+Reference agreement is therefore a realization diagnostic, not a
+specification oracle, on these non-unique tasks.
 Our code is available at:
 \url{https://github.com/XianghuiMeng-1020/dsp-semantic-correctness}.
 \end{abstract}
@@ -46,11 +47,10 @@ Filter design, specification testing, correctness evaluation, FIR, IIR
 \section{Introduction}
 \label{sec:intro}
 
-Evaluating a DSP implementation against a trusted reference is natural
-when the specification is a unique map: one integer delay, one declared
-Fourier convention, one alias-fold period.
-In those cases, coefficient or output agreement with the reference
-\emph{is} correctness.
+Evaluating a DSP implementation against a trusted reference is
+natural when the specification is a unique map: one integer delay,
+one Fourier convention, one alias-fold period.
+In those cases, agreement with the reference \emph{is} correctness.
 
 Classical filter design is different.
 A magnitude mask with a free transition defines a
@@ -58,128 +58,138 @@ A magnitude mask with a free transition defines a
 response~\cite{oppenheim2010dsp,proakis2007dsp,mitra2011dsp,rabiner1975theory}.
 Windowed designs~\cite{kaiser1974window,harris1978windows},
 frequency sampling~\cite{rabiner1970freqsamp},
-equiripple Parks--McClellan approximation~\cite{parks1972chebyshev,mcclellan1973computer,rabiner1975fir},
-and IIR Butterworth or elliptic sections~\cite{butterworth1930,constantinides1970,jackson1996filters,antoniou2006filters}
-can all meet the same passband, stopband, and stability bounds while
-remaining far apart as coefficient vectors.
-A canonical library call---Hamming \texttt{firwin}, or a Butterworth
-section~\cite{virtanen2020scipy}---is one occupant of that set.
+equiripple Parks--McClellan
+approximation~\cite{parks1972chebyshev,mcclellan1973computer,rabiner1975fir},
+and IIR Butterworth or elliptic
+sections~\cite{butterworth1930,constantinides1970,jackson1996filters,antoniou2006filters}
+can all meet the same passband, stopband, and stability bounds.
+That multiplicity is classical and is not our claim.
 
-Therefore a valid reference cannot, by itself, define correctness over
-the whole set.
-Matching that reference asks whether a candidate is the
-\emph{same realization}.
+The evaluation question is sharper.
+A canonical library call---Hamming \texttt{firwin}, or a Butterworth
+section~\cite{virtanen2020scipy}---is one occupant of the feasible
+set.
+A test that accepts only neighbors of that occupant asks whether a
+candidate is the \emph{same realization}.
 It does not ask whether the candidate meets the contract that
 justified the reference.
+When can a reference-based scoring rule be a \emph{correct oracle}
+for a specification-defined DSP task?
 
-This paper treats that distinction as an evaluation problem for
-generated DSP implementations~\cite{chen2021codex,liu2023evalplus},
-not as a model leaderboard and not as a new design algorithm.
-The object of study is the scoring rule, not model quality.
-
-Formally, reference agreement $R_{t,r}(h)=1$ asks whether $h$ matches
-a particular realization $h_r$.
-Specification membership $S_t(h)=1$ asks whether $h$ meets the
-frozen contract.
-When the feasible set $\mathcal{V}_t=\{h:S_t(h)=1\}$ contains more
-than one realization, these questions diverge:
-$R_{t,r}$ is a realization diagnostic, and $S_t$ is the correctness
-criterion used below.
-When the specification is effectively a singleton under the
-declared scoring tolerance, they should agree.
-
-Related work falls in three clusters.
-Filter-approximation texts treat the mask as a feasible-set
-problem~\cite{oppenheim2010dsp,rabiner1975fir,herrmann1973linear}.
-DSP algorithm tests may use a golden
-reference~\cite{huuhtanen2015dsp}.
-A standard generated-code protocol uses unique-output unit
-tests~\cite{liu2023evalplus}; that protocol does not score a
+We formalize the distinction among a reference realization, a
+reference acceptance region, and the specification-valid set, and
+give a finite-universe criterion for the existence of any scalar
+threshold on distance to that reference.
+The criterion is not a theorem over all filters: extrema are
+computed on an explicitly stated evaluated universe after independent
+verification.
+Related work treats the mask as a feasible-set design
+problem~\cite{oppenheim2010dsp,rabiner1975fir,herrmann1973linear},
+uses a golden reference in DSP
+testing~\cite{huuhtanen2015dsp}, or scores generated code with
+unique-output unit tests~\cite{chen2021codex,liu2023evalplus}.
+Those protocols do not decide when a reference ball recovers a
 non-unique DSP mask.
-We do not survey model families.
 
-We make three contributions.
-(i)~We distinguish realization agreement from specification-set
-membership as scoring rules for DSP implementations.
-(ii)~We construct a singleton suite and a non-unique magnitude-mask
-suite with frozen valid and invalid labels, independent of reference
-distance.
-(iii)~We measure the evaluation consequence: reference false rejection
-is high on the constructed non-unique suite, zero on the singleton
-suite, and the same $S_t=1$,~$R_{t,r}=0$ event appears among
-existing generated implementations.
+Contributions.
+(i)~We state soundness, completeness, and exactness of a
+reference-distance oracle relative to a specification, and a
+finite-set reference-separability gap.
+(ii)~We separate candidate construction from final labeling with an
+independent verifier, and probe same-order Type-I feasible sets with
+predetermined directions.
+(iii)~On 20 mask instances the gap is non-positive in coefficient
+space for every library reference and for finite multi-reference
+oracles; it is positive on eight singleton identities.
 
-\section{Problem formulation}
-\label{sec:form}
+\section{When is a reference oracle exact?}
+\label{sec:theory}
 
-A design task $t$ asks for an implementation $h$ (FIR taps, or an IIR
-pair $(b,a)$).
-A frozen specification predicate returns $S_t(h)\in\{0,1\}$.
-The feasible set is
+A task $t$ asks for an implementation $h$ (FIR taps or an IIR pair
+$(b,a)$).
+A specification predicate $S_t(h)\in\{0,1\}$ defines the valid set
 \begin{equation}
 \mathcal{V}_t=\{h:S_t(h)=1\}.
 \label{eq:vt}
 \end{equation}
-A canonical reference $h_r$ is one occupant, $h_r\in\mathcal{V}_t$,
-and nothing stronger: it is a convenient valid realization, not the
+A reference realization $h_r$ is one distinguished occupant, not the
 definition of $t$.
-
-The task is treated as a \emph{singleton} when the declared map is
-unique up to the scoring tolerance (unique lag, unique DFT convention,
-unique alias map, unique impulse).
-It is \emph{non-unique} when more than one realization meets $S_t$.
-The non-unique family studied here is a classical magnitude mask:
-constrained pass and stop bands on $\lvert H(f)\rvert$, a free
-transition, and, for IIR, a pole-radius stability bound.
-Linear phase is not required.
-
-\section{Specification-based evaluation}
-\label{sec:method}
-
-Write $\tilde h$ for the coefficient vector of $h$, or the
-concatenation $(b,a)$, truncated to the shorter length when orders
-differ.
-Oracle~A (reference coefficients) is
+Given a distance $d$ and a threshold $\tau$, the reference
+acceptance region is
 \begin{equation}
-R_{t,r}(h)
-=\mathbf{1}\!\left[
-\frac{\lVert \tilde h-\tilde h_r\rVert_2}{\lVert\tilde h_r\rVert_2}
-\le\tau_R\right],
-\label{eq:r}
+\mathcal{A}_{\tau,r}=\{h:d(h,h_r)\le\tau\}.
+\label{eq:A}
 \end{equation}
-with frozen $\tau_R=0.05$.
-$R_{t,r}(h)=1$ asks whether $h$ is the same realization as $h_r$.
+A reference oracle declares ``correct'' iff $h\in\mathcal{A}_{\tau,r}$.
+A specification oracle declares ``correct'' iff $h\in\mathcal{V}_t$.
 
-Oracle~B (response similarity) accepts $h$ when the
-$\lvert H\rvert$ RMSE on constrained bands versus $h_r$ does not
-exceed the maximum same-order library-pair RMSE on that instance,
-plus $10^{-8}$.
-Oracle~B is a DSP-native comparison to \emph{one} element of
-$\mathcal{V}_t$.
-It is not a gold standard for correctness.
+\emph{Soundness} is $\mathcal{A}_{\tau,r}\subseteq\mathcal{V}_t$
+(no invalid is accepted).
+\emph{Completeness} is $\mathcal{V}_t\subseteq\mathcal{A}_{\tau,r}$
+(no valid is rejected).
+\emph{Exactness} is $\mathcal{A}_{\tau,r}=\mathcal{V}_t$.
 
-Oracle~C implements the same predicate $S_t$ used to admit
-constructed labels; it is the membership checker, not an external
-labeler.
-On each constrained band $[f_0,f_1]$ with bounds $[\ell,u]$, a
-$4096$-point \texttt{freqz} residual records the worst normalized
-excursion of $\lvert H\rvert$ outside $[\ell,u]$.
-FIR contracts pass at residual $\le 10^{-6}$; IIR contracts also
-require every pole radius $<0.999$ and pass at residual
-$\le 10^{-3}$.
-Neither floor was fit to generated residuals.
-The checker does not load $h_r$, does not compute coefficient
-distance, and does not call Oracle~A or~B.
-A tone-envelope consistency check $T$ reads the same mask and is not
-used as gold for FAR/FRR.
+All measurements below are restricted to an explicit finite
+evaluation universe $\mathcal{U}_t$ (the independently verified
+candidates for task $t$).
+Define
+\begin{equation}
+D_V(r)=\sup_{h\in\mathcal{V}_t\cap\mathcal{U}_t}d(h,h_r),
+\quad
+D_I(r)=\inf_{h\in\mathcal{U}_t\setminus\mathcal{V}_t}d(h,h_r).
+\label{eq:DVDI}
+\end{equation}
+A scalar threshold classifies every point of $\mathcal{U}_t$ exactly
+iff there exists $\tau$ with $D_V(r)\le\tau<D_I(r)$.
+If $D_V(r)\ge D_I(r)$, no threshold on $d(\cdot,h_r)$ recovers
+specification membership on that universe.
+The \emph{reference-separability gap}
+\begin{equation}
+G_r=D_I(r)-D_V(r)
+\label{eq:Gr}
+\end{equation}
+is therefore the diagnostic: $G_r>0$ permits exact threshold
+separation on $\mathcal{U}_t$; $G_r\le 0$ is an empirical
+non-separability certificate on that universe, not a global
+impossibility theorem.
+A pair with $S_t(h_{\mathrm{inv}})=0$, $S_t(h_{\mathrm{val}})=1$, and
+$d(h_{\mathrm{inv}},h_r)<d(h_{\mathrm{val}},h_r)$ is an inversion
+witness and implies $G_r\le 0$.
 
-Fig.~\ref{fig:concept} states the geometry: the $\tau_R$-ball around
-$h_r$ is a realization neighborhood; $\mathcal{V}_t$ is the contract.
+\noindent\textbf{Proposition 1} (finite-universe exactness).
+On a finite $\mathcal{U}_t$, a scalar threshold on $d(\cdot,h_r)$
+classifies every evaluated valid and invalid exactly iff
+$D_V(r)\le\tau<D_I(r)$ for some $\tau$.
+If $G_r\le 0$, no such $\tau$ exists on that universe.
+The statement is evaluation geometry; it does not certify extrema
+over all filters.
+
+For a finite reference set $\mathcal{R}_K$ write
+\begin{equation}
+d_K(h)=\min_{r\in\mathcal{R}_K}d(h,h_r),
+\quad
+\mathcal{A}_{\tau,\mathcal{R}_K}=\{h:d_K(h)\le\tau\}.
+\label{eq:dK}
+\end{equation}
+The same gap applies to $d_K$.
+
+Two distances are used.
+The confirmatory coefficient distance $d_{\mathrm{coeff}}$ is a
+relative $\ell_2$ after canonicalization (FIR: trailing-zero and
+Type-I rules; IIR: $a_0=1$).
+Min-length truncation of unequal orders is retained only as a
+historical baseline.
+The response distance $d_{\mathrm{resp}}$ is the RMSE of
+$\lvert H\rvert$ on the constrained pass and stop bands.
+A descriptive operating point $\tau_R=0.05$ is reported for
+comparability; it is not the scientific claim.
+
+Fig.~\ref{fig:concept} states the geometry: the $\tau$-ball is a
+realization neighborhood; $\mathcal{V}_t$ is the contract.
 
 \begin{figure*}[t]
 \centering
 \begin{tikzpicture}[x=0.92cm,y=0.72cm,font=\footnotesize]
-  % ---- left: mask ----
   \draw[-{Latex}] (-0.15,0) -- (6.35,0) node[right] {$f$};
   \draw[-{Latex}] (0,-0.1) -- (0,2.55) node[above] {$\lvert H\rvert$};
   \fill[blue!12] (0,1.55) rectangle (1.7,2.15);
@@ -194,10 +204,9 @@ $h_r$ is a realization neighborhood; $\mathcal{V}_t$ is the contract.
   \draw[green!55!black,thick,dash pattern=on 2.5pt off 1.4pt] plot[smooth] coordinates {(0,1.92) (0.85,1.76) (1.7,1.86) (2.6,0.72) (3.55,0.10) (4.8,0.05) (6.0,0.07)};
   \draw[red!75!black,thick,dashed] plot[smooth] coordinates {(0,1.85) (0.85,1.80) (1.7,1.70) (2.6,1.35) (3.55,0.85) (4.8,0.55) (6.0,0.42)};
   \node[blue!70!black] at (1.15,1.35) {$h_r$};
-  \node[green!40!black] at (2.95,0.42) {$h_1$};
+  \node[green!40!black] at (2.95,0.42) {$h_{\mathrm{val}}$};
   \node[red!70!black] at (5.15,0.85) {$h_{\mathrm{inv}}$};
   \node[font=\footnotesize,anchor=west] at (0,2.85) {\textbf{(a)} Magnitude mask};
-  % ---- right: realization ----
   \begin{scope}[shift={(8.15,0.15)}]
     \fill[blue!7] (1.55,1.15) circle (1.42);
     \draw[blue!45!black,dashed] (1.55,1.15) circle (1.42);
@@ -205,94 +214,117 @@ $h_r$ is a realization neighborhood; $\mathcal{V}_t$ is the contract.
     \fill[blue!70!black] (1.55,1.15) circle (0.055);
     \node[below] at (1.55,1.05) {$h_r$};
     \fill[green!50!black] (2.55,2.05) circle (0.055);
-    \node[above] at (2.55,2.12) {$h_1$};
-    \fill[green!50!black] (0.55,1.95) circle (0.055);
-    \node[above] at (0.45,2.02) {$h_2$};
-    \fill[red!70!black] (3.55,0.28) circle (0.055);
-    \node[right] at (3.62,0.28) {$h_{\mathrm{inv}}$};
-    \node[orange!70!black] at (2.15,0.55) {$\tau_R$};
+    \node[above] at (2.55,2.12) {$h_{\mathrm{val}}$};
+    \fill[red!70!black] (2.05,1.35) circle (0.055);
+    \node[right] at (2.12,1.42) {$h_{\mathrm{inv}}$};
+    \draw[{Latex}-{Latex},gray] (1.55,1.15) -- (2.55,2.05);
+    \node[gray,font=\footnotesize] at (2.55,1.55) {$D_V$};
+    \node[orange!70!black] at (1.95,0.62) {$\mathcal{A}_{\tau,r}$};
     \node[blue!50!black] at (0.35,0.35) {$\mathcal{V}_t$};
-    \node[font=\footnotesize,anchor=west] at (-0.35,2.70) {\textbf{(b)} Schematic realization space};
+    \node[font=\footnotesize,anchor=west] at (-0.35,2.70) {\textbf{(b)} Reference ball versus $\mathcal{V}_t$};
   \end{scope}
 \end{tikzpicture}
 \caption{Same contract, two spaces.
 (a)~Frequency-domain magnitude mask.
-(b)~Schematic realization/coefficient space: the $\tau_R$-ball is
-proximity to one valid $h_r$; the $\mathcal{V}_t$ region is
-schematic and is not a Euclidean ball in the same metric as
-$\tau_R$.
-Occupants $h_1,h_2$ meet the mask but lie outside the reference
-ball; $h_{\mathrm{inv}}$ violates the contract.}
+(b)~Schematic realization space: $\mathcal{A}_{\tau,r}$ is a
+neighborhood of one valid $h_r$; $\mathcal{V}_t$ is schematic and is
+not a Euclidean ball in the same metric.
+A valid $h_{\mathrm{val}}$ may lie outside every useful $\tau$-ball,
+while a near-boundary invalid $h_{\mathrm{inv}}$ may lie closer to
+$h_r$ (an inversion; $G_r\le 0$).}
 \label{fig:concept}
 \end{figure*}
 
-\section{Experimental protocol}
+\section{Independent verification and protocol}
 \label{sec:protocol}
 
+Construction uses a $4096$-point \texttt{freqz} search checker.
+That checker is computationally convenient and is \emph{not} the
+final labeler.
+Final VALID/INVALID status is assigned by an independent verifier
+that does not call the search checker: $N_f=131072$ magnitude
+samples, local extremum refinement on each constrained band,
+second-order-section evaluation for IIR, $a_0=1$ normalization, and
+the registered residual floors (FIR $10^{-6}$, IIR $10^{-3}$) and
+pole-radius bound $0.999$.
+Dense sampling is a numerical certificate, not a continuous-frequency
+proof.
+Four previously admitted library \texttt{firwin2} occupants on tight
+low-pass and high-pass masks failed the independent verifier at a
+constrained-band edge (normalized residual up to $1.6\times 10^{-2}$)
+and were relabeled invalid.
+The construction checker had reported a zero residual on the same
+filters, which is why final labels cannot remain self-certified by
+the $4096$-point search.
+
 Two suites are scored (Table~\ref{tab:suite}).
-Suite~S comprises eight singleton identities already used as
-unique-map contracts (integer delay, circular and linear convolution
-conventions, lag-$0$ energy, alias fold, frequency rescale, Nyquist
-frequency, and $\delta[n-D]$).
-Suite~N comprises $20$ specification instances from a common
-magnitude-mask family: FIR low-pass, high-pass, band-pass, and
-band-stop at $f_s=8$ and $16\,\mathrm{kHz}$, each at a loose and a
-tight mask ($16$ FIR), plus IIR low-pass and high-pass at $8\,\mathrm{kHz}$
-(loose/tight; $4$ IIR).
-Loose $8\,\mathrm{kHz}$ prototypes reuse the previously frozen
-pass/stop numbers.
-Tight masks are derived mechanically (pass ripple and stop ceiling
+Suite~S comprises eight singleton identities (integer delay,
+circular and linear convolution conventions, lag-$0$ energy, alias
+fold, frequency rescale, Nyquist frequency, and $\delta[n-D]$).
+Suite~N comprises $20$ instances from one magnitude-mask family:
+FIR low-pass, high-pass, band-pass, and band-stop at
+$f_s=8$ and $16\,\mathrm{kHz}$, each loose and tight ($16$ FIR),
+plus IIR low-pass and high-pass at $8\,\mathrm{kHz}$ ($4$ IIR).
+Tight masks are mechanical (pass ripple and stop ceiling
 $\times 1/5$; stop edge moved halfway toward the facing pass).
-Sixteen-kilohertz edges are the $8\,\mathrm{kHz}$ edges $\times 2$.
 Canonical $h_r$ is the shortest-odd Hamming \texttt{firwin} (FIR) or
-the lowest-order \texttt{butter} (IIR) that meets $S_t$.
+the lowest-order \texttt{butter} (IIR) that meets the contract.
 
-Suite~N valids are constructed from three sources: classical library
-designers (\texttt{firwin}, \texttt{firwin2}, \texttt{remez},
-\texttt{firls}, Kaiser \texttt{firwin}; \texttt{butter},
-\texttt{cheby1}, \texttt{cheby2}, \texttt{ellip}); first-principles FIR
-windowed-sinc and frequency sampling (numpy only; SciPy design APIs
-forbidden)~\cite{kaiser1974window,rabiner1970freqsamp}; and
-random-valid search over odd length, window or Remez weights, and
-cutoffs in the free transition (IIR: prototype and order).
-Admission is $S_t(h)=1$ only.
-Distance to $h_r$ is measured after admission.
-Occupants that met $S_t$ and lay near $h_r$ were retained.
-The random-valid search does not maximize coefficient distance,
-response RMSE, or disagreement with $h_r$.
-Near-duplicates are removed
-($d_{\mathrm{coeff}}\le 0.01$ and full-grid $\lvert H\rvert$ RMSE
-$\le 10^{-3}$); deduplication does not maximize distance.
-The kept set has $416$ valids ($92$ library, $24$ first-principles,
-$300$ random-valid).
+Suite~N candidates include classical library designers, first-principles
+FIR windowed-sinc and frequency sampling (numpy
+only)~\cite{kaiser1974window,rabiner1970freqsamp}, and random-valid
+search that admits on the search checker only.
+After independent verification the valid count is $412$
+($88$ library, $24$ first-principles, $300$ random-valid).
+Invalids are $144$ mechanism mutants plus a second, predetermined
+near-boundary set (pass-drop and stop-lift at fixed
+$\varepsilon\in\{0.002,0.005,0.010,0.020\}$), independently verified
+invalid ($160/160$ boundary mutants).
+The primary statistical unit is the specification.
+Occupant-pooled rates are secondary and are not rates over DSP
+implementations at large.
 
-Invalids are $144$ mechanism-based contract violations (band swap,
-cutoff into a constrained band, insufficient order, unstable pole,
-Nyquist coded as $1\,\mathrm{Hz}$, pass-gain collapse, wrong $f_s$,
-and type mismatch), not a sample of naturally occurring errors.
-A mutant is admitted only if $S_t=0$.
-Labels were frozen before any oracle comparison.
+For every eligible non-unique FIR task we hold fixed the reference
+order, length, Type-I symmetry, gain convention, and sampling rate.
+A length-$2M+1$ Type-I filter has amplitude
+$A(\omega)=\theta_M+2\sum_{k=1}^{M}\theta_{M-k}\cos(k\omega)$
+and is probed by the linear program
+$\max q^\top\theta$ subject to the pass/stop inequalities on a
+$512$-point-per-band constraint grid, with a predetermined interior
+margin so vertices survive independent re-verification.
+Directions (basis, frozen-seed random, tap combinations, library
+differences) were chosen before observing disagreement.
+Vertices are independently re-verified.
+IIR same-order evidence uses independently verified library
+occupants of equal $(b,a)$ length.
 
-Arm~G is a generated-code witness on the original four loose
-$8\,\mathrm{kHz}$ masks only ($48$ planned draws; no new generations).
-It is not pooled into the constructed $n$.
-Constructed occupants score the oracles; Arm~G is only an
-application witness.
+A generated-code arm on the four original loose $8\,\mathrm{kHz}$
+masks is an existence witness only: no new generations, no model
+ranking, and no pooling into constructed $n$.
 
-Primary rates use constructed labels.
-$\mathrm{FRR}_{\mathrm{ref}}$ is the fraction of valids with
-$R_{t,r}=0$.
-$\mathrm{FRR}_{\mathrm{ref}}^{\mathrm{any3}}$ rejects a valid only if
-it is discordant with every available library occupant among
-\texttt{firwin}/\texttt{remez}/\texttt{firls} (FIR) or the IIR library
-set.
-Oracles~A--C are scored as FRR/FAR against the same labels.
-Suite~S uses the same definitions on identity outputs.
+\section{Results}
+\label{sec:results}
+
+\noindent\textbf{Task-level reference disagreement.}
+On Suite~S the descriptive operating point and the gap agree: every
+independently verified valid matches the canonical output and
+$G_r>0$ on $8/8$ tasks (Table~\ref{tab:sep}).
+The specifications are effectively singleton on the evaluated
+representation; this is not a uniqueness proof over all functions.
+On Suite~N, $20/20$ tasks have at least one independently verified
+valid with $d_{\mathrm{coeff}}(h,h_r)>\tau_R$.
+Task-macro FRR is $0.900$ (median $0.907$, IQR $[0.893,0.947]$,
+range $[0.727,0.950]$; task-cluster bootstrap $95\%$ CI
+$[0.871,0.925]$, $B=10^4$, seed $20260826$).
+The pooled descriptive rate is $370/412=0.898$.
+Random-valid occupants contribute $298/300$ of that pooled count;
+the task-level $20/20$ and the gap results do not depend on how many
+random samples were kept.
 
 \begin{table}[t]
-\caption{Study suites.
-Arm~G is a witness on four original masks and is not added to the
-constructed counts.}
+\caption{Study suites after independent verification.
+Arm~G is a witness on four original masks and is not added to
+constructed $n$.}
 \label{tab:suite}
 \centering
 \footnotesize
@@ -302,207 +334,253 @@ constructed counts.}
 Suite & Inst. & Spec.\ type & Uniq. & Valid & Invalid & Witness \\
 \hline
 S & $8$ & unique map & yes & $12$ & $16$ & --- \\
-N & $20$ & mag.\ mask & no & $416$ & $144$ & Arm G, $4$ \\
+N & $20$ & mag.\ mask & no & $412$ & $144$ & Arm G, $4$ \\
 \hline
 \end{tabular}
 \end{table}
 
-\section{Results}
-\label{sec:results}
-
-\noindent\textbf{RQ1 --- Reference false rejection.}
-On Suite~S, $\mathrm{FRR}_{\mathrm{ref}}=0/12$.
-On Suite~N, reference matching rejects $374/416$ constructed-valid
-implementations ($\mathrm{FRR}_{\mathrm{ref}}=0.899$;
-Table~\ref{tab:frr}).
-The rate is $302/340=0.888$ on FIR, $72/76=0.947$ on IIR,
-$183/210=0.871$ on loose masks, and $191/206=0.927$ on tight masks.
-Every one of the $20$ instances has at least one valid with
-$S_t=1$ and $R_{t,r}=0$.
-Best-of-three references still reject $346/416=0.832$.
-These fractions describe disagreement inside constructed feasible
-sets.
-They are not rates over DSP implementations at large, and they are not
-rates over generated code.
+\noindent\textbf{Exact threshold separation.}
+Table~\ref{tab:sep} reports $G_r$ on the independently verified
+universe (constructed valids, Type-I probe valids, mechanism
+invalids, and near-boundary invalids).
+Coefficient-space $G_r\le 0$ on $20/20$ Suite~N tasks: no scalar
+$d_{\mathrm{coeff}}$ threshold has both zero FRR and zero FAR.
+Response-space $G_r\le 0$ on $19/20$ tasks; one tight IIR instance
+has a gap of order $10^{-6}$.
+Near-boundary inversion witnesses exist on $20/20$ tasks: an
+independently verified invalid can be closer to $h_r$ than an
+independently verified valid.
+The operating point $\tau_R=0.05$ is therefore not the source of the
+conclusion.
 
 \begin{table}[t]
-\caption{Reference rejection at $\tau_R=0.05$ on constructed-valid
-occupants ($n$).
-Task-level disagreement: instances with at least one constructed
-valid that fails Oracle~A while meeting the contract.}
-\label{tab:frr}
+\caption{Finite-universe separability after independent
+verification.
+Exact $\tau$ means $G_r>0$ (some threshold classifies all evaluated
+valids and invalids).
+FRR is task-macro except the pooled descriptive row.}
+\label{tab:sep}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{@{}lccc@{}}
+\hline
+Diagnostic & Coeff.\ $d$ & Resp.\ $d$ & Notes \\
+\hline
+N tasks with $G_r\le 0$ & $20/20$ & $19/20$ & finite $\mathcal{U}_t$ \\
+N inversion witnesses & $20/20$ & --- & near-boundary \\
+S tasks with $G_r>0$ & $8/8$ & --- & positive control \\
+Task-macro FRR ($\tau_R=0.05$) & $0.900$ & --- & CI $[0.871,0.925]$ \\
+Pooled descriptive FRR & $370/412$ & --- & secondary \\
+\hline
+\end{tabular}
+\end{table}
+
+\noindent\textbf{Same-order, same-structure alternatives.}
+The Type-I probe produced independently verified, non-trivial,
+same-order valids that fail the canonical-reference test on
+$16/16$ FIR tasks, including every tight mask.
+Trivial encodings (zero-padding, pure sign flip, pure rescaling)
+were excluded before counting disagreement.
+All four IIR tasks have independently verified same-order library
+alternatives that remain reference-discordant.
+Same-order / same-structure coverage is therefore $20/20$
+(Table~\ref{tab:rob}).
+Disagreement is not explained by order change alone.
+
+\noindent\textbf{Reference choice and finite $K$.}
+Using every independently verified library realization as $h_r$ in
+turn never restores exact coefficient separation: $0/20$ tasks
+(Table~\ref{tab:rob}).
+Deterministic multi-reference oracles
+($K=1,3,5$, and all library occupants;
+\texttt{firwin}/\texttt{remez}/\texttt{firls}/$\ldots$,
+\texttt{butter}/\texttt{cheby1}/$\ldots$) likewise yield $0/20$
+exact recoveries.
+A different canonical designer, or a small library of them, does not
+recover $\mathcal{V}_t\cap\mathcal{U}_t$ on this universe.
+
+\begin{table}[t]
+\caption{Confirmatory robustness on Suite~N (independently verified
+labels).
+Same-order: Type-I probe (FIR) or equal-length library (IIR).
+Reference choice: any library $h_r$ restores exact $d_{\mathrm{coeff}}$
+separation.
+Multi-ref: exact separation under $d_K$.}
+\label{tab:rob}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.0pt}
-\begin{tabular}{@{}lcccc@{}}
+\begin{tabular}{@{}lc@{}}
 \hline
-Suite & $n$ & $\mathrm{FRR}_{\mathrm{ref}}$ & $\mathrm{FRR}_{\mathrm{ref}}^{\mathrm{any3}}$ & Task disag. \\
+Test & Tasks \\
 \hline
-S & $12$ & $0/12=0$ & --- & --- \\
-N all & $416$ & $374/416=0.899$ & $346/416=0.832$ & $20/20$ \\
-N FIR & $340$ & $302/340=0.888$ & $274/340=0.806$ & --- \\
-N IIR & $76$ & $72/76=0.947$ & $72/76=0.947$ & --- \\
-N loose & $210$ & $183/210=0.871$ & $177/210=0.843$ & --- \\
-N tight & $206$ & $191/206=0.927$ & $169/206=0.820$ & --- \\
-\hline
-\end{tabular}
-\end{table}
-
-\noindent\textbf{RQ2 --- Diversity of $\mathcal{V}_t$.}
-Library, first-principles, and random-valid sources all contribute
-occupants with $S_t=1$.
-On every Suite~N instance the median min-length coefficient distance
-to $h_r$ is at least $1.0$, while median spec-band $\lvert H\rvert$
-RMSE stays on the order of $10^{-3}$ (FIR) to $10^{-2}$ (IIR);
-full-grid RMSE is larger because the transition is unconstrained.
-First-principles windowed-sinc and frequency-sampling designs enter
-the same sets without calling a library designer, so multiplicity is
-not an API artifact.
-One concrete pattern: a same-order first-principles occupant can remain
-inside the mask with spec-band RMSE $\sim 10^{-3}$ while
-$d_{\mathrm{coeff}}>\tau_R$ versus Hamming \texttt{firwin}.
-On the $67$ occupants whose order equals that of $h_r$,
-$\mathrm{FRR}_{\mathrm{ref}}=25/67=0.373$, versus $0.899$ on the
-unrestricted $416$ (Table~\ref{tab:ablate}).
-Order variation contributes materially to coefficient disagreement.
-A nonzero rate remains on this restricted subset: realization
-equality is still not equivalent to contract membership.
-All constructed FIR occupants in this set are Type~I, so a
-linear-phase restriction is not a separate ablation here.
-Varying $\tau_R\in\{0.01,0.05,0.10\}$ changes
-$\mathrm{FRR}_{\mathrm{ref}}$ only from $0.933$ to $0.873$
-(Table~\ref{tab:ablate}).
-
-\begin{table}[t]
-\caption{FRR/FAR on the contract-defined constructed universe
-(N: $416$ valid, $144$ invalid; S: $12$ valid, $16$ invalid).
-Oracle~C implements $S_t$, so its zeros check label consistency,
-not independent validation.
-The informative contrast is A and B on the same labels.
-Oracle~B is undefined on Suite~S.}
-\label{tab:oracle}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3.2pt}
-\begin{tabular}{@{}llcc@{}}
-\hline
-Suite & Oracle (rule) & FRR & FAR \\
-\hline
-N & A \ (coeff.\ vs.\ $h_r$, $\tau_R=0.05$) & $0.899$ & $0$ \\
-N & B \ (band $\lvert H\rvert$ vs.\ $h_r$) & $0.067$ & $0$ \\
-N & C \ (specification membership) & $0$ & $0$ \\
-S & A \ (output vs.\ canonical) & $0$ & $0$ \\
-S & C \ (specification membership) & $0$ & $0$ \\
+Same-order valid and reference-discordant & $20/20$ \\
+\quad FIR Type-I probe & $16/16$ \\
+\quad IIR same-order library & $4/4$ \\
+Any library reference exactly separable & $0/20$ \\
+$K=1,3,5,$ all-library exact & $0/20$ \\
 \hline
 \end{tabular}
 \end{table}
 
-\noindent\textbf{RQ3 --- Oracles versus constructed labels.}
-Table~\ref{tab:oracle} compares A--C on the frozen contract-defined
-universe.
-Against those labels, Oracle~A has $\mathrm{FRR}=0.899$ and
-$\mathrm{FAR}=0$: it never accepts a mutant, and it rejects most
-valids.
-Oracle~B has $\mathrm{FRR}=0.067$ and $\mathrm{FAR}=0$: most
-constructed valids stay close to $h_r$ on the constrained bands,
-so B rarely false-rejects even when the taps differ.
-That agreement does not make B a membership test: it still scores
-proximity to one realization.
-Oracle~C has $\mathrm{FRR}=\mathrm{FAR}=0$ because it implements
-the same $S_t$ used to write the labels; the row is
-implementation consistency, not external validation of~C.
-The informative comparison is how A and B reject subsets of the
-same contract-valid set.
-A asks realization identity.
-B asks response proximity to one realization.
-C asks contract satisfaction.
-
-\noindent\textbf{RQ4 --- Singleton contrast.}
-On Suite~S, Oracles~A and~C both have $\mathrm{FRR}=\mathrm{FAR}=0$.
-The argument is conditional.
-When the specification is a unique map, reference matching and
-specification membership coincide, and reference matching is the
-appropriate correctness test.
-The Suite~N false-rejection rates are not a generic indictment of
-reference comparison.
-
-\noindent\textbf{RQ5 --- Generated-code witness.}
-Among the existing eligible generated implementations on the
-original four loose $8\,\mathrm{kHz}$ masks, nine satisfied the
-frozen specification while failing reference agreement.
-Such witnesses occurred on all four of those specification
-instances.
-This is an existence witness that the scoring mismatch is not
-confined to constructed filters.
-It is not a prevalence estimate and not a model comparison.
+\noindent\textbf{Generated-code witness.}
+Among existing generated implementations on the four original loose
+$8\,\mathrm{kHz}$ masks, nine remain independently
+specification-valid and coefficient-discordant after
+canonicalization.
+The event occurs on all four of those instances.
+This is an existence witness, not a prevalence estimate and not a
+model comparison.
 
 \section{Discussion}
 \label{sec:disc}
 
-\begin{table}[t]
-\caption{Sensitivity of $\mathrm{FRR}_{\mathrm{ref}}$ on Suite~N
-constructed valids.
-The $\tau_R$ rows use all $416$ occupants.
-The order-lock row uses only the $67$ occupants whose order equals
-that of $h_r$.
-Thresholds were not retuned after seeing outcomes.}
-\label{tab:ablate}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{4.5pt}
-\begin{tabular}{@{}lcc@{}}
-\hline
-Knob & $n$ & $\mathrm{FRR}_{\mathrm{ref}}$ \\
-\hline
-$\tau_R=0.01$ & $416$ & $388/416=0.933$ \\
-$\tau_R=0.05$ & $416$ & $374/416=0.899$ \\
-$\tau_R=0.10$ & $416$ & $363/416=0.873$ \\
-order $=h_r$ & $67$ & $25/67=0.373$ \\
-\hline
-\end{tabular}
-\end{table}
+A reference-distance oracle answers ``near this realization?''
+It answers ``in $\mathcal{V}_t$?'' only when $G_r>0$ on the
+evaluated universe.
+That happens on Suite~S, where the specification is effectively
+singleton in the chosen representation.
+It does not happen on these $20$ magnitude-mask instances, for
+coefficient distance or (with one near-tie) response distance, for
+any library choice of $h_r$, or for a finite set of library
+references.
 
-Reference matching is not universally wrong.
-It is the right correctness test on Suite~S, where the specification
-is effectively a singleton.
-On Suite~N it measures proximity to one valid realization rather than
-membership in $\mathcal{V}_t$.
-Tightening these frozen masks did not eliminate the disagreement
-(tight $\mathrm{FRR}_{\mathrm{ref}}=0.927$).
-On the canonical-order subset, $\mathrm{FRR}_{\mathrm{ref}}$ is
-$0.373$ ($25/67$), versus $0.899$ on all $416$: order contributes
-materially, but a same-order valid can still fail Oracle~A while
-meeting the contract.
-Oracle~C's zeros are consistency of the membership checker with the
-constructed labels.
-The substantive comparison is that A and B reject different subsets
-of that same universe.
-Oracle~B can mostly agree with C while still asking a different
-question: spec-band $\lvert H\rvert$ may stay close to one $h_r$
-when the taps do not.
+Response distance is the stronger reference oracle of the two, as
+classical approximation already suggests: independently verified
+valids can sit close to $h_r$ on constrained bands while remaining
+far in coefficient space.
+It is still not exact on this universe.
+The single positive response gap (one tight IIR high-pass instance,
+order $10^{-6}$) is a numerical near-tie, not evidence that
+$\lvert H\rvert$ RMSE recovers $S_t$ in general.
 
-The study is restricted to magnitude-mask filter-design
-specifications.
+Pooled FRR remains source-dependent:
+$58/88$ library, $14/24$ first-principles, and $298/300$
+random-valid occupants exceed $\tau_R$ after independent
+verification.
+That is why the primary unit is the task, and why the confirmatory
+claims are the $20/20$ gap, inversion, same-order, and
+reference-choice counts rather than $370/412$.
+
+The study is restricted to one mask family.
 It is not a claim about beams, adaptive filters, filter banks, or
-other DSP families.
-Requiring Type-I linear phase, or a declared maximum order, would be
-a \emph{different} specification and a different feasible set; we do
-not treat those constraints as the default contract.
-Arm~G is an existence witness on four original masks, not evidence of
-how often generated code is correct, and it is not pooled with the
-constructed $n$ used to score A--C.
-Six Suite~N instances had no same-order library pair for Oracle~B;
-those thresholds used the all-library pairwise maximum.
+DSP evaluation in general.
+Requiring Type-I linear phase or a declared maximum order as part of
+$S_t$ would define a different feasible set.
+The independent verifier does not certify the continuous mask.
+IIR same-order evidence uses library occupants rather than a
+pole/zero feasible-set program.
+The generated-code arm is a witness on four original masks and is
+not pooled with the constructed $n$.
+
+Canonicalization is part of the claim, not a preprocessing footnote.
+After $a_0=1$, Type-I endpoint preservation, and exclusion of
+zero-padding, sign-flip, and pure-scale encodings, the same-order
+Type-I alternatives remain distinct transfer functions.
+The confirmatory distance is therefore not an artifact of comparing
+unequal truncated coefficient vectors.
+
+A practical reading of Proposition~1 is operational.
+If a test bench keeps a single golden Hamming or Butterworth design
+and a scalar coefficient (or band-RMSE) threshold, compute $D_V$
+and $D_I$ on the independently labeled universe it actually scores.
+A negative gap means that no retuning of that threshold can make the
+reference test exact for that specification.
+The remedy is to score $S_t$, or to enlarge the specification until
+the intended realization is effectively singleton.
+
+Tightening the mask did not restore exactness.
+The Type-I probe still returned independently verified
+same-order, reference-discordant valids on all eight tight FIR
+instances, and coefficient $G_r$ remained negative on all four
+tight IIR instances.
+A tighter contract shrinks $\mathcal{V}_t$; it does not, by itself,
+make $\mathcal{A}_{\tau,r}$ coincide with that smaller set.
+
+Finite $K$ has the same geometry.
+The $K$-oracle replaces one ball by a union of balls around
+library occupants.
+On this universe that union still fails to cover the independently
+verified valids without also covering a nearer invalid, for
+$K=1,3,5$ and for the full library set.
+Covering $\mathcal{V}_t\cap\mathcal{U}_t$ would require either the
+specification predicate or a reference set that is no longer a
+small canonical catalog.
+
+The four label flips are a protocol result, not a bookkeeping
+detail.
+The $4096$-point construction checker accepted four tight
+\texttt{firwin2} library occupants that the independent verifier
+rejects at the band edge after $N_f=131072$ and local extremum
+refinement.
+Those occupants are excluded from the valid set.
+Using the construction checker as the final labeler would have
+kept the older $416$ count and would have scored a membership
+oracle against the same predicate that defined the labels.
+That circularity is why the authoritative counts are $412$ valids
+and four recorded flips.
+
+The same-order FIR probe is not a search for a convenient
+counterexample.
+Directions were frozen (seed $20260826$) before disagreement was
+inspected: basis, frozen-seed random, tap combinations, and
+predetermined same-order library differences.
+A Type-I linear program on $512$ constraint frequencies per band,
+with a predetermined interior margin and line-search backoff,
+produced independently verified alternatives on $16/16$ FIR
+tasks.
+IIR evidence is weaker by construction: it uses existing
+same-order library occupants rather than a pole/zero program.
+Even under that restriction the four IIR tasks remain
+reference-discordant.
+
+Suite~S is the complementary control, not a second leaderboard.
+On those eight unique-map identities the canonical occupant is
+effectively the specification in the chosen representation,
+$G_r>0$ on $8/8$ tasks, and a reference-distance test is exact on
+the evaluated universe.
+The contrast is the claim: reference matching is the right oracle
+when $S_t$ is effectively singleton, and it is not an exact
+oracle when $S_t$ is a non-unique mask on this universe.
+A finite catalog of library references remains a catalog of
+realizations.
+It does not become $\mathcal{V}_t$ by taking a min-distance
+union; $K$ equal to the full independently verified library set
+still fails exact recovery ($0/20$).
+The evaluated invalids include $160/160$ independently verified
+near-boundary mutants, so the nearest-invalid side of $G_r$ is
+not an easy far-field mutant.
+What $G_r\le 0$ licenses is narrower than a global impossibility
+theorem.
+It is a certificate on the independently labeled
+$\mathcal{U}_t$ actually scored: no scalar threshold on the
+chosen $d$ recovers $S_t$ there.
+It does not prove that every DSP mask is non-separable, that
+every generated implementation is valid, or that a different
+distance or a different specification predicate would fail.
+The task-cluster bootstrap CI $[0.871,0.925]$ is likewise a
+statement about these $20$ tasks, not about DSP evaluation in
+general.
+The four flips sit on tight \texttt{firwin2} band edges; they
+are not random-valid occupants and they are not recycled as
+mechanism invalids.
 
 \section{Conclusion}
 \label{sec:conc}
 
-When a DSP specification defines a feasible set rather than a single
-realization, the correctness test used here is membership in that set.
-Reference matching remains useful as a realization diagnostic and
-remains appropriate for singleton specifications.
+When a DSP specification defines a feasible set, a scalar
+reference-distance test is an exact correctness oracle on an
+evaluated universe if and only if the reference-separability gap is
+positive.
+On the independently verified Suite~N universe that gap is
+non-positive for coefficient distance on every task, every library
+reference, and every tested finite $K$; same-order feasible-set
+probing does not remove the mismatch.
+Reference matching remains the right test for effectively singleton
+specifications.
 
-\vspace{4pt}
+\clearpage
 \noindent\textbf{Compliance with ethical standards.}
 No funding was received for conducting this study.
 The authors have no relevant financial or nonfinancial interests

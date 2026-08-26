@@ -1,3 +1,5 @@
+> **ARCHIVED historical record.** These numbers are not the ICASSP 2027 final results. See the repository root `README.md`.
+
 # PHASE 3C — Final Scientific Red-Team and Claim Audit
 
 **Manuscript:** `manuscript/w4/paper.tex`  

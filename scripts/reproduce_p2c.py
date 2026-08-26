@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-"""Reproduce RQ3 (P2C): tighter low-pass mask, same-order N=57 occupants.
+"""HISTORICAL Phase-2 helper. Not the ICASSP 2027 experiment.
 
+Authoritative reproduction: python -m experiments.icassp_10of10.run_all
+
+Earlier P2C reconstruction: tighter low-pass mask, same-order N=57 occupants.
 Frozen reconstruction only. No new models or generations.
 Design parameters are those that produced the published N=57 pair.
 """

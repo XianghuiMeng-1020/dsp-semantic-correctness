@@ -5,7 +5,7 @@
   "scipy": "1.15.3",
   "seed": 20260826,
   "verifier": "independent_spec_verifier/1.0",
-  "elapsed_s": 944.9154484272003,
+  "elapsed_s": 1015.1724271774292,
   "cwd": "F:\\ICASSP\\project_a_public_release",
   "hashes": {
     "suite_n": "d3fa49ff14f808b733a284b4281e3f574399b5a41282179d3ecbb66b8d3750c3",

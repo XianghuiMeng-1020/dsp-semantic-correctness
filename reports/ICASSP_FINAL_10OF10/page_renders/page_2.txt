@@ -1,0 +1,119 @@
+A reference oracle declares “correct” iff h ∈Aτ,r. A specifi-
+cation oracle declares “correct” iff h ∈Vt.
+Soundness is Aτ,r ⊆Vt (no invalid is accepted). Com-
+pleteness is Vt ⊆Aτ,r (no valid is rejected). Exactness is
+Aτ,r = Vt.
+All measurements below are restricted to an explicit finite
+evaluation universe Ut (the independently verified candidates
+for task t). Define
+DV (r) =
+sup
+h∈Vt∩Ut
+d(h, hr),
+DI(r) =
+inf
+h∈Ut\Vt d(h, hr).
+(3)
+A scalar threshold classifies every point of Ut exactly iff there
+exists τ with DV (r) ≤τ < DI(r). If DV (r) ≥DI(r), no
+threshold on d(·, hr) recovers specification membership on
+that universe. The reference-separability gap
+Gr = DI(r) −DV (r)
+(4)
+is therefore the diagnostic: Gr > 0 permits exact threshold
+separation on Ut; Gr ≤0 is an empirical non-separability cer-
+tificate on that universe, not a global impossibility theorem.
+A pair with St(hinv) = 0, St(hval) = 1, and d(hinv, hr) <
+d(hval, hr) is an inversion witness and implies Gr ≤0.
+Proposition 1 (finite-universe exactness). On a finite Ut, a
+scalar threshold on d(·, hr) classifies every evaluated valid
+and invalid exactly iff DV (r) ≤τ < DI(r) for some τ.
+If Gr ≤0, no such τ exists on that universe. The statement
+is evaluation geometry; it does not certify extrema over all
+filters.
+For a finite reference set RK write
+dK(h) = min
+r∈RK d(h, hr),
+Aτ,RK = {h : dK(h) ≤τ}.
+(5)
+The same gap applies to dK.
+Two distances are used.
+The confirmatory coefficient
+distance dcoeff is a relative ℓ2 after canonicalization (FIR:
+trailing-zero and Type-I rules; IIR: a0 = 1).
+Min-length
+truncation of unequal orders is retained only as a historical
+baseline. The response distance dresp is the RMSE of |H| on
+the constrained pass and stop bands. A descriptive operating
+point τR = 0.05 is reported for comparability; it is not the
+scientific claim.
+Fig. 1 states the geometry: the τ-ball is a realization
+neighborhood; Vt is the contract.
+3. INDEPENDENT VERIFICATION AND
+PROTOCOL
+Construction uses a 4096-point freqz search checker. That
+checker is computationally convenient and is not the final
+labeler.
+Final VALID/INVALID status is assigned by an
+independent verifier that does not call the search checker:
+Nf = 131072 magnitude samples, local extremum refine-
+ment on each constrained band, second-order-section evalua-
+tion for IIR, a0 = 1 normalization, and the registered residual
+floors (FIR 10−6, IIR 10−3) and pole-radius bound 0.999.
+Dense sampling is a numerical certificate, not a continuous-
+frequency proof. Four previously admitted library firwin2
+occupants on tight low-pass and high-pass masks failed the
+independent verifier at a constrained-band edge (normalized
+residual up to 1.6 × 10−2) and were relabeled invalid. The
+construction checker had reported a zero residual on the same
+filters, which is why final labels cannot remain self-certified
+by the 4096-point search.
+Two suites are scored (Table 1). Suite S comprises eight
+singleton identities (integer delay, circular and linear convo-
+lution conventions, lag-0 energy, alias fold, frequency rescale,
+Nyquist frequency, and δ[n −D]). Suite N comprises 20
+instances from one magnitude-mask family: FIR low-pass,
+high-pass, band-pass, and band-stop at fs = 8 and 16 kHz,
+each loose and tight (16 FIR), plus IIR low-pass and high-
+pass at 8 kHz (4 IIR). Tight masks are mechanical (pass rip-
+ple and stop ceiling ×1/5; stop edge moved halfway toward
+the facing pass). Canonical hr is the shortest-odd Hamming
+firwin (FIR) or the lowest-order butter (IIR) that meets
+the contract.
+Suite N candidates include classical library designers,
+first-principles FIR windowed-sinc and frequency sampling
+(numpy only) [5, 7], and random-valid search that admits on
+the search checker only. After independent verification the
+valid count is 412 (88 library, 24 first-principles, 300 random-
+valid). Invalids are 144 mechanism mutants plus a second,
+predetermined near-boundary set (pass-drop and stop-lift
+at fixed ε ∈{0.002, 0.005, 0.010, 0.020}), independently
+verified invalid (160/160 boundary mutants). The primary
+statistical unit is the specification.
+Occupant-pooled rates
+are secondary and are not rates over DSP implementations at
+large.
+For every eligible non-unique FIR task we hold fixed the
+reference order, length, Type-I symmetry, gain convention,
+and sampling rate. A length-2M + 1 Type-I filter has ampli-
+tude A(ω) = θM + 2 PM
+k=1 θM−k cos(kω) and is probed by
+the linear program max q⊤θ subject to the pass/stop inequal-
+ities on a 512-point-per-band constraint grid, with a prede-
+termined interior margin so vertices survive independent re-
+verification. Directions (basis, frozen-seed random, tap com-
+binations, library differences) were chosen before observing
+disagreement.
+Vertices are independently re-verified.
+IIR
+same-order evidence uses independently verified library oc-
+cupants of equal (b, a) length.
+A generated-code arm on the four original loose 8 kHz
+masks is an existence witness only: no new generations, no
+model ranking, and no pooling into constructed n.
+4. RESULTS
+Task-level reference disagreement.
+On Suite S the de-
+scriptive operating point and the gap agree:
+every inde-
+pendently verified valid matches the canonical output and

@@ -1,3 +1,5 @@
+> **ARCHIVED historical record.** These numbers are not the ICASSP 2027 final results. See the repository root `README.md` and `python -m experiments.icassp_10of10.run_all`.
+
 # PHASE 2A — Registry and specification checker
 
 Infrastructure validation only. No Suite N occupants generated. No LLM

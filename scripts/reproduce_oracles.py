@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-"""Reproduce Table III: Oracles A/B/C versus tone consistency check T.
+"""HISTORICAL Phase-2 helper. Not the ICASSP 2027 experiment.
 
+Authoritative reproduction: python -m experiments.icassp_10of10.run_all
+
+Reproduce an earlier Table III (Oracles A/B/C vs tone check T).
 Frozen Arm N artifacts only. No new models or generations.
 
 Oracle A: coefficient concordance with the canonical occupant (tau_R=0.05).

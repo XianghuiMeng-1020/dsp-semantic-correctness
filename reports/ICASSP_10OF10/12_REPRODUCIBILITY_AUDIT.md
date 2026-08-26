@@ -14,7 +14,7 @@ python -m experiments.icassp_10of10.run_all
 - scipy: 1.15.3
 - seed: 20260826
 - verifier: independent_spec_verifier/1.0
-- elapsed_s: 944.9154484272003
+- elapsed_s: 1015.1724271774292
 
 ## Dataset hashes
 
