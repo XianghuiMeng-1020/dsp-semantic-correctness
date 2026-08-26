@@ -1,0 +1,1370 @@
+{
+  "rows": [
+    {
+      "task_id": "crosscorrelation_integer_delay",
+      "kind": "canonical",
+      "_cid": "suite_s/crosscorrelation_integer_delay/canonical",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "crosscorrelation_integer_delay"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "crosscorrelation_integer_delay",
+      "kind": "alternate",
+      "_cid": "suite_s/crosscorrelation_integer_delay/alternate",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "crosscorrelation_integer_delay"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "crosscorrelation_integer_delay",
+      "kind": "off_by_one_lag",
+      "_cid": "suite_s/crosscorrelation_integer_delay/off_by_one_lag",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.0,
+        "d_resp_band": 1.0,
+        "d_coeff_historical": 1.0
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "crosscorrelation_integer_delay"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "crosscorrelation_integer_delay",
+      "kind": "sign_flipped_lag",
+      "_cid": "suite_s/crosscorrelation_integer_delay/sign_flipped_lag",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.0,
+        "d_resp_band": 1.0,
+        "d_coeff_historical": 1.0
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "crosscorrelation_integer_delay"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "circular_convolution_theorem",
+      "kind": "canonical",
+      "_cid": "suite_s/circular_convolution_theorem/canonical",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "circular_convolution_theorem"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "circular_convolution_theorem",
+      "kind": "alternate",
+      "_cid": "suite_s/circular_convolution_theorem/alternate",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 6.384866415843883e-16,
+        "d_resp_band": 6.384866415843883e-16,
+        "d_coeff_historical": 6.384866415843883e-16
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 6.384866415843883e-16,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "circular_convolution_theorem"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "circular_convolution_theorem",
+      "kind": "linear_not_circular",
+      "_cid": "suite_s/circular_convolution_theorem/linear_not_circular",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 0.759840355637796,
+        "d_resp_band": 0.759840355637796,
+        "d_coeff_historical": 0.759840355637796
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.759840355637796,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "circular_convolution_theorem"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "circular_convolution_theorem",
+      "kind": "conjugate_product",
+      "_cid": "suite_s/circular_convolution_theorem/conjugate_product",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.382809612907313,
+        "d_resp_band": 1.382809612907313,
+        "d_coeff_historical": 1.382809612907313
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.382809612907313,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "circular_convolution_theorem"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "linear_convolution_zero_padded_dft",
+      "kind": "canonical",
+      "_cid": "suite_s/linear_convolution_zero_padded_dft/canonical",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 2.6139062371307177e-16,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "linear_convolution_zero_padded_dft"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "linear_convolution_zero_padded_dft",
+      "kind": "alternate",
+      "_cid": "suite_s/linear_convolution_zero_padded_dft/alternate",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 2.613906237130717e-16,
+        "d_resp_band": 2.613906237130717e-16,
+        "d_coeff_historical": 2.613906237130717e-16
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "linear_convolution_zero_padded_dft"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "linear_convolution_zero_padded_dft",
+      "kind": "missing_pad",
+      "_cid": "suite_s/linear_convolution_zero_padded_dft/missing_pad",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.0,
+        "d_resp_band": 1.0,
+        "d_coeff_historical": 1.0
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "linear_convolution_zero_padded_dft"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "linear_convolution_zero_padded_dft",
+      "kind": "circular_wrap",
+      "_cid": "suite_s/linear_convolution_zero_padded_dft/circular_wrap",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.0,
+        "d_resp_band": 1.0,
+        "d_coeff_historical": 1.0
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "linear_convolution_zero_padded_dft"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "autocorrelation_lag0_energy",
+      "kind": "canonical",
+      "_cid": "suite_s/autocorrelation_lag0_energy/canonical",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.2070938933365834e-16,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "autocorrelation_lag0_energy"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "autocorrelation_lag0_energy",
+      "kind": "lag0_is_mean",
+      "_cid": "suite_s/autocorrelation_lag0_energy/lag0_is_mean",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 0.7487100415003897,
+        "d_resp_band": 0.7487100415003897,
+        "d_coeff_historical": 0.7487100415003897
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0036845881027345,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "autocorrelation_lag0_energy"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "autocorrelation_lag0_energy",
+      "kind": "lag0_is_zero",
+      "_cid": "suite_s/autocorrelation_lag0_energy/lag0_is_zero",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 0.745537221393456,
+        "d_resp_band": 0.745537221393456,
+        "d_coeff_historical": 0.745537221393456
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "autocorrelation_lag0_energy"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "decimation_alias_frequency",
+      "kind": "canonical",
+      "_cid": "suite_s/decimation_alias_frequency/canonical",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "decimation_alias_frequency"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "decimation_alias_frequency",
+      "kind": "no_fold",
+      "_cid": "suite_s/decimation_alias_frequency/no_fold",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 2.5,
+        "d_resp_band": 2.5,
+        "d_coeff_historical": 2.5
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 2.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "decimation_alias_frequency"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "decimation_alias_frequency",
+      "kind": "fold_old_nyquist",
+      "_cid": "suite_s/decimation_alias_frequency/fold_old_nyquist",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 2.5,
+        "d_resp_band": 2.5,
+        "d_coeff_historical": 2.5
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 2.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "decimation_alias_frequency"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "digital_frequency_rescale",
+      "kind": "canonical",
+      "_cid": "suite_s/digital_frequency_rescale/canonical",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "digital_frequency_rescale"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "digital_frequency_rescale",
+      "kind": "forget_rescale",
+      "_cid": "suite_s/digital_frequency_rescale/forget_rescale",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.0,
+        "d_resp_band": 1.0,
+        "d_coeff_historical": 1.0
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.125,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "digital_frequency_rescale"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "digital_frequency_rescale",
+      "kind": "inverted_ratio",
+      "_cid": "suite_s/digital_frequency_rescale/inverted_ratio",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 3.0,
+        "d_resp_band": 3.0,
+        "d_coeff_historical": 3.0
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.375,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "digital_frequency_rescale"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "nyquist_hz",
+      "kind": "canonical",
+      "_cid": "suite_s/nyquist_hz/canonical",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "nyquist_hz"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "nyquist_hz",
+      "kind": "return_one_hz",
+      "_cid": "suite_s/nyquist_hz/return_one_hz",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.0,
+        "d_resp_band": 1.0,
+        "d_coeff_historical": 1.0
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "nyquist_hz"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "nyquist_hz",
+      "kind": "return_fs",
+      "_cid": "suite_s/nyquist_hz/return_fs",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.0,
+        "d_resp_band": 1.0,
+        "d_coeff_historical": 1.0
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "nyquist_hz"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "integer_delay_impulse",
+      "kind": "canonical",
+      "_cid": "suite_s/integer_delay_impulse/canonical",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "integer_delay_impulse"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "integer_delay_impulse",
+      "kind": "alternate",
+      "_cid": "suite_s/integer_delay_impulse/alternate",
+      "_indep_ok": 1,
+      "_db": {
+        "d_coeff_mag_equiv": 0.0,
+        "d_resp_band": 0.0,
+        "d_coeff_historical": 0.0
+      },
+      "independent": {
+        "ok": 1,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 0.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "integer_delay_impulse"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "valid"
+    },
+    {
+      "task_id": "integer_delay_impulse",
+      "kind": "impulse_at_zero",
+      "_cid": "suite_s/integer_delay_impulse/impulse_at_zero",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.4142135623730951,
+        "d_resp_band": 1.4142135623730951,
+        "d_coeff_historical": 1.4142135623730951
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "integer_delay_impulse"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    },
+    {
+      "task_id": "integer_delay_impulse",
+      "kind": "impulse_at_D_plus_1",
+      "_cid": "suite_s/integer_delay_impulse/impulse_at_D_plus_1",
+      "_indep_ok": 0,
+      "_db": {
+        "d_coeff_mag_equiv": 1.4142135623730951,
+        "d_resp_band": 1.4142135623730951,
+        "d_coeff_historical": 1.4142135623730951
+      },
+      "independent": {
+        "ok": 0,
+        "family": "singleton_identity",
+        "verifier": "independent_spec_verifier/1.0",
+        "freqz_n": 0,
+        "refined": 0,
+        "high_precision": 0,
+        "passband_error": 0.0,
+        "stopband_error": 0.0,
+        "stability_error": 0.0,
+        "other_error": 1.0,
+        "worst_pass_abs": 0.0,
+        "worst_stop_abs": 0.0,
+        "f_worst_pass": null,
+        "f_worst_stop": null,
+        "max_pole_radius": null,
+        "stability_margin": null,
+        "finite": 1,
+        "numerical_failure": null,
+        "near_boundary": 0,
+        "normalization": {
+          "kind": "singleton",
+          "task_id": "integer_delay_impulse"
+        },
+        "bands": [],
+        "notes": []
+      },
+      "role": "invalid"
+    }
+  ],
+  "metrics": [
+    {
+      "task_id": "crosscorrelation_integer_delay",
+      "n_valid": 2,
+      "n_invalid": 2,
+      "coeff": {
+        "best": {
+          "n_valid": 2,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0,
+          "tau": 0.0,
+          "balanced_accuracy": 1.0
+        },
+        "zero_frr_zero_far": 1,
+        "D_V": 0.0,
+        "D_I": 1.0,
+        "G_r": 1.0,
+        "exact_threshold_exists": 1,
+        "farthest_valid": "suite_s/crosscorrelation_integer_delay/canonical",
+        "nearest_invalid": "suite_s/crosscorrelation_integer_delay/off_by_one_lag",
+        "inversion": null,
+        "descriptive_tau": {
+          "tau": 0.05,
+          "n_valid": 2,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "circular_convolution_theorem",
+      "n_valid": 2,
+      "n_invalid": 2,
+      "coeff": {
+        "best": {
+          "n_valid": 2,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0,
+          "tau": 6.384866415843883e-16,
+          "balanced_accuracy": 1.0
+        },
+        "zero_frr_zero_far": 1,
+        "D_V": 6.384866415843883e-16,
+        "D_I": 0.759840355637796,
+        "G_r": 0.7598403556377953,
+        "exact_threshold_exists": 1,
+        "farthest_valid": "suite_s/circular_convolution_theorem/alternate",
+        "nearest_invalid": "suite_s/circular_convolution_theorem/linear_not_circular",
+        "inversion": null,
+        "descriptive_tau": {
+          "tau": 0.05,
+          "n_valid": 2,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "linear_convolution_zero_padded_dft",
+      "n_valid": 2,
+      "n_invalid": 2,
+      "coeff": {
+        "best": {
+          "n_valid": 2,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0,
+          "tau": 2.613906237130717e-16,
+          "balanced_accuracy": 1.0
+        },
+        "zero_frr_zero_far": 1,
+        "D_V": 2.613906237130717e-16,
+        "D_I": 1.0,
+        "G_r": 0.9999999999999998,
+        "exact_threshold_exists": 1,
+        "farthest_valid": "suite_s/linear_convolution_zero_padded_dft/alternate",
+        "nearest_invalid": "suite_s/linear_convolution_zero_padded_dft/missing_pad",
+        "inversion": null,
+        "descriptive_tau": {
+          "tau": 0.05,
+          "n_valid": 2,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "autocorrelation_lag0_energy",
+      "n_valid": 1,
+      "n_invalid": 2,
+      "coeff": {
+        "best": {
+          "n_valid": 1,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0,
+          "tau": 0.0,
+          "balanced_accuracy": 1.0
+        },
+        "zero_frr_zero_far": 1,
+        "D_V": 0.0,
+        "D_I": 0.745537221393456,
+        "G_r": 0.745537221393456,
+        "exact_threshold_exists": 1,
+        "farthest_valid": "suite_s/autocorrelation_lag0_energy/canonical",
+        "nearest_invalid": "suite_s/autocorrelation_lag0_energy/lag0_is_zero",
+        "inversion": null,
+        "descriptive_tau": {
+          "tau": 0.05,
+          "n_valid": 1,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "decimation_alias_frequency",
+      "n_valid": 1,
+      "n_invalid": 2,
+      "coeff": {
+        "best": {
+          "n_valid": 1,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0,
+          "tau": 0.0,
+          "balanced_accuracy": 1.0
+        },
+        "zero_frr_zero_far": 1,
+        "D_V": 0.0,
+        "D_I": 2.5,
+        "G_r": 2.5,
+        "exact_threshold_exists": 1,
+        "farthest_valid": "suite_s/decimation_alias_frequency/canonical",
+        "nearest_invalid": "suite_s/decimation_alias_frequency/no_fold",
+        "inversion": null,
+        "descriptive_tau": {
+          "tau": 0.05,
+          "n_valid": 1,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "digital_frequency_rescale",
+      "n_valid": 1,
+      "n_invalid": 2,
+      "coeff": {
+        "best": {
+          "n_valid": 1,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0,
+          "tau": 0.0,
+          "balanced_accuracy": 1.0
+        },
+        "zero_frr_zero_far": 1,
+        "D_V": 0.0,
+        "D_I": 1.0,
+        "G_r": 1.0,
+        "exact_threshold_exists": 1,
+        "farthest_valid": "suite_s/digital_frequency_rescale/canonical",
+        "nearest_invalid": "suite_s/digital_frequency_rescale/forget_rescale",
+        "inversion": null,
+        "descriptive_tau": {
+          "tau": 0.05,
+          "n_valid": 1,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "nyquist_hz",
+      "n_valid": 1,
+      "n_invalid": 2,
+      "coeff": {
+        "best": {
+          "n_valid": 1,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0,
+          "tau": 0.0,
+          "balanced_accuracy": 1.0
+        },
+        "zero_frr_zero_far": 1,
+        "D_V": 0.0,
+        "D_I": 1.0,
+        "G_r": 1.0,
+        "exact_threshold_exists": 1,
+        "farthest_valid": "suite_s/nyquist_hz/canonical",
+        "nearest_invalid": "suite_s/nyquist_hz/return_one_hz",
+        "inversion": null,
+        "descriptive_tau": {
+          "tau": 0.05,
+          "n_valid": 1,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "integer_delay_impulse",
+      "n_valid": 2,
+      "n_invalid": 2,
+      "coeff": {
+        "best": {
+          "n_valid": 2,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0,
+          "tau": 0.0,
+          "balanced_accuracy": 1.0
+        },
+        "zero_frr_zero_far": 1,
+        "D_V": 0.0,
+        "D_I": 1.4142135623730951,
+        "G_r": 1.4142135623730951,
+        "exact_threshold_exists": 1,
+        "farthest_valid": "suite_s/integer_delay_impulse/canonical",
+        "nearest_invalid": "suite_s/integer_delay_impulse/impulse_at_zero",
+        "inversion": null,
+        "descriptive_tau": {
+          "tau": 0.05,
+          "n_valid": 2,
+          "n_invalid": 2,
+          "frr_n": 0,
+          "far_n": 0,
+          "frr": 0.0,
+          "far": 0.0
+        }
+      }
+    }
+  ]
+}
