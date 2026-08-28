@@ -10,6 +10,27 @@ def _load(name: str) -> dict:
     return json.loads((OUT_DIR / name).read_text(encoding="utf-8"))
 
 
+def _limitation(cert: dict) -> str:
+    stored = cert.get("limitation") or ""
+    rows = cert.get("rows") or []
+    probes = [r for r in rows if r.get("role") == "probe_valid"]
+    n_probe_bernstein = sum(1 for r in probes if r.get("method") == "power_polynomial_bernstein")
+    n_probe_valid_sign = sum(
+        1
+        for r in probes
+        if r.get("phase2a_status") == "CERTIFIED_VALID" and r.get("reason") == "all_bands_polynomial_sign"
+    )
+    extra = (
+        " Frozen confirmatory probes in this corpus all have n_taps≤80 and all "
+        f"{n_probe_bernstein}/{len(probes)} probe rows are Bernstein certificates "
+        f"({n_probe_valid_sign} with reason all_bands_polynomial_sign). "
+        "The runner's n_taps>80 witness-only cap was not used on any frozen probe. "
+        "CERTIFIED_INVALID rows use a conservative prime-grid witness with a rounding "
+        "envelope; that is an invalidity certificate, not a validity certificate."
+    )
+    return stored + extra
+
+
 def write_numeric_semantics() -> None:
     text = """# PHASE 2A — Numeric semantics
 
@@ -108,6 +129,10 @@ A corrupted registry would mislead every procedure.
 **Why not WEAK:** decision procedure is a different mathematical object
 (polynomial sign on \(x=\\cos\\omega\\)), different arithmetic (exact rationals),
 and a different implementation file with no shared pass/fail function.
+
+The secondary extremum cross-check imports `power_polynomial` from the
+Phase-2A certifier. That checks stationary-point consistency of the same
+\(P(x)\); it is not a third construction of the autocorrelation.
 """
     (REPORT_DIR / "PHASE2A_INDEPENDENCE_AUDIT.md").write_text(text, encoding="utf-8")
 
@@ -127,7 +152,7 @@ def write_fir(cert: dict) -> None:
         "",
         f"Certificate type: `{cert.get('certificate_type')}`",
         "",
-        cert.get("limitation", ""),
+        _limitation(cert),
         "",
         "## Existing-valid FIR (manuscript constructed; unique occupant files)",
         "",
@@ -192,6 +217,22 @@ def write_fir(cert: dict) -> None:
         "",
         "This does **not** replace the frozen universe by the certified subset.",
         "",
+        "## Certified-subset implication for finite-universe separability",
+        "",
+        "Removing a valid occupant can only decrease \(D_V\) and therefore can only",
+        "increase \(G=D_I-D_V\). A certified-valid subset must not be treated as a",
+        "substitute universe for the existing non-separability claim: \(G\) on a",
+        "subset can become positive even when \(G\) on \(\\mathcal{U}_t\) is negative.",
+        "Phase 2A does **not** recompute \(G\) (no \(K^*\), no metric sweep).",
+        "The frozen gap still uses the full labeled universe, including the two",
+        "UNDECIDED constructed occupants, which remain frozen VALID (not contradicted).",
+        "Those two occupants are the longest frequency-sampling tight bandstops;",
+        "they are not the farthest valids in the frozen reference-choice tables.",
+        "Each affected task still has 20 other constructed occupants with Bernstein",
+        "certificates, plus confirmatory probes. The central finite-universe gap is",
+        "therefore not uniquely supported by the two uncertified files, but the",
+        "manuscript universe is not replaced.",
+        "",
     ]
     (REPORT_DIR / "PHASE2A_FIR_CERTIFICATION.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -229,6 +270,14 @@ def write_undecided(cert: dict) -> None:
         "Implication for the finite-universe gap: Phase-2A does not relabel occupants.",
         "A certified-valid *subset* must not silently replace \(\\mathcal{U}_t\\).",
         "",
+        "The two UNDECIDED constructed occupants are the longest frequency-sampling",
+        "tight bandstops (`n_taps=267`). Bernstein subdivision hit the node/time budget.",
+        "They remain frozen VALID. They are not the farthest valids in the frozen",
+        "reference-choice tables. Each of `fir_bs_tight_8k` and `fir_bs_tight_16k`",
+        "still has 20/21 constructed occupants with Bernstein `CERTIFIED_VALID`.",
+        "This does not materially threaten the existing finite-universe gap, but it",
+        "also does not license replacing those tasks' \(\\mathcal{U}_t\\) by the certified subset.",
+        "",
     ]
     (REPORT_DIR / "PHASE2A_UNDECIDED_DIAGNOSIS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -252,15 +301,129 @@ def write_extremum(xcheck: dict) -> None:
     (REPORT_DIR / "PHASE2A_EXTREMUM_CROSSCHECK.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def write_constraint_transformation() -> None:
+    text = """# PHASE 2A — Constraint transformation
+
+Frozen Suite N FIR tasks are magnitude-mask specifications.
+`phase_requirement` is `none` and `order_constraint` is `free` on every FIR
+task, so Phase 2A adds no extra polynomial conditions beyond the registered
+pass and stop bands.
+
+## Frozen \(S_t\) (exact existing semantics)
+
+Each registered band is a closed frequency interval \([f_0,f_1]\) with a
+closed magnitude interval \([\\mathrm{lo},\\mathrm{hi}]\). The old verifier
+and the construction checker both use inclusive endpoints
+(`w >= f0` and `w <= f1`). Phase 2A uses the same closed interval.
+
+Floor expansion is copied from the frozen residual contract:
+
+\\[
+\\mathrm{span}=\\max(\\mathrm{hi}-\\mathrm{lo},10^{-6}),\\quad
+L=\\mathrm{lo}-\\mathrm{floor}\\cdot\\mathrm{span},\\quad
+U=\\mathrm{hi}+\\mathrm{floor}\\cdot\\mathrm{span}.
+\\]
+
+The constants `1e-6` and `residual_floor` are the JSON/binary64 values, not
+re-parsed decimal rationals. Equality on the expanded wall remains valid
+(`residual <= floor`).
+
+Transition bands (frequencies listed in neither pass nor stop) are
+unconstrained and are not certified.
+
+## Polynomial-sign form
+
+Let \(P(x)=|H(e^{j\\omega})|^2\) with \(x=\\cos\\omega\).
+
+| Frozen condition | After floor | Polynomial-sign condition | Vacuous case |
+|---|---|---|---|
+| \\(|H|\\le \\mathrm{hi}\\) | \\(|H|\\le U\\) | \(Q_U(x)=P(x)-U^2\\le 0\\) on the \(x\\)-image of the band | never (\(U>0\\) on all Suite N FIR bands) |
+| \\(|H|\\ge \\mathrm{lo}\\) | \\(|H|\\ge L\\) | \(Q_L(x)=P(x)-L^2\\ge 0\\) | if \(L\\le 0\\), omit \(Q_L\\) (true for every real \(H\\)) |
+
+Stop bands have `lo=0`, so after a non-negative floor expansion \(L\\le 0\)
+and the lower constraint is vacuous. Pass bands have `lo` near 1, so both
+\(Q_U\\le 0\) and \(Q_L\\ge 0\\) are enforced.
+
+The map \(x=\\cos\\omega\) is monotonic on \(\\omega\\in[0,\\pi]\). The
+continuous band in \(\\omega\\) becomes a continuous interval in \(x\),
+enclosed conservatively when \(\\cos(2\\pi f/f_s)\) is not a dyadic rational.
+
+Tangential roots of \(Q_U=0\) or \(Q_L=0\) with no sign change into the
+forbidden half-line remain valid. A true crossing is `CERTIFIED_INVALID`.
+Unresolved mixed Bernstein coefficients are `UNDECIDED`.
+"""
+    (REPORT_DIR / "PHASE2A_CONSTRAINT_TRANSFORMATION.md").write_text(text, encoding="utf-8")
+
+
+def write_attack_d(cert: dict) -> None:
+    ev = cert["existing_valid_fir_constructed"]
+    n_contra = len(cert.get("contradictions_valid_to_invalid") or [])
+    tasks = cert.get("task_coverage_constructed") or []
+    n100 = sum(1 for r in tasks if r.get("coverage") == 1)
+    n95 = sum(1 for r in tasks if (r.get("coverage") or 0) >= 0.95)
+    text = f"""# PHASE 2A — Attack D reaudit
+
+Attack D is the claim that frozen FIR valid/invalid labels are only
+grid-local and might flip under a continuous-band certificate.
+
+## Facts after Phase 2A
+
+* Valid→invalid contradictions: {n_contra}
+* Manuscript constructed FIR valids: {ev['total_unique_occupants']} unique occupants;
+  {ev['CERTIFIED_VALID']} `CERTIFIED_VALID`; {ev['UNDECIDED']} `UNDECIDED`;
+  {ev['CERTIFIED_INVALID']} `CERTIFIED_INVALID`
+* FIR headline tasks with 100% constructed-valid certification: {n100}/{len(tasks)}
+* FIR headline tasks with ≥95%: {n95}/{len(tasks)}
+* Mechanism-invalid FIR: all tested `CERTIFIED_INVALID`
+* Boundary-invalid FIR: all tested `CERTIFIED_INVALID`
+* Phase-2A certifier independence: `PARTIAL_INDEPENDENCE`
+* Remaining UNDECIDED cause: Bernstein resource limit on two \(n=267\) tight bandstops
+
+## Classification
+
+```text
+ATTACK_D_PARTIALLY_CLOSED
+```
+
+`ATTACK_D_STRONGLY_CLOSED` is not used.
+
+Reasons to close partially rather than claim a full close:
+
+1. Independence is `PARTIAL_INDEPENDENCE` because every method reads the same
+   registered \(S_t\) and the same `residual_floor` contract.
+2. Two manuscript constructed FIR valids remain `UNDECIDED`. The cause is
+   a resource limit, not a suspected violation, but they are not certified.
+3. `CERTIFIED_INVALID` on mechanism/boundary FIR uses a conservative
+   prime-grid witness. That is a valid invalidity certificate, not the
+   Bernstein sign certificate used for validity.
+4. Cosine band endpoints use a high-precision outward enclosure, not a
+   formal machine-interval cosine.
+
+Reasons it is not left `ATTACK_D_OPEN`:
+
+* Zero valid→invalid contradictions after an independent polynomial-sign method.
+* 334/336 constructed FIR valids, and all 16 FIR headline tasks at ≥95%,
+  now have continuous Bernstein certificates on the frozen \(S_t\\).
+* The two UNDECIDED occupants have a specific, non-threatening explanation
+  and are not the farthest valids supporting the frozen gap tables.
+
+Phase 2A does not edit the manuscript. IIR certification was not run.
+"""
+    (REPORT_DIR / "PHASE2A_ATTACK_D.md").write_text(text, encoding="utf-8")
+
+
 def write_all_reports() -> None:
     write_numeric_semantics()
     write_guardrails()
     write_independence()
+    write_constraint_transformation()
     cert_p = OUT_DIR / "fir_power_polynomial_certification.json"
     if cert_p.exists():
         cert = json.loads(cert_p.read_text(encoding="utf-8"))
         write_fir(cert)
         write_undecided(cert)
+        write_attack_d(cert)
     xp = OUT_DIR / "extremum_crosscheck.json"
     if xp.exists():
         write_extremum(json.loads(xp.read_text(encoding="utf-8")))
+

@@ -29,3 +29,7 @@ A corrupted registry would mislead every procedure.
 **Why not WEAK:** decision procedure is a different mathematical object
 (polynomial sign on \(x=\cos\omega\)), different arithmetic (exact rationals),
 and a different implementation file with no shared pass/fail function.
+
+The secondary extremum cross-check imports `power_polynomial` from the
+Phase-2A certifier. That checks stationary-point consistency of the same
+\(P(x)\); it is not a third construction of the autocorrelation.

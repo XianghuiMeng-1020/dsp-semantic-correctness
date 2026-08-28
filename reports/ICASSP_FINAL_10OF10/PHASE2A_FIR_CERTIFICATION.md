@@ -7,7 +7,7 @@ Arithmetic: `exact IEEE-754 binary64 rationals for taps; JSON spec as binary64; 
 
 Certificate type: `RIGOROUS_POLYNOMIAL_SIGN`
 
-Frequency endpoints use an outward cosine enclosure. Probe occupants with n_taps>80 use witness-only (resource). Manuscript unique FIR valids are the 336 constructed FIR files.
+Frequency endpoints use an outward cosine enclosure. Probe occupants with n_taps>80 use witness-only (resource). Manuscript unique FIR valids are the 336 constructed FIR files. Frozen confirmatory probes in this corpus all have n_taps≤80 and all 1260/1260 probe rows are Bernstein certificates (1260 with reason all_bands_polynomial_sign). The runner's n_taps>80 witness-only cap was not used on any frozen probe. CERTIFIED_INVALID rows use a conservative prime-grid witness with a rounding envelope; that is an invalidity certificate, not a validity certificate.
 
 ## Existing-valid FIR (manuscript constructed; unique occupant files)
 
@@ -72,4 +72,20 @@ Tasks with 100% constructed-valid certification: 14/16
 Tasks with ≥95%: 16/16
 
 This does **not** replace the frozen universe by the certified subset.
+
+## Certified-subset implication for finite-universe separability
+
+Removing a valid occupant can only decrease \(D_V\) and therefore can only
+increase \(G=D_I-D_V\). A certified-valid subset must not be treated as a
+substitute universe for the existing non-separability claim: \(G\) on a
+subset can become positive even when \(G\) on \(\mathcal{U}_t\) is negative.
+Phase 2A does **not** recompute \(G\) (no \(K^*\), no metric sweep).
+The frozen gap still uses the full labeled universe, including the two
+UNDECIDED constructed occupants, which remain frozen VALID (not contradicted).
+Those two occupants are the longest frequency-sampling tight bandstops;
+they are not the farthest valids in the frozen reference-choice tables.
+Each affected task still has 20 other constructed occupants with Bernstein
+certificates, plus confirmatory probes. The central finite-universe gap is
+therefore not uniquely supported by the two uncertified files, but the
+manuscript universe is not replaced.
 
