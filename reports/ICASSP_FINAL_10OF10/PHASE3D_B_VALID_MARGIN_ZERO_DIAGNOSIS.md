@@ -7,7 +7,7 @@ The challenge is not filtered or modified.
 Classification: `MIXED`
 
 - H_VALID n: 614
-- Stored residual identically 0: 611 / 614 (the other 3 are IIR stopband residuals of order \(10^{-15}\), i.e. binary64 contact with an inclusive mask; still \(\le 10^{-4}\))
+- Stored residual identically 0: 611 / 614 (the other 3 are IIR stopband residuals of order 1e-15, i.e. binary64 contact with an inclusive mask; still <= 1e-4)
 - Stored continuously certified valid: 614 / 614
 - True 4096-point min interior slack: min=-1.8041124150158794e-16, median=7.462357560743306e-09, max=0.024815282142678342
 - Members with non-positive interior slack: 24

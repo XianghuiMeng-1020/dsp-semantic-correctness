@@ -1,7 +1,7 @@
 # PHASE 3D-B — Primary prospective valid-realization transfer
 
 Catalogs and thresholds were frozen before scoring. H_VALID was not used to select
-catalogs or \(\tau\). Coefficient and response are separate. Reference rejection is
+catalogs or tau. Coefficient and response are separate. Reference rejection is
 not evidence of invalidity.
 
 ## Coefficient

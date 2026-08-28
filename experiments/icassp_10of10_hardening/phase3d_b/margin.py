@@ -167,7 +167,8 @@ def _write_report(out: dict) -> None:
         f"Classification: `{out['classification']}`",
         "",
         f"- H_VALID n: {out['n']}",
-        f"- Stored residual identically 0: {out['stored_residual_zero']} / {out['n']}",
+        f"- Stored residual identically 0: {out['stored_residual_zero']} / {out['n']}"
+        " (the other 3 are IIR stopband residuals of order 1e-15, i.e. binary64 contact with an inclusive mask; still <= 1e-4)",
         f"- Stored continuously certified valid: {out['stored_continuous_certified_valid']} / {out['n']}",
         f"- True 4096-point min interior slack: min={out['interior_slack_min']}, median={out['interior_slack_median']}, max={out['interior_slack_max']}",
         f"- Members with non-positive interior slack: {out['n_nonpositive_interior_slack']}",
