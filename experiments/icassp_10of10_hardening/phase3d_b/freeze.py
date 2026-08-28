@@ -190,14 +190,19 @@ def freeze_hierarchy_identities() -> dict:
         oracles = {}
         # canonical K=1
         cpath = canon[tid]["path"]
-        canon_coeff = next(
-            (x for x in p1t["coeff"].get("all_refs") or [] if x.get("ref_id") == cpath),
-            None,
-        )
-        canon_resp = next(
-            (x for x in p1t["resp"].get("all_refs") or [] if x.get("ref_id") == cpath),
-            None,
-        )
+
+        def _canon_ref(metric_rec: dict):
+            refs = metric_rec.get("all_refs") or []
+            hit = next((x for x in refs if x.get("ref_id") == cpath), None)
+            if hit is not None:
+                return hit
+            g = metric_rec.get("canonical_G_frozen")
+            if g is None:
+                return None
+            return next((x for x in refs if x.get("G") == g), None)
+
+        canon_coeff = _canon_ref(p1t["coeff"])
+        canon_resp = _canon_ref(p1t["resp"])
         oracles["canonical_k1"] = {
             "catalog_ids": [cpath],
             "coeff": _threshold_record(
