@@ -3,11 +3,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from experiments.icassp_10of10_hardening.phase3a.ambient_lp import classify_margin, solve_dual, solve_primal
+from experiments.icassp_10of10_hardening.phase3a.ambient_lp import classify_margin, solve_ambient, solve_dual, solve_primal
 def _run(V, I, method="highs"):
-    p = solve_primal(V, I, method=method)
-    d = solve_dual(V, I, method=method)
-    kind = classify_margin(p.get("gamma") if p.get("status") != "INF_SEPARABLE" else "+INF")
+    p, d, kind = solve_ambient(V, I)
     return p, d, kind
 
 

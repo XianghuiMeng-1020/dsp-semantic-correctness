@@ -14,9 +14,10 @@ def decide(coeff: dict, resp: dict, hier: dict, prior: dict) -> dict:
     if nB >= 10 or nC >= 10:
         kstar = "HIGH_VALUE"
         kstar_r = (
-            "A large share of tasks become separable only after leaving the observed-valid set, "
-            "or already at an observed valid. Catalog complexity would then be the remaining "
-            "reference-oracle question. Phase 3A still does not run K*."
+            "Type B is the dominant coefficient outcome: an unrestricted Euclidean center "
+            "(often a halfspace / center at infinity) recovers the frozen labels, but no "
+            "observed valid realization does. The remaining reference-oracle question is "
+            "exactly catalog complexity K* over observed valids. Phase 3A does not run K*."
         )
     elif nA >= 15:
         kstar = "MEDIUM_VALUE"

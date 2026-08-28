@@ -62,7 +62,7 @@ def write_hierarchy(data: dict) -> None:
     lines = [
         "# PHASE 3A — Reference hierarchy",
         "",
-        "Level 1 = frozen canonical \(G_r\). Level 2 = Phase-1 `best_observed_valid_reference` \(G_{\\mathrm{obs}}^\\star\). Level 3 = ambient-center margin \(\\Gamma^{\\mathrm{amb}}\).",
+        r"Level 1 = frozen canonical \(G_r\). Level 2 = Phase-1 `best_observed_valid_reference` \(G_{\mathrm{obs}}^{\star}\). Level 3 = ambient-center margin \(\Gamma^{\mathrm{amb}}\).",
         "",
         "## Coefficient",
         "",

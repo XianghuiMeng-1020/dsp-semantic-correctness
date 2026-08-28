@@ -26,6 +26,40 @@ def _pairs(V: np.ndarray, I: np.ndarray):
     return A, b
 
 
+def _uniform_scale(V: np.ndarray, I: np.ndarray) -> tuple[np.ndarray, np.ndarray, float]:
+    """Isotropic scale so typical coordinate RMS is O(1). Preserves sphere separability and sign(Γ)."""
+    X = np.concatenate([V, I], axis=0)
+    rms = float(np.sqrt(np.mean(X * X))) if X.size else 1.0
+    s = rms if rms > 1e-12 else 1.0
+    return V / s, I / s, s
+
+
+def linear_separable(V: np.ndarray, I: np.ndarray, method: str = "highs") -> dict:
+    """Sufficient test: a halfspace separator implies an unbounded ambient-center margin."""
+    nv, d = V.shape
+    ni = I.shape[0]
+    n = nv * ni
+    A = np.empty((n, d + 1), float)
+    b = np.zeros(n)
+    k = 0
+    for vi in range(nv):
+        diff = I - V[vi]
+        A[k : k + ni, :d] = -diff
+        A[k : k + ni, d] = 1.0
+        k += ni
+    bounds = [(-1.0, 1.0)] * d + [(None, None)]
+    c_obj = np.zeros(d + 1)
+    c_obj[-1] = -1.0
+    res = linprog(c_obj, A_ub=A, b_ub=b, bounds=bounds, method=method)
+    gamma = float(res.x[-1]) if res.success and res.x is not None else None
+    return {
+        "success": bool(res.success),
+        "gamma": gamma,
+        "linearly_separable": bool(gamma is not None and gamma > GAMMA_POS_ABS),
+        "message": str(res.message),
+    }
+
+
 def solve_primal(V: np.ndarray, I: np.ndarray, method: str = "highs") -> dict:
     """max γ  s.t. 2c^T(i-v)+γ <= ||i||^2-||v||^2."""
     if V.size == 0 or I.size == 0:
@@ -120,6 +154,47 @@ def solve_dual(V: np.ndarray, I: np.ndarray, method: str = "highs") -> dict:
         }
     )
     return out
+
+
+def solve_ambient(V: np.ndarray, I: np.ndarray) -> tuple[dict, dict, str]:
+    """Scale-stable primal/dual with linear-separability fallback. Sign(Γ) is the scientific object."""
+    Vs, Is, scale = _uniform_scale(V, I)
+    primal = None
+    dual = None
+    for method in ("highs", "highs-ipm"):
+        p = solve_primal(Vs, Is, method=method)
+        d = solve_dual(Vs, Is, method=method)
+        p["scale"] = scale
+        if p.get("status") == "INF_SEPARABLE" or d.get("status") == "DUAL_INFEASIBLE":
+            p["status"] = "INF_SEPARABLE"
+            p["gamma"] = "+INF"
+            return p, d, "AMBIENT_SEPARABLE"
+        if p.get("status") == "SOLVED" or d.get("status") == "SOLVED":
+            primal, dual = p, d
+            if p.get("status") == "SOLVED" and p.get("c") is not None:
+                p["c"] = np.asarray(p["c"], float) * scale
+                if isinstance(p.get("gamma"), (int, float)):
+                    p["gamma"] = float(p["gamma"]) * (scale ** 2)
+            if d.get("status") == "SOLVED" and isinstance(d.get("gamma"), (int, float)):
+                d["gamma"] = float(d["gamma"]) * (scale ** 2)
+            break
+        primal, dual = p, d
+    lin = linear_separable(Vs, Is, method="highs")
+    if primal is None:
+        primal = {"status": "UNDECIDED", "gamma": None, "c": None, "method": "none"}
+    if dual is None:
+        dual = {"status": "UNDECIDED", "gamma": None, "lambda": None}
+    primal["linear_probe"] = lin
+    if lin.get("linearly_separable"):
+        primal["status"] = "INF_SEPARABLE"
+        primal["gamma"] = "+INF"
+        return primal, dual, "AMBIENT_SEPARABLE"
+    kind = classify_margin(primal.get("gamma") if primal.get("status") != "INF_SEPARABLE" else "+INF")
+    if kind == "UNDECIDED" and dual.get("status") == "SOLVED" and dual.get("gamma") is not None:
+        kind = classify_margin(dual["gamma"])
+        primal["gamma"] = dual["gamma"]
+        primal["status"] = "SOLVED_VIA_DUAL"
+    return primal, dual, kind
 
 
 def classify_margin(gamma) -> str:

@@ -6,7 +6,7 @@ import json
 import numpy as np
 
 from experiments.icassp_10of10_hardening.phase1.universe import load_frozen_universe
-from experiments.icassp_10of10_hardening.phase3a.ambient_lp import classify_margin, solve_dual, solve_primal
+from experiments.icassp_10of10_hardening.phase3a.ambient_lp import classify_margin, solve_ambient, solve_primal
 from experiments.icassp_10of10_hardening.phase3a.certificates import strength_for_task, verify_dual_numeric
 from experiments.icassp_10of10_hardening.phase3a.config import PHASE1_DIR, RESP_N_CONFIRMATORY, RESP_N_PRECISION
 from experiments.icassp_10of10_hardening.phase3a.embeddings import affine_span_reduce, embed_response_task
@@ -34,17 +34,18 @@ def run_response() -> dict:
         emb = embed_response_task(pack["valids"], pack["primary_invalids"], task, n=RESP_N_CONFIRMATORY)
         red = affine_span_reduce(emb["V"], emb["I"])
         V, I = red["V"], red["I"]
-        primal = solve_primal(V, I, method="highs")
-        dual = solve_dual(V, I, method="highs")
-        kind_base = _kind_from_pair(primal, dual)
+        primal, dual, kind_base = solve_ambient(V, I)
         emb2 = embed_response_task(pack["valids"], pack["primary_invalids"], task, n=RESP_N_PRECISION)
         red2 = affine_span_reduce(emb2["V"], emb2["I"])
         p2 = solve_primal(red2["V"], red2["I"], method="highs")
         kind2 = _kind_from_pair(p2, None)
-        if kind_base == kind2:
+        if kind2 == "UNDECIDED" and kind_base != "UNDECIDED":
+            prec = "undecided"
+            kind = kind_base
+        elif kind_base == kind2:
             prec = "stable"
             kind = kind_base
-        elif kind_base == "UNDECIDED" or kind2 == "UNDECIDED":
+        elif kind_base == "UNDECIDED":
             prec = "undecided"
             kind = "UNDECIDED"
         else:

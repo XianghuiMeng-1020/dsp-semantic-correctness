@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 
 from experiments.icassp_10of10_hardening.phase1.universe import load_frozen_universe
-from experiments.icassp_10of10_hardening.phase3a.ambient_lp import classify_margin, solve_dual, solve_primal, unpack_support
+from experiments.icassp_10of10_hardening.phase3a.ambient_lp import solve_ambient, unpack_support
 from experiments.icassp_10of10_hardening.phase3a.certificates import (
     reconstruct_dual_weights,
     strength_for_task,
@@ -32,9 +32,7 @@ def run_coefficient() -> dict:
         emb = embed_coeff_task(pack["valids"], pack["primary_invalids"], family)
         red = affine_span_reduce(emb["V"], emb["I"])
         V, I = red["V"], red["I"]
-        primal = solve_primal(V, I, method="highs")
-        dual = solve_dual(V, I, method="highs")
-        kind = classify_margin("+INF" if primal.get("status") == "INF_SEPARABLE" else primal.get("gamma"))
+        primal, dual, kind = solve_ambient(V, I)
         exact_p = None
         exact_d = None
         if primal.get("c") is not None:

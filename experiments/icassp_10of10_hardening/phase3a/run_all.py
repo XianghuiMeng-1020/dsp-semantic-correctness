@@ -63,6 +63,15 @@ def _headline(metric, coeff, resp, hier, val, nov) -> dict:
             "No single Euclidean-distance threshold center in the evaluated coefficient representation "
             "recovers specification membership over the frozen finite universe."
         )
+    elif nB >= 14:
+        pos = (
+            "Phase-1 still stands: no observed valid reference restores coefficient separability. "
+            "Phase-3A shows that an unrestricted ambient center does so on a large majority of tasks."
+        )
+        can = (
+            "No observed valid realization in U_t restores a single-center coefficient oracle; "
+            "that failure is not equivalent to the non-existence of any Euclidean center."
+        )
     else:
         pos = "The three-level hierarchy distinguishes reference-choice failure from geometric incompatibility."
         can = (
