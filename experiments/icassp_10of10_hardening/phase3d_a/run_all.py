@@ -31,12 +31,18 @@ import json  # noqa: E402
 
 def run_science() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    print("[phase3d_a] generate 960 attempts", flush=True)
-    generate_attempts()
-    print("[phase3d_a] continuous certify + dedup", flush=True)
-    hv = certify_and_admit()
-    print("[phase3d_a] invalid mutations", flush=True)
-    hi = generate_invalids()
+    frozen = (OUT_DIR / "CHALLENGE_MANIFEST.sha256").exists() and (OUT_DIR / "H_VALID.json").exists()
+    if frozen:
+        print("[phase3d_a] challenge already frozen; rewrite summaries from frozen artifacts", flush=True)
+        hv = json.loads((OUT_DIR / "H_VALID.json").read_text(encoding="utf-8"))
+        hi = json.loads((OUT_DIR / "H_INVALID.json").read_text(encoding="utf-8"))
+    else:
+        print("[phase3d_a] generate 960 attempts", flush=True)
+        generate_attempts()
+        print("[phase3d_a] continuous certify + dedup", flush=True)
+        hv = certify_and_admit()
+        print("[phase3d_a] invalid mutations", flush=True)
+        hi = generate_invalids()
     attempts = json.loads((OUT_DIR / "all_attempts.json").read_text(encoding="utf-8"))
     attr = {"valid": attrition(attempts), "invalid": invalid_attrition(hi)}
     adeq = adequacy(hv, hi)

@@ -1,0 +1,31 @@
+{
+  "by_generator": {
+    "F1_remez": 152,
+    "F2_firls": 146,
+    "F3_freqsamp": 104,
+    "F4_window": 98,
+    "I1_butter": 22,
+    "I2_cheby1": 28,
+    "I3_cheby2": 29,
+    "I4_ellip": 35
+  },
+  "by_filter_type": {
+    "lp": 199,
+    "hp": 185,
+    "bp": 124,
+    "bs": 106
+  },
+  "by_loose_tight": {
+    "loose": 417,
+    "tight": 197
+  },
+  "order_min": 2,
+  "order_max": 101,
+  "margin_min": 0.0,
+  "margin_q1": 0.0,
+  "margin_median": 0.0,
+  "margin_q3": 0.0,
+  "margin_max": 5.377642775528102e-15,
+  "near_boundary_count": 614,
+  "n_with_margin": 614
+}
