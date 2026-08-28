@@ -1,0 +1,31 @@
+{
+  "catalog_verdict": "CATALOG_BURDEN_MIXED",
+  "best_framing": "B",
+  "internal_novelty": 6.9,
+  "NOVELTY_10OF10_GATE": "PASS",
+  "scientific_blocker": "NO",
+  "Q_setcover_novel": "NO",
+  "Q_prototype_novel": "NO",
+  "close_dsp_same_audit": "NO",
+  "attacks": {
+    "K1": "PARTIAL",
+    "K2": "PARTIAL",
+    "K3": "OPEN",
+    "K4": "PARTIAL",
+    "K5": "PARTIAL",
+    "K6": "PARTIAL"
+  },
+  "strongest_novelty": "On a frozen, independently labeled FIR/IIR mask universe, the existing min-distance common-threshold reference oracle requires a measurable catalog of actual specification-valid realizations to reproduce specification membership. That burden number is a finite-universe adequacy diagnostic, not a new set-cover method.",
+  "strongest_attack": "A reviewer can still say this is prototype selection on a finite labeled set.",
+  "kstar_extends_k135": 1,
+  "small_k_count": 0,
+  "rho_low_cutoff": 0.1,
+  "resp_verdict": "MIXED",
+  "le3_bucket": 0,
+  "avs_counts": {
+    "R1": 0,
+    "R2": 12,
+    "R3": 1,
+    "R4": 7
+  }
+}

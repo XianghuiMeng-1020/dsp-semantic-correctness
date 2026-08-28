@@ -1,0 +1,61 @@
+{
+  "verdict": "PASS",
+  "checks": [
+    {
+      "task": "iir_lp_loose_8k",
+      "k": 15,
+      "gap_ok": 1,
+      "gap_match": 1,
+      "k_minus_feasible": 0,
+      "lower_bound_ok": 1,
+      "pass": 1
+    },
+    {
+      "task": "fir_bs_tight_16k",
+      "k": 112,
+      "gap_ok": 1,
+      "gap_match": 1,
+      "k_minus_feasible": 0,
+      "lower_bound_ok": 1,
+      "pass": 1
+    },
+    {
+      "task": "fir_lp_loose_8k",
+      "k": 42,
+      "gap_ok": 1,
+      "gap_match": 1,
+      "k_minus_feasible": 0,
+      "lower_bound_ok": 1,
+      "pass": 1
+    },
+    {
+      "task": "fir_lp_tight_8k",
+      "k": 84,
+      "gap_ok": 1,
+      "gap_match": 1,
+      "k_minus_feasible": 0,
+      "lower_bound_ok": 1,
+      "pass": 1
+    },
+    {
+      "task": "iir_lp_tight_8k",
+      "k": 19,
+      "gap_ok": 1,
+      "gap_match": 1,
+      "k_minus_feasible": 0,
+      "lower_bound_ok": 1,
+      "pass": 1
+    },
+    {
+      "task": "fir_bs_tight_8k",
+      "k": 113,
+      "gap_ok": 1,
+      "gap_match": 1,
+      "k_minus_feasible": 0,
+      "lower_bound_ok": 1,
+      "pass": 1
+    }
+  ],
+  "unexpected_k1": [],
+  "n_checked": 6
+}
