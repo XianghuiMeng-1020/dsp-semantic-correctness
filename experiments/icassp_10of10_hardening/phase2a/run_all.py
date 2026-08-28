@@ -399,14 +399,43 @@ def _acquire_lock() -> bool:
     return True
 
 
+def verify_existing() -> int:
+    """Reproduce summaries from frozen Phase-2A JSON without rewriting certificates."""
+    from experiments.icassp_10of10_hardening.phase2a.console_report import print_console
+    from experiments.icassp_10of10_hardening.phase2a.verify_frozen import verify_all
+    from experiments.icassp_10of10_hardening.phase2a.write_reports import write_all_reports
+
+    print("[phase2a] verify frozen original science + Phase-2A certificates", flush=True)
+    result = verify_all(recertify_audit=True)
+    write_all_reports()
+    print(
+        f"[phase2a] verify ok={result['ok']} original={result['original_reproduction']} "
+        f"phase2a={result['phase2a_reproduction']}",
+        flush=True,
+    )
+    if result["forbidden_imports"]:
+        print(f"[phase2a] forbidden imports: {result['forbidden_imports']}", flush=True)
+    if result["cert_consistency"]["problems"]:
+        print(f"[phase2a] cert problems: {result['cert_consistency']['problems']}", flush=True)
+    for a in result["audits"]:
+        print(
+            f"    audit {a['occupant'][-50:]} live={a['live']} frozen={a['frozen']} match={a['match']}",
+            flush=True,
+        )
+    print_console(result)
+    return 0 if result["ok"] else 1
+
+
 if __name__ == "__main__":
     if (OUT_DIR / "headline.json").exists() and not CHECKPOINT.exists():
-        print("[phase2a] already complete (headline.json present)", flush=True)
-        raise SystemExit(0)
+        raise SystemExit(verify_existing())
     if not _acquire_lock():
         raise SystemExit(0)
     try:
-        raise SystemExit(main())
+        code = main()
+        if code == 0:
+            raise SystemExit(verify_existing())
+        raise SystemExit(code)
     finally:
         if LOCK.exists():
             try:
