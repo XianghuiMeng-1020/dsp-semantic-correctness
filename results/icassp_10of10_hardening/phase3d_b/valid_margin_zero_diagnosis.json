@@ -1,0 +1,89 @@
+{
+  "n": 614,
+  "stored_residual_zero": 611,
+  "stored_continuous_certified_valid": 614,
+  "stored_all_continuously_certified": 1,
+  "grid_freqz_n": 4096,
+  "interior_slack_min": -1.8041124150158794e-16,
+  "interior_slack_median": 7.462357560743306e-09,
+  "interior_slack_max": 0.024815282142678342,
+  "n_nonpositive_interior_slack": 24,
+  "n_slack_le_1e-8": 315,
+  "slack_by_generator": {
+    "F1_remez": {
+      "n": 152,
+      "min": 1.6401643046719713e-15,
+      "median": 4.1432525448223116e-08,
+      "max": 5.382078670140688e-06,
+      "n_nonpositive": 0
+    },
+    "F2_firls": {
+      "n": 146,
+      "min": 3.799039786457122e-14,
+      "median": 3.0372435687374686e-09,
+      "max": 9.98101357921229e-07,
+      "n_nonpositive": 0
+    },
+    "F3_freqsamp": {
+      "n": 104,
+      "min": 0.0,
+      "median": 2.3520582133223618e-09,
+      "max": 3.212285366125938e-05,
+      "n_nonpositive": 12
+    },
+    "F4_window": {
+      "n": 98,
+      "min": 0.0,
+      "median": 2.6164424292506905e-08,
+      "max": 1.4643801352815806e-06,
+      "n_nonpositive": 6
+    },
+    "I1_butter": {
+      "n": 22,
+      "min": 0.0,
+      "median": 2.3093322906925364e-18,
+      "max": 2.3054321873151048e-08,
+      "n_nonpositive": 1
+    },
+    "I2_cheby1": {
+      "n": 28,
+      "min": 3.568310145831224e-24,
+      "median": 7.807209997982101e-20,
+      "max": 5.819241383968219e-12,
+      "n_nonpositive": 0
+    },
+    "I3_cheby2": {
+      "n": 29,
+      "min": -5.551115123125783e-17,
+      "median": 5.984465233026584e-06,
+      "max": 0.024815282142678342,
+      "n_nonpositive": 2
+    },
+    "I4_ellip": {
+      "n": 35,
+      "min": -1.8041124150158794e-16,
+      "median": 4.734285556213174e-06,
+      "max": 0.023484572527378823,
+      "n_nonpositive": 3
+    }
+  },
+  "Q1_inclusive_boundary_residual": 1,
+  "Q2_min_over_active_grid_residuals": 1,
+  "Q3_structurally_expected_from_generator_design": "partial_equiripple_families",
+  "Q4_implies_numerical_uncertainty": 0,
+  "Q5_all_614_continuously_certified_stored": 1,
+  "Q6_intentionally_boundary_targeted": 0,
+  "classification": "MIXED",
+  "numerical_fragility": 0,
+  "challenge_filtered": 0,
+  "catalog_distances_computed": 0,
+  "recert_fail": [],
+  "answers": {
+    "Q1": "YES \u2014 stored spec_margin_grid is check_specification violation residual; 0 means the 4096-point grid is inside an inclusive mask, not a geometric distance to the edge.",
+    "Q2": "YES \u2014 Phase-3D-A took max residual over pass/stop/stability/other keys. Passing residuals are identically 0.0, so min=median=0 and near-boundary (residual<=1e-4) is 614/614 by definition of a grid pass.",
+    "Q3": "PARTIALLY \u2014 the locked schedule does not target residual=0; Remez/elliptic families are equiripple and often have small true slack. Window/Butterworth typically retain slack.",
+    "Q4": "NO \u2014 a reporting residual of 0 is the pass convention, not a continuous-certification interval failure.",
+    "Q5": "YES \u2014 all 614 stored members have continuous_status=CERTIFIED_VALID and undecided_included=0.",
+    "Q6": "NO \u2014 members were not selected or filtered by margin; the challenge is not an intentional boundary-stress set, though some families sit nearer the mask."
+  }
+}
