@@ -1,0 +1,183 @@
+{
+  "method": "exact rational P(x); primitive-integer Sturm sequence; sign on root-free intervals",
+  "previously_undecided": 2,
+  "CERTIFIED_VALID": 2,
+  "CERTIFIED_INVALID": 0,
+  "STILL_UNDECIDED": 0,
+  "blocker": 0,
+  "constructed_fir_valid_final": {
+    "CERTIFIED_VALID": 336,
+    "CERTIFIED_INVALID": 0,
+    "UNDECIDED": 0,
+    "total": 336,
+    "coverage": 1.0
+  },
+  "rows": [
+    {
+      "occupant": "data/valid/first_principles/fir_bs_tight_8k__frequency_sampling__shortest.npy",
+      "task": "fir_bs_tight_8k",
+      "phase2a_status": "UNDECIDED",
+      "phase2b_status": "CERTIFIED_VALID",
+      "reason": "all_bands_sturm_sign",
+      "n_taps": 267,
+      "degree": 266,
+      "method": "sturm_sign",
+      "bands": [
+        {
+          "upper": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "1077160792536404532896143/1208925819614629174706176",
+              "1"
+            ],
+            "f0": 0.0,
+            "f1": 600.0
+          },
+          "lower": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "1077160792536404532896143/1208925819614629174706176",
+              "1"
+            ],
+            "f0": 0.0,
+            "f1": 600.0
+          },
+          "L": "8917127082049597/9007199254740992",
+          "U": "2274317856858097/2251799813685248"
+        },
+        {
+          "upper": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "-1",
+              "-854839645001009215068107/1208925819614629174706176"
+            ],
+            "f0": 3000.0,
+            "f1": 4000.0
+          },
+          "lower": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "-1",
+              "-854839645001009215068107/1208925819614629174706176"
+            ],
+            "f0": 3000.0,
+            "f1": 4000.0
+          },
+          "L": "8917127082049597/9007199254740992",
+          "U": "2274317856858097/2251799813685248"
+        },
+        {
+          "upper": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "-548840836994886697855825/1208925819614629174706176",
+              "213709911250252303767173/302231454903657293676544"
+            ],
+            "f0": 1000.0,
+            "f1": 2600.0
+          },
+          "lower": {
+            "status": "CERTIFIED",
+            "reason": "lower_vacuous_L_nonpositive"
+          },
+          "L": "-7253554917687775/604462909807314587353088",
+          "U": "3458767972585055/288230376151711744"
+        }
+      ]
+    },
+    {
+      "occupant": "data/valid/first_principles/fir_bs_tight_16k__frequency_sampling__shortest.npy",
+      "task": "fir_bs_tight_16k",
+      "phase2a_status": "UNDECIDED",
+      "phase2b_status": "CERTIFIED_VALID",
+      "reason": "all_bands_sturm_sign",
+      "n_taps": 267,
+      "degree": 266,
+      "method": "sturm_sign",
+      "bands": [
+        {
+          "upper": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "1077160792536404532896143/1208925819614629174706176",
+              "1"
+            ],
+            "f0": 0.0,
+            "f1": 1200.0
+          },
+          "lower": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "1077160792536404532896143/1208925819614629174706176",
+              "1"
+            ],
+            "f0": 0.0,
+            "f1": 1200.0
+          },
+          "L": "8917127082049597/9007199254740992",
+          "U": "2274317856858097/2251799813685248"
+        },
+        {
+          "upper": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "-1",
+              "-854839645001009215068107/1208925819614629174706176"
+            ],
+            "f0": 6000.0,
+            "f1": 8000.0
+          },
+          "lower": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "-1",
+              "-854839645001009215068107/1208925819614629174706176"
+            ],
+            "f0": 6000.0,
+            "f1": 8000.0
+          },
+          "L": "8917127082049597/9007199254740992",
+          "U": "2274317856858097/2251799813685248"
+        },
+        {
+          "upper": {
+            "status": "CERTIFIED",
+            "reason": "sturm_zero_roots_constant_sign",
+            "n_roots": 0,
+            "x_interval": [
+              "-548840836994886697855825/1208925819614629174706176",
+              "213709911250252303767173/302231454903657293676544"
+            ],
+            "f0": 2000.0,
+            "f1": 5200.0
+          },
+          "lower": {
+            "status": "CERTIFIED",
+            "reason": "lower_vacuous_L_nonpositive"
+          },
+          "L": "-7253554917687775/604462909807314587353088",
+          "U": "3458767972585055/288230376151711744"
+        }
+      ]
+    }
+  ]
+}

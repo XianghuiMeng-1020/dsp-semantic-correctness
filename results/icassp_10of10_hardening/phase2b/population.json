@@ -1,0 +1,84 @@
+{
+  "blocker": 0,
+  "verdict": "RECONCILES_TO_412",
+  "table": [
+    {
+      "family": "FIR",
+      "unique_valid": 336,
+      "mechanism_invalid": 112,
+      "boundary_invalid": 128,
+      "tasks": 16,
+      "source": "recertify.json family=fir; boundary_invalids.json FIR tasks"
+    },
+    {
+      "family": "IIR",
+      "unique_valid": 76,
+      "mechanism_invalid": 32,
+      "boundary_invalid": 32,
+      "tasks": 4,
+      "source": "recertify.json family=iir; boundary_invalids.json IIR tasks"
+    },
+    {
+      "family": "Total",
+      "unique_valid": 412,
+      "mechanism_invalid": 144,
+      "boundary_invalid": 160,
+      "tasks": 20,
+      "source": "constructed independently labeled occupants"
+    }
+  ],
+  "fir_valid": 336,
+  "iir_valid": 76,
+  "fir_mech": 112,
+  "iir_mech": 32,
+  "fir_boundary": 128,
+  "iir_boundary": 32,
+  "fir_tasks": [
+    "fir_bp_loose_16k",
+    "fir_bp_loose_8k",
+    "fir_bp_tight_16k",
+    "fir_bp_tight_8k",
+    "fir_bs_loose_16k",
+    "fir_bs_loose_8k",
+    "fir_bs_tight_16k",
+    "fir_bs_tight_8k",
+    "fir_hp_loose_16k",
+    "fir_hp_loose_8k",
+    "fir_hp_tight_16k",
+    "fir_hp_tight_8k",
+    "fir_lp_loose_16k",
+    "fir_lp_loose_8k",
+    "fir_lp_tight_16k",
+    "fir_lp_tight_8k"
+  ],
+  "iir_tasks": [
+    "iir_hp_loose_8k",
+    "iir_hp_tight_8k",
+    "iir_lp_loose_8k",
+    "iir_lp_tight_8k"
+  ],
+  "probe_fir_valid": 1260,
+  "probe_iir_valid": 0,
+  "valid_task_counts": {
+    "fir_lp_loose_8k": 21,
+    "fir_lp_tight_8k": 20,
+    "fir_lp_loose_16k": 21,
+    "fir_lp_tight_16k": 20,
+    "fir_hp_loose_8k": 22,
+    "fir_hp_tight_8k": 20,
+    "fir_hp_loose_16k": 22,
+    "fir_hp_tight_16k": 20,
+    "fir_bp_loose_8k": 21,
+    "fir_bp_tight_8k": 21,
+    "fir_bp_loose_16k": 21,
+    "fir_bp_tight_16k": 21,
+    "fir_bs_loose_8k": 22,
+    "fir_bs_tight_8k": 21,
+    "fir_bs_loose_16k": 22,
+    "fir_bs_tight_16k": 21,
+    "iir_lp_loose_8k": 19,
+    "iir_lp_tight_8k": 19,
+    "iir_hp_loose_8k": 19,
+    "iir_hp_tight_8k": 19
+  }
+}
