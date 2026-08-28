@@ -18,6 +18,10 @@ def _git(*args: str) -> str:
     return (r.stdout or "").strip() if r.returncode == 0 else ""
 
 
+def _yn(v) -> str:
+    return "YES" if v else "NO"
+
+
 def print_console(verify: dict) -> None:
     adeq = json.loads((OUT_DIR / "adequacy.json").read_text(encoding="utf-8"))
     hv = json.loads((OUT_DIR / "H_VALID.json").read_text(encoding="utf-8"))
