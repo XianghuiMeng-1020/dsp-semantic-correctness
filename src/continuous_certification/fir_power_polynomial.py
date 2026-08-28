@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import math
+import time
 from fractions import Fraction
 from pathlib import Path
 
@@ -18,6 +19,7 @@ MP_DPS = 80
 COS_BITS = 72
 MAX_BERNSTEIN_NODES = 2500
 MAX_DEPTH = 36
+MAX_SECONDS_PER_SIGN = 25.0
 WITNESS_N = 1021  # prime; not 4096 or 131072 or 10007
 
 
@@ -206,10 +208,11 @@ def _certify_sign(mono: list[Fraction], a: Fraction, b: Fraction, want: str) -> 
 
     stack = [(a, b, 0)]
     nodes = 0
+    t0 = time.time()
     while stack:
         lo, hi, depth = stack.pop()
         nodes += 1
-        if nodes > MAX_BERNSTEIN_NODES:
+        if nodes > MAX_BERNSTEIN_NODES or (time.time() - t0) > MAX_SECONDS_PER_SIGN:
             return {"status": "UNDECIDED", "reason": "polynomial_arithmetic_resource_limit", "nodes": nodes}
         width = hi - lo
         aff = _compose_affine(mono, lo, width)

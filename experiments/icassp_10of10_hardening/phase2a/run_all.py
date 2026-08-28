@@ -2,10 +2,12 @@
 from __future__ import annotations
 
 import json
+import os
 import platform
 import sys
 import time
 from collections import Counter
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 import numpy as np
@@ -25,7 +27,9 @@ from src.continuous_certification.fir_power_polynomial import certify_fir  # noq
 from src.verification.io_utils import dump_json  # noqa: E402
 
 PROBE_FULL_CERT_MAX_TAPS = 80
-CROSSCHECK_CIDS = []
+CHECKPOINT = OUT_DIR / "_checkpoint.jsonl"
+LOCK = OUT_DIR / "_running.lock"
+PROGRESS = OUT_DIR / "progress.json"
 
 
 def _n_taps(impl) -> int:
@@ -46,11 +50,18 @@ def _cohort_summary(rows: list[dict]) -> dict:
     }
 
 
+def _ensure_impl(occ: dict) -> dict:
+    if "impl" not in occ:
+        from src.verification.io_utils import load_impl
+
+        occ = dict(occ)
+        occ["impl"] = load_impl(occ["cid"])
+    return occ
+
+
 def _run_one(occ: dict, phase1: dict, full_cert: bool) -> dict:
+    occ = _ensure_impl(occ)
     cid, tid = occ["cid"], occ["task_id"]
-    if not full_cert:
-        rec = certify_fir(tid, occ["impl"])
-        # certify_fir always does full Bernstein; skip by wrapping below
     rec = certify_fir(tid, occ["impl"])
     return {
         "occupant": cid,
@@ -68,6 +79,7 @@ def _run_one(occ: dict, phase1: dict, full_cert: bool) -> dict:
 
 
 def _run_one_maybe_capped(occ: dict, phase1: dict, max_taps: int | None) -> dict:
+    occ = _ensure_impl(occ)
     n = _n_taps(occ["impl"])
     if max_taps is not None and n > max_taps:
         # still allow a witness-only path by calling certify_fir: it witnesses first.
@@ -112,24 +124,90 @@ def _run_one_maybe_capped(occ: dict, phase1: dict, max_taps: int | None) -> dict
     return _run_one(occ, phase1, True)
 
 
+def _worker(item: tuple) -> dict:
+    cid, tid, role, old_label, cap, p1 = item
+    occ = {"cid": cid, "task_id": tid, "role": role, "old_label": old_label}
+    return _run_one_maybe_capped(occ, {cid: p1}, cap)
+
+
+def _append_checkpoint(rec: dict) -> None:
+    """Append one record and fsync so a power loss cannot lose completed occupants."""
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    with CHECKPOINT.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(rec, ensure_ascii=True) + "\n")
+        fh.flush()
+        os.fsync(fh.fileno())
+
+
+def _load_checkpoint() -> dict:
+    done = {}
+    if not CHECKPOINT.exists():
+        return done
+    raw = CHECKPOINT.read_text(encoding="utf-8")
+    for line in raw.splitlines():
+        if not line.strip():
+            continue
+        try:
+            rec = json.loads(line)
+        except json.JSONDecodeError:
+            continue  # truncated last line after a crash
+        if "occupant" in rec:
+            done[rec["occupant"]] = rec
+    return done
+
+
+def _write_progress(done: dict) -> None:
+    from collections import Counter
+
+    roles = Counter(r.get("role") for r in done.values())
+    status = Counter(r.get("phase2a_status") for r in done.values())
+    payload = {
+        "n_checkpoint": len(done),
+        "roles": dict(roles),
+        "status": dict(status),
+        "complete": (OUT_DIR / "headline.json").exists(),
+    }
+    tmp = PROGRESS.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    os.replace(tmp, PROGRESS)
+
+
 def run_certification() -> dict:
     print("[phase2a] load occupants", flush=True)
     packs = load_manuscript_fir_occupants()
     phase1 = load_phase1_status()
     all_rows = []
+    done = _load_checkpoint()
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     def go(name, items, cap=None):
-        print(f"[phase2a] certify {name} n={len(items)}", flush=True)
-        rows = []
-        for i, occ in enumerate(items, 1):
-            rec = _run_one_maybe_capped(occ, phase1, cap)
-            rows.append(rec)
-            all_rows.append(rec)
-            print(
-                f"    {i}/{len(items)} {occ['cid'][-70:]} {rec['old_label']} "
-                f"P1={rec['phase1_status']} P2A={rec['phase2a_status']} ({rec['reason']})",
-                flush=True,
-            )
+        n_done = sum(1 for o in items if o["cid"] in done)
+        pending = [o for o in items if o["cid"] not in done]
+        print(f"[phase2a] certify {name} n={len(items)} resumed={n_done} pending={len(pending)}", flush=True)
+        workers = max(1, min(6, (os.cpu_count() or 2)))
+        if pending:
+            jobs = [
+                (o["cid"], o["task_id"], o["role"], o["old_label"], cap, phase1.get(o["cid"]))
+                for o in pending
+            ]
+            finished = 0
+            with ProcessPoolExecutor(max_workers=workers) as ex:
+                futs = [ex.submit(_worker, job) for job in jobs]
+                for fut in as_completed(futs):
+                    rec = fut.result()
+                    _append_checkpoint(rec)
+                    done[rec["occupant"]] = rec
+                    finished += 1
+                    if finished % 5 == 0:
+                        _write_progress(done)
+                    print(
+                        f"    {name} {n_done+finished}/{len(items)} {rec['occupant'][-70:]} "
+                        f"{rec['old_label']} P1={rec['phase1_status']} P2A={rec['phase2a_status']} ({rec['reason']})",
+                        flush=True,
+                    )
+        rows = [done[o["cid"]] for o in items]
+        all_rows.extend(rows)
+        _write_progress(done)
         return rows
 
     constructed = go("constructed_valid_fir", packs["constructed_valid"])
@@ -233,7 +311,9 @@ def run_crosscheck(cert: dict) -> dict:
         occ = by_cid.get(r["occupant"])
         if not occ:
             continue
-        rec = audit_occupant(r["task"], occ["impl"])
+        from src.verification.io_utils import load_impl
+
+        rec = audit_occupant(r["task"], load_impl(r["occupant"]))
         rec["tag"] = tag
         rec["occupant"] = r["occupant"]
         rec["phase2a_status"] = r["phase2a_status"]
@@ -247,8 +327,13 @@ def run_crosscheck(cert: dict) -> dict:
 def main() -> int:
     t0 = time.time()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    denom = reconcile()
-    dump_json(OUT_DIR / "denominator.json", denom)
+    denom_path = OUT_DIR / "denominator.json"
+    if denom_path.exists():
+        denom = json.loads(denom_path.read_text(encoding="utf-8"))
+        print("[phase2a] reuse existing denominator.json", flush=True)
+    else:
+        denom = reconcile()
+        dump_json(denom_path, denom)
     print(f"[phase2a] denominator {denom['verdict']} blocker={denom['blocker']}", flush=True)
     if denom["blocker"]:
         print("PHASE2A_DENOMINATOR_BLOCKER", flush=True)
@@ -288,9 +373,45 @@ def main() -> int:
     from experiments.icassp_10of10_hardening.phase2a.write_reports import write_all_reports
 
     write_all_reports()
+    if CHECKPOINT.exists():
+        done_path = OUT_DIR / "_checkpoint.done.jsonl"
+        if done_path.exists():
+            done_path.unlink()
+        CHECKPOINT.replace(done_path)
+    if LOCK.exists():
+        LOCK.unlink()
     print(f"PHASE2A_ALL_STAGES: DONE elapsed_s={time.time()-t0:.3f}", flush=True)
     return 0
 
 
+def _acquire_lock() -> bool:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    if LOCK.exists():
+        try:
+            old = json.loads(LOCK.read_text(encoding="utf-8"))
+            pid = int(old.get("pid", -1))
+            os.kill(pid, 0)
+            print(f"[phase2a] another run is alive pid={pid}; exiting", flush=True)
+            return False
+        except (OSError, ValueError, json.JSONDecodeError):
+            pass
+    LOCK.write_text(json.dumps({"pid": os.getpid()}), encoding="utf-8")
+    return True
+
+
 if __name__ == "__main__":
-    raise SystemExit(main())
+    if (OUT_DIR / "headline.json").exists() and not CHECKPOINT.exists():
+        print("[phase2a] already complete (headline.json present)", flush=True)
+        raise SystemExit(0)
+    if not _acquire_lock():
+        raise SystemExit(0)
+    try:
+        raise SystemExit(main())
+    finally:
+        if LOCK.exists():
+            try:
+                meta = json.loads(LOCK.read_text(encoding="utf-8"))
+                if meta.get("pid") == os.getpid():
+                    LOCK.unlink()
+            except Exception:
+                pass

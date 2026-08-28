@@ -209,6 +209,13 @@ def write_undecided(cert: dict) -> None:
     ]
     for k, v in reasons.most_common():
         lines.append(f"- `{k}`: {v}")
+        for r in rows:
+            if r.get("reason") == k:
+                lines.append(f"  - `{r['occupant']}` (n_taps={r.get('n_taps')})")
+    if rows:
+        lines += ["", "Occupants:", ""]
+        for r in rows:
+            lines.append(f"- `{r['occupant']}` n_taps={r.get('n_taps')} reason=`{r.get('reason')}`")
     lines += [
         "",
         "Categories:",

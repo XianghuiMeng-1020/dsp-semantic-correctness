@@ -4,7 +4,6 @@ from __future__ import annotations
 import json
 
 from experiments.icassp_10of10_hardening.phase2a.config import FROZEN_DIR, PHASE1_DIR
-from src.verification.io_utils import load_impl
 from src.verification.registry_io import get_task, is_fir
 
 
@@ -25,7 +24,6 @@ def _fir_constructed_valids():
                 "task_id": r["task_id"],
                 "role": "constructed_valid",
                 "old_label": "VALID",
-                "impl": load_impl(r["id"]),
             }
         )
     return out
@@ -43,7 +41,6 @@ def _fir_mechanism_invalids():
                 "task_id": r["task_id"],
                 "role": "mechanism_invalid",
                 "old_label": "INVALID",
-                "impl": load_impl(r["id"]),
             }
         )
     return out
@@ -64,7 +61,6 @@ def _fir_boundary_invalids():
                 "task_id": r["task_id"],
                 "role": "boundary_invalid",
                 "old_label": "INVALID",
-                "impl": load_impl(path),
             }
         )
     return out
@@ -82,7 +78,6 @@ def _fir_probes():
                 "task_id": r["task_id"],
                 "role": "probe_valid",
                 "old_label": "VALID",
-                "impl": load_impl(r["path"]),
             }
         )
     return out
