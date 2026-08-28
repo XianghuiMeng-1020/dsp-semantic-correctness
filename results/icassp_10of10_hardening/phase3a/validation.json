@@ -1,0 +1,77 @@
+{
+  "verdict": "PASS",
+  "synthetic": {
+    "A_separable_clusters": {
+      "kind": "AMBIENT_SEPARABLE",
+      "gamma": "+INF",
+      "pass": 1
+    },
+    "B_nested_square": {
+      "kind": "NO_AMBIENT_CENTER",
+      "gamma": -0.9999999999999999,
+      "dual_gamma": -0.9999999999999999,
+      "pass": 1
+    },
+    "C_canonical_fails_ambient_succeeds": {
+      "kind": "AMBIENT_SEPARABLE",
+      "gamma": "+INF",
+      "canonical_G_unnormalized": -1.5,
+      "canonical_fails": 1,
+      "pass": 1
+    },
+    "pass": 1,
+    "rng_probe": 2
+  },
+  "check_D_coeff": 1,
+  "check_D_resp": 1,
+  "independent_checks": {
+    "fir_lp_loose_8k": {
+      "methods": [
+        {
+          "method": "highs",
+          "primal_gamma": "+INF",
+          "dual_gamma": null,
+          "primal_status": "INF_SEPARABLE",
+          "dual_status": "DUAL_INFEASIBLE",
+          "kind": "AMBIENT_SEPARABLE"
+        },
+        {
+          "method": "highs-ipm",
+          "primal_gamma": "+INF",
+          "dual_gamma": null,
+          "primal_status": "INF_SEPARABLE",
+          "dual_status": "DUAL_INFEASIBLE",
+          "kind": "AMBIENT_SEPARABLE"
+        }
+      ],
+      "kind_agree": 1,
+      "gamma_close": 1,
+      "strong_duality_numeric": null,
+      "pass": 1
+    },
+    "iir_hp_tight_8k": {
+      "methods": [
+        {
+          "method": "highs",
+          "primal_gamma": 0.006890665121000141,
+          "dual_gamma": 0.0068906651208324315,
+          "primal_status": "SOLVED",
+          "dual_status": "SOLVED",
+          "kind": "AMBIENT_SEPARABLE"
+        },
+        {
+          "method": "highs-ipm",
+          "primal_gamma": 0.006890665120983305,
+          "dual_gamma": 0.006890665120982044,
+          "primal_status": "SOLVED",
+          "dual_status": "SOLVED",
+          "kind": "AMBIENT_SEPARABLE"
+        }
+      ],
+      "kind_agree": 1,
+      "gamma_close": 1,
+      "strong_duality_numeric": 1,
+      "pass": 1
+    }
+  }
+}
