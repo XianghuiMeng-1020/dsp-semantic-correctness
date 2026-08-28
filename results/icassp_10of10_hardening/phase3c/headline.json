@@ -1,0 +1,23 @@
+{
+  "blocker": "PHASE3C_HOLDOUT_LEAKAGE_BLOCKER",
+  "leakage_verdict": "MATERIAL_LEAKAGE",
+  "external_transfer": "EXTERNAL_TRANSFER_INCONCLUSIVE",
+  "best_framing": "B",
+  "internal_novelty": "6.4",
+  "novelty_gate": "NOT_YET",
+  "strongest_novelty": "Phase 3C does not add an external-validity transfer result. It does establish that the confirmatory Type-I corpus cannot be sold as a catalog-excluded holdout: those 1260 probes were inside Phase-3B V_t, and 467 of 825 coefficient catalog members are probe paths. The finite-universe attack therefore remains open. Generic prototype selection and specification conformance testing remain known; no close DSP paper with the same catalog-excluded transfer/maintenance audit was found.",
+  "strongest_attack": "Without a catalog-excluded certified-valid holdout, K* remains a finite-universe diagnostic and cannot be promoted to an external-validity claim.",
+  "manuscript_safe_claim": "On the frozen confirmatory universe, exact realization-reference scoring requires a catalog of observed specification-valid implementations (Phase-3B median coefficient K*=23). The previously frozen Type-I probe set cannot be used to claim out-of-catalog transfer, because those probes were candidate and selected references when K* was computed. The paper still cannot claim that reference matching is generally impossible, that an ambient center cannot exist, or that generic prototype selection is novel.",
+  "scientific_blocker": "YES",
+  "strongest_positive": "Inventory+leakage established that 467/825 Phase-3B coefficient catalog members are Type-I probe paths.",
+  "strongest_negative": "The intended 1260 Type-I probes leaked into Phase-3B catalog selection; external-validity transfer was not scored.",
+  "can_claim": "Exact realization-reference scoring on the frozen confirmatory universe requires a measured observed-valid catalog (Phase-3B). Type-I probes are confirmatory occupants of that universe, not a catalog-excluded holdout.",
+  "cannot_claim": "The paper cannot claim out-of-catalog transfer, catalog-maintenance growth after admitting new realizations, ambient-center impossibility, or novelty of generic prototype selection / test-set evaluation.",
+  "verdict": "NOVELTY_BLOCKER_REQUIRES_PI_REVIEW",
+  "probe_n": 1260,
+  "constructed_n": 412,
+  "probe_catalog_refs": 467,
+  "total_catalog_refs": 825,
+  "final_commit": null,
+  "phase3c_tag": null
+}
