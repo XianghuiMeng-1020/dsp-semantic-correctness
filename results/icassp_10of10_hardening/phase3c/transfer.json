@@ -1,0 +1,45 @@
+{
+  "run": 0,
+  "reason": "PHASE3C_HOLDOUT_LEAKAGE_BLOCKER",
+  "corpus": "type_i_feasible_probes_1260",
+  "leakage_verdict": "MATERIAL_LEAKAGE",
+  "coefficient": {
+    "run": 0,
+    "tasks": null,
+    "holdout_valid_total": null,
+    "accepted": null,
+    "rejected": null,
+    "pooled_transfer_accept": null,
+    "task_macro_mean": null,
+    "task_macro_median": null,
+    "tasks_ge_95": null,
+    "tasks_75_95": null,
+    "tasks_lt_75": null,
+    "worst_task_transfer": null,
+    "verdict": "NOT_SCORED"
+  },
+  "response": {
+    "run": 0,
+    "holdout_valid_total": null,
+    "pooled_transfer_accept": null,
+    "task_macro_median": null,
+    "tasks_ge_95": null,
+    "tasks_lt_75": null,
+    "verdict": "N/A"
+  },
+  "hierarchy": {
+    "canonical_k1_coeff": null,
+    "best_observed_k1_coeff": null,
+    "k3_coeff": null,
+    "k5_coeff": null,
+    "all_library_coeff": null,
+    "kstar_obs_coeff": null,
+    "canonical_response": null,
+    "kstar_obs_response": null,
+    "key_finding": "Hierarchy transfer was not scored because the intended Type-I set leaked into Phase-3B catalog selection."
+  },
+  "bands_locked": {
+    "robust": 0.95,
+    "partial": 0.75
+  }
+}

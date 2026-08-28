@@ -1,0 +1,6 @@
+{
+  "eligible": [],
+  "n_eligible": 0,
+  "consistent_with_primary": "N/A",
+  "note": "No pre-existing certified-valid corpus is both task-mapped and excluded from Phase-3B V_t. Generated-code witnesses lack stored implementations. First-principles, library, and random occupants are inside the 412."
+}
