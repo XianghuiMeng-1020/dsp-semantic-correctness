@@ -90,26 +90,33 @@ def certify_and_admit() -> dict:
     n_dup_within = 0
     with forbid_catalog_io():
         for rec in attempts["attempts"]:
+            if rec.get("label") == "H_VALID":
+                rec["label"] = "CANDIDATE_UNCERTIFIED"
+            rec["exact_duplicate"] = None
             if not rec.get("generation_ok") or not rec.get("grid_pass"):
-                rec["continuous_status"] = None
+                rec["continuous_status"] = rec.get("continuous_status")
                 continue
             task = tasks[rec["task_id"]]
             from src.verification.io_utils import load_impl
 
             impl = load_impl(rec["impl_rel"])
-            print(f"[phase3d_a] certify {rec['task_id']} {rec['generator_id']} a={rec['attempt_index']}", flush=True)
-            cert = certify_candidate(task, impl)
-            rec["continuous_status"] = cert.get("status")
-            rec["continuous"] = cert
+            if rec.get("continuous_status") and rec.get("continuous"):
+                cert = rec["continuous"]
+            else:
+                print(f"[phase3d_a] certify {rec['task_id']} {rec['generator_id']} a={rec['attempt_index']}", flush=True)
+                cert = certify_candidate(task, impl)
+                rec["continuous_status"] = cert.get("status")
+                rec["continuous"] = cert
             if cert.get("status") != "CERTIFIED_VALID":
                 continue
             family = rec["family"]
+            tid = rec["task_id"]
             if family == "fir":
-                d0 = fir_dup_of(impl, prior["fir"])
-                d1 = fir_dup_of(impl, admitted_fir)
+                d0 = fir_dup_of(impl, [p for p in prior["fir"] if p["task_id"] == tid])
+                d1 = fir_dup_of(impl, [p for p in admitted_fir if p.get("task_id") == tid])
             else:
-                d0 = iir_dup_of(impl, prior["iir"])
-                d1 = iir_dup_of(impl, admitted_iir)
+                d0 = iir_dup_of(impl, [p for p in prior["iir"] if p["task_id"] == tid])
+                d1 = iir_dup_of(impl, [p for p in admitted_iir if p.get("task_id") == tid])
             if d0:
                 rec["exact_duplicate"] = {"against": "prior_science", "cid": d0}
                 n_dup_prior += 1
@@ -136,7 +143,7 @@ def certify_and_admit() -> dict:
                 "impl_meta": rec.get("impl_meta"),
             }
             h_valid.append(member)
-            slot = {"cid": rec["impl_rel"], "impl": impl}
+            slot = {"cid": rec["impl_rel"], "impl": impl, "task_id": rec["task_id"]}
             if family == "fir":
                 admitted_fir.append(slot)
             else:
@@ -178,7 +185,11 @@ def generate_invalids() -> dict:
                     tag = f"{mem['generator_id']}__a{mem['attempt_index']:02d}__{kind}__e{eps:.0e}"
                     rel = rel_path(mem["task_id"], tag, family)
                     sha = save_impl(rel, family, mut)
-                    cert = certify_candidate(task, mut)
+                    scr = grid_screen(mem["task_id"], mut)
+                    if scr.get("pass"):
+                        cert = {"status": "GRID_STILL_VALID", "reason": "grid_still_valid_skip_continuous"}
+                    else:
+                        cert = certify_candidate(task, mut)
                     row = {
                         "progenitor": mem["id"],
                         "task_id": mem["task_id"],
@@ -186,16 +197,18 @@ def generate_invalids() -> dict:
                         "eps": eps,
                         "impl_rel": rel,
                         "impl_sha256": sha,
+                        "grid_pass": bool(scr.get("pass")),
                         "continuous_status": cert.get("status"),
                     }
                     ladder_rows.append(row)
                     if cert.get("status") == "CERTIFIED_INVALID" and chosen is None:
+                        tid = mem["task_id"]
                         if family == "fir":
-                            d0 = fir_dup_of(mut, prior["fir"])
-                            d1 = fir_dup_of(mut, admitted)
+                            d0 = fir_dup_of(mut, [p for p in prior["fir"] if p["task_id"] == tid])
+                            d1 = fir_dup_of(mut, [p for p in admitted if p.get("task_id") == tid])
                         else:
-                            d0 = iir_dup_of(mut, prior["iir"])
-                            d1 = iir_dup_of(mut, admitted)
+                            d0 = iir_dup_of(mut, [p for p in prior["iir"] if p["task_id"] == tid])
+                            d1 = iir_dup_of(mut, [p for p in admitted if p.get("task_id") == tid])
                         if d0 or d1:
                             row["exact_duplicate"] = d0 or d1
                             continue
@@ -211,7 +224,7 @@ def generate_invalids() -> dict:
                             "seed_sha256": mem["seed_sha256"],
                         }
                         h_inv.append(chosen)
-                        admitted.append({"cid": rel, "impl": mut})
+                        admitted.append({"cid": rel, "impl": mut, "task_id": mem["task_id"]})
                 mutation_log.append(
                     {
                         "progenitor": mem["id"],

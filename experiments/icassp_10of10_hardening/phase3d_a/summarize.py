@@ -71,7 +71,7 @@ def invalid_attrition(hinv: dict) -> list[dict]:
             st = step.get("continuous_status")
             if st == "CERTIFIED_INVALID":
                 key[k]["certified_invalid"] += 1
-            elif st == "CERTIFIED_VALID":
+            elif st in {"CERTIFIED_VALID", "GRID_STILL_VALID"}:
                 key[k]["remained_valid"] += 1
             elif st == "UNDECIDED":
                 key[k]["undecided"] += 1
