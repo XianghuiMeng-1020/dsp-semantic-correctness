@@ -1,0 +1,359 @@
+{
+  "rows": [
+    {
+      "occupant": "data/valid/library/fir_bp_loose_16k__firwin.npy",
+      "task": "fir_bp_loose_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bp_loose_16k__firwin2.npy",
+      "task": "fir_bp_loose_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bp_loose_8k__firwin.npy",
+      "task": "fir_bp_loose_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bp_loose_8k__firwin2.npy",
+      "task": "fir_bp_loose_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bp_tight_16k__firwin.npy",
+      "task": "fir_bp_tight_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bp_tight_16k__remez.npy",
+      "task": "fir_bp_tight_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bp_tight_8k__firwin.npy",
+      "task": "fir_bp_tight_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bp_tight_8k__remez.npy",
+      "task": "fir_bp_tight_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bs_loose_16k__firwin.npy",
+      "task": "fir_bs_loose_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bs_loose_16k__firwin2.npy",
+      "task": "fir_bs_loose_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bs_loose_8k__firwin.npy",
+      "task": "fir_bs_loose_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bs_loose_8k__firwin2.npy",
+      "task": "fir_bs_loose_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bs_tight_16k__firwin.npy",
+      "task": "fir_bs_tight_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bs_tight_16k__remez.npy",
+      "task": "fir_bs_tight_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bs_tight_8k__firwin.npy",
+      "task": "fir_bs_tight_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_bs_tight_8k__remez.npy",
+      "task": "fir_bs_tight_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_hp_loose_16k__firwin.npy",
+      "task": "fir_hp_loose_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_hp_loose_16k__firwin2.npy",
+      "task": "fir_hp_loose_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_hp_loose_8k__firwin.npy",
+      "task": "fir_hp_loose_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_hp_loose_8k__firwin2.npy",
+      "task": "fir_hp_loose_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_hp_tight_16k__firwin.npy",
+      "task": "fir_hp_tight_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_hp_tight_16k__remez.npy",
+      "task": "fir_hp_tight_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_hp_tight_8k__firwin.npy",
+      "task": "fir_hp_tight_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_hp_tight_8k__remez.npy",
+      "task": "fir_hp_tight_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_lp_loose_16k__firwin.npy",
+      "task": "fir_lp_loose_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_lp_loose_16k__firwin2.npy",
+      "task": "fir_lp_loose_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_lp_loose_8k__firwin.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_lp_loose_8k__firwin2.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_lp_tight_16k__firwin.npy",
+      "task": "fir_lp_tight_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_lp_tight_16k__remez.npy",
+      "task": "fir_lp_tight_16k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_lp_tight_8k__firwin.npy",
+      "task": "fir_lp_tight_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/valid/library/fir_lp_tight_8k__remez.npy",
+      "task": "fir_lp_tight_8k",
+      "old_label": "VALID",
+      "phase2a": "CERTIFIED_VALID",
+      "phase2b_sturm": "CERTIFIED_VALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M1.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M2.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M3.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M5.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M6.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/invalid/fir_lp_loose_8k/fir_lp_loose_8k__M7.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/icassp_10of10/boundary_invalids/fir_lp_loose_8k__PASS_DROP__e0.002.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/icassp_10of10/boundary_invalids/fir_lp_loose_8k__STOP_LIFT__e0.002.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/icassp_10of10/boundary_invalids/fir_lp_loose_8k__PASS_DROP__e0.005.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/icassp_10of10/boundary_invalids/fir_lp_loose_8k__STOP_LIFT__e0.005.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/icassp_10of10/boundary_invalids/fir_lp_loose_8k__PASS_DROP__e0.01.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    },
+    {
+      "occupant": "data/icassp_10of10/boundary_invalids/fir_lp_loose_8k__STOP_LIFT__e0.01.npy",
+      "task": "fir_lp_loose_8k",
+      "old_label": "INVALID",
+      "phase2a": "CERTIFIED_INVALID",
+      "phase2b_sturm": "CERTIFIED_INVALID",
+      "match_when_both_decided": 1
+    }
+  ],
+  "n": 44,
+  "disagreements": [],
+  "verdict": "PASS"
+}
