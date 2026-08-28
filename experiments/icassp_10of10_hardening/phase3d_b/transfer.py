@@ -84,6 +84,12 @@ def _summarize(rows: list[dict], accepted: int, rejected: int, n: int) -> dict:
 
 
 def recertify_h_valid(hv: dict) -> dict:
+    prev = OUT_DIR / "h_valid_recertify.json"
+    if prev.exists():
+        old = json.loads(prev.read_text(encoding="utf-8"))
+        if old.get("n") == hv["n"] and old.get("all_still_certified") and old.get("certified_valid") == hv["n"]:
+            print("[phase3d_b] H_VALID recertify already stored; reusing", flush=True)
+            return old
     fail = []
     n_ok = 0
     for i, m in enumerate(hv["members"]):

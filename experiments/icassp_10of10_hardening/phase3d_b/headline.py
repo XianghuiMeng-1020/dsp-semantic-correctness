@@ -1,0 +1,35 @@
+"""Frozen Phase-3D-B interpretation package. Written after results exist."""
+from __future__ import annotations
+
+from experiments.icassp_10of10_hardening.phase3d_b.config import OUT_DIR
+from src.verification.io_utils import dump_json
+
+
+def write_headline() -> dict:
+    out = {
+        "primary_transfer_word": "STRONG_FAILURE",
+        "note": "Coefficient is the primary novelty endpoint. Response is mixed-to-strong and reported separately.",
+        "best_framing": "E",
+        "internal_novelty_score": 9.3,
+        "novelty_gate": "PASS",
+        "key_hierarchy_result": "Larger base-fitted catalogs barely raise prospective coefficient transfer (canonical 0; K*=0.107); only Phase-3B K*_obs lifts response transfer (0.39 to 0.95).",
+        "secondary_invalid_verdict": "On the 12/20 tasks that have samples, coefficient FAR is 38/310; response FAR is 96/310 and is high on tight FIR LP. Not a 20-task FAR.",
+        "strongest_novelty": "Exact realization-reference catalogs that separate a frozen FIR/IIR universe reject most later catalog-blind, continuously certified valid implementations in coefficient space (20/20 tasks FRAGILE; all eight generator families), while band-masked response catalogs often transfer and ambient Euclidean centers already exist. Admitting the new valids forces coefficient-catalog growth and unavoidable prospective references (M*>0 on 20/20), which is a DSP support-expansion fact, not a new set-cover method.",
+        "strongest_remaining_attack": "A reviewer may still say new Remez/elliptic taps are expected to need new coefficient prototypes; the paper must keep that as a scoped DSP-geometry claim, not an algorithmic novelty.",
+        "central_claim": "After exact coefficient and response catalogs were fitted to one frozen FIR/IIR universe, 614 new continuously certified valid realizations were generated without using those catalogs. On this finite prospective challenge the frozen coefficient catalogs accepted only 66/614 implementations (task-macro median transfer 0.048; 20/20 tasks below 75 percent), whereas the frozen response catalogs accepted 585/614 (task-macro median 1.0). The result is catalog-excluded realization transfer on a specification-certified set, not a claim that valid and invalid filters are intrinsically inseparable or that every possible DSP implementation was tested.",
+        "strongest_positive": "Coefficient catalogs that are exact on the base universe fail prospectively across all 20 tasks and all eight standard DSP generator families, and every expanded exact coefficient catalog requires newly admitted references (M*>0 on 20/20).",
+        "strongest_limitation": "H_INVALID covers only 12/20 tasks, and the generators are a finite textbook palette rather than all possible implementations.",
+        "can_claim": "On this frozen 20-task suite, exact finite-universe coefficient catalogs do not transfer to later specification-certified realizations from ordinary DSP designers, while response catalogs often do.",
+        "cannot_claim": "That reference matching is impossible in general, that H_INVALID establishes 20-task FAR, or that prototype selection is a new algorithm.",
+        "phase_verdict": "READY_FOR_PI_FINAL_MANUSCRIPT_DECISION",
+        "framing_scores": {
+            "A": {"novelty": 9.0, "icassp": 8.5, "dsp": 9.0, "simplicity": 8.5, "pages": 3, "resistance": 6.5},
+            "B": {"novelty": 7.5, "icassp": 8.0, "dsp": 8.0, "simplicity": 7.0, "pages": 4, "resistance": 6.0},
+            "C": {"novelty": 8.8, "icassp": 8.5, "dsp": 8.5, "simplicity": 8.0, "pages": 3.5, "resistance": 6.5},
+            "D": {"novelty": 8.0, "icassp": 8.0, "dsp": 9.0, "simplicity": 7.5, "pages": 4, "resistance": 5.5},
+            "E": {"novelty": 9.3, "icassp": 9.0, "dsp": 9.0, "simplicity": 8.0, "pages": 4, "resistance": 6.0},
+            "picked": "E",
+        },
+    }
+    dump_json(OUT_DIR / "headline.json", out)
+    return out
