@@ -16,6 +16,11 @@ L.~R. Rabiner and B.~Gold,
 \newblock {\em Theory and Application of Digital Signal Processing},
 \newblock Prentice Hall, Englewood Cliffs, NJ, 1975.
 
+\bibitem{mitra2011dsp}
+S.~K. Mitra,
+\newblock {\em Digital Signal Processing: A Computer-Based Approach},
+\newblock McGraw-Hill, New York, NY, 4 edition, 2011.
+
 \bibitem{kaiser1974window}
 J.~F. Kaiser,
 \newblock ``Nonrecursive digital filter design using the {$I_0$}-sinh window
@@ -55,6 +60,13 @@ L.~R. Rabiner, J.~H. McClellan, and T.~W. Parks,
 \newblock ``{FIR} digital filter design techniques using weighted {Chebyshev}
   approximation,''
 \newblock {\em Proc. {IEEE}}, vol. 63, no. 4, pp. 595--610, Apr. 1975.
+
+\bibitem{herrmann1973linear}
+O.~Herrmann,
+\newblock ``On the approximation problem in nonrecursive digital filter
+  design,''
+\newblock {\em {IEEE} Trans. Circuit Theory}, vol. CT-18, no. 3, pp. 411--413,
+  May 1971.
 
 \bibitem{butterworth1930}
 S.~Butterworth,
@@ -105,5 +117,16 @@ P.~E. Hart,
 V.~Chv{\'a}tal,
 \newblock ``A greedy heuristic for the set-covering problem,''
 \newblock {\em Math. Oper. Res.}, vol. 4, no. 3, pp. 233--235, Aug. 1979.
+
+\bibitem{virtanen2020scipy}
+P.~Virtanen, R.~Gommers, T.~E. Oliphant, et~al.,
+\newblock ``{SciPy} 1.0: Fundamental algorithms for scientific computing in
+  {Python},''
+\newblock {\em Nature Methods}, vol. 17, pp. 261--272, 2020.
+
+\bibitem{vaidyanathan1993multirate}
+P.~P. Vaidyanathan,
+\newblock {\em Multirate Systems and Filter Banks},
+\newblock Prentice Hall, Englewood Cliffs, NJ, 1993.
 
 \end{thebibliography}

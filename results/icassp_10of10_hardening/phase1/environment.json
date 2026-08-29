@@ -1,8 +1,0 @@
-{
-  "python": "3.12.10",
-  "platform": "Windows",
-  "numpy": "2.3.5",
-  "out_dir": "results/icassp_10of10_hardening/phase1",
-  "note": "elapsed_s is printed, not stored, so a second run stays byte-stable",
-  "scipy": "1.15.3"
-}

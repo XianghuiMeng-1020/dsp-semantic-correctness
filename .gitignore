@@ -5,16 +5,11 @@ __pycache__/
 !ICASSP2027_ReferenceMatching_Submission.zip
 !ICASSP2027_ReferenceMatching_Reproducibility.zip
 !submission/ICASSP2027/*.zip
-# Keep only the ICASSP manuscript trees.
+
+# Keep only the ICASSP final manuscript tree (single source of truth).
 manuscript/*
-!manuscript/w4/
-!manuscript/w4/**
 !manuscript/final/
 !manuscript/final/**
-manuscript/w4/*.aux
-manuscript/w4/*.log
-manuscript/w4/*.out
-manuscript/w4/*.blg
 manuscript/final/*.aux
 manuscript/final/*.log
 manuscript/final/*.out
@@ -22,3 +17,30 @@ manuscript/final/*.blg
 manuscript/final/_preview/
 manuscript/final/_*.py
 manuscript/final/_pdf_pages.txt
+
+# Internal audit trail, raw experiment artifacts, and legacy implementation
+# code are kept in git history (see the icassp-10of10-* tags) but are not
+# part of the clean public-facing release.
+reports/
+data/
+src/
+scripts/
+registry/
+
+# Only the five frozen headline JSON files used by
+# experiments/icassp_final/run_all.py are published; the rest of the raw
+# results tree is excluded from the clean public release.
+results/*
+!results/icassp_10of10_hardening/
+results/icassp_10of10_hardening/*
+!results/icassp_10of10_hardening/phase1/
+!results/icassp_10of10_hardening/phase3b/
+!results/icassp_10of10_hardening/phase3d_b/
+results/icassp_10of10_hardening/phase1/*
+!results/icassp_10of10_hardening/phase1/headline.json
+results/icassp_10of10_hardening/phase3b/*
+!results/icassp_10of10_hardening/phase3b/headline.json
+results/icassp_10of10_hardening/phase3d_b/*
+!results/icassp_10of10_hardening/phase3d_b/transfer_coeff.json
+!results/icassp_10of10_hardening/phase3d_b/transfer_resp.json
+!results/icassp_10of10_hardening/phase3d_b/maintenance.json

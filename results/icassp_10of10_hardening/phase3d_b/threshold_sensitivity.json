@@ -1,6 +1,0 @@
-{
-  "coeff": "ROBUST_TO_THRESHOLD_CHOICE",
-  "resp": "ROBUST_TO_THRESHOLD_CHOICE",
-  "primary_threshold": "MAX_SAFE_BASE_ONLY",
-  "secondary_threshold": "MIDPOINT_BASE_ONLY"
-}

@@ -42,6 +42,8 @@ diversity of valid realizations that must be supported:
 coefficient matching is tied to realization identity, while
 magnitude-response matching is a substantially stronger---but not
 universally exact---surrogate on this suite.
+Code, frozen artifacts, and the reproduction entry point are at
+\url{https://github.com/XianghuiMeng-1020/dsp-semantic-correctness}.
 \end{abstract}
 
 \begin{keywords}
@@ -53,7 +55,7 @@ Digital filters, FIR, IIR, specification testing, reference matching
 
 A digital-filter task is specified by passband and stopband
 edges, ripple, attenuation, and, for IIR filters,
-stability~\cite{oppenheim2010dsp,proakis2007dsp,rabiner1975theory}:
+stability~\cite{oppenheim2010dsp,proakis2007dsp,rabiner1975theory,mitra2011dsp}:
 a feasible set, not a unique coefficient vector.
 Evaluation nevertheless often scores proximity to a golden
 coefficient vector, a reference magnitude response, or a small
@@ -66,7 +68,7 @@ transfer to alternative specification-valid FIR/IIR designs.
 That Remez, window, least-squares, frequency-sampling, Butterworth,
 Chebyshev, and elliptic constructions can meet one mask with
 different taps or sections is classical filter
-theory~\cite{kaiser1974window,harris1978windows,rabiner1970freqsamp,parks1972chebyshev,mcclellan1973computer,rabiner1975fir,butterworth1930,constantinides1970,jackson1996filters,antoniou2006filters}
+theory~\cite{kaiser1974window,harris1978windows,rabiner1970freqsamp,parks1972chebyshev,mcclellan1973computer,rabiner1975fir,herrmann1973linear,butterworth1930,constantinides1970,jackson1996filters,antoniou2006filters}
 and is not our contribution.
 The general test-oracle problem, specification-based conformance,
 and prototype or set-cover selection are likewise
@@ -155,6 +157,34 @@ samples.
 Centers must be actual observed valid realizations, not arbitrary
 Euclidean points.
 
+A length-31 Kaiser-window low-pass design and a length-45
+weighted-Chebyshev (Parks--McClellan) design can both satisfy the
+same passband-ripple and stopband-attenuation mask while differing
+substantially in length, tap values, and phase-delay structure, so
+their coefficient vectors sit far apart under $\ell_2$ even when
+their constrained-band magnitude responses nearly coincide.
+Coefficient distance is therefore sensitive to which valid
+realization was observed; magnitude-response distance is
+comparatively insensitive to that choice.
+Intuitively, $K^\star_{\mathrm{obs}}$ grows when $V$ is
+geometrically interleaved with $I$ under the chosen distance: a
+single center under-covers $V$ or over-covers into $I$ whenever
+some valid realization is farther from every candidate center than
+some invalid realization is from its nearest center.
+Because coefficient distance uses each realization's own tap or
+section parameterization as the operative geometry, and different
+design families place their occupants in different regions of that
+space, a coefficient-space center separating one family's occupants
+from invalids need not separate another family's occupants from the
+same invalids---the source of the observed $K^\star{>}10$
+requirement.
+IIR tasks add a further partition: the strict pole-radius bound
+constrains each design family's $(b,a)$ occupants to a
+family-specific region of coefficient space before any mask
+criterion is applied, so an IIR coefficient catalog inherits both
+the mask-driven and the stability-driven separation the FIR case
+does not.
+
 \section{Certified universe and prospective protocol}
 \label{sec:protocol}
 
@@ -179,6 +209,16 @@ certified invalid.
 Cosine endpoint handling is a numerical/rational certificate, not
 a machine-checked continuous proof.
 Implementation details live in the repository.
+
+The eight prospective design families were realized with standard
+SciPy signal-processing routines~\cite{virtanen2020scipy}:
+\texttt{remez} (Parks--McClellan), \texttt{firls}, \texttt{firwin2}
+(frequency sampling), and \texttt{firwin} (Kaiser/Hann windowing)
+for FIR; \texttt{butter}, \texttt{cheby1}, \texttt{cheby2}, and
+\texttt{ellip} for IIR.
+No family was excluded a priori, and each family's outputs were
+certified by the same continuous procedure as the base catalogs
+before being counted toward the $614$ frozen valids.
 
 Three questions organize the audit.
 RQ1: when does realization-reference matching recover
@@ -278,6 +318,14 @@ Response transfer is generally strong and still task-specific.
 Coefficient transfer failed across all eight generator families
 (family rates $3.6\%$--$18.2\%$); response transfer for those
 families ranged from $85.7\%$ to $100\%$.
+Coefficient transfer reached $0\%$ on exactly three tasks---both
+tight FIR band-stop tasks and the tight FIR low-pass task at
+$16\,\mathrm{kHz}$---where the certified prospective valids sit far,
+in tap space, from every frozen base-catalog member.
+Response transfer was weakest on the two tight FIR band-pass tasks
+($70\%$ at $8\,\mathrm{kHz}$, the only task below $75\%$; $75\%$ at
+$16\,\mathrm{kHz}$), followed by the tight FIR high-pass tasks
+($87.5\%$--$91.7\%$) and the loose IIR low-pass task ($78.0\%$).
 
 Enlarging the coefficient catalog on the \emph{base} universe does
 not rescue prospective transfer.
@@ -345,12 +393,27 @@ Where magnitude-response matching transfers, it can be a useful
 surrogate.
 The criterion used to define correctness in this study is still
 $S_t$.
+For evaluation practice, a reference-based filter-design checker
+should record which representation its catalog uses and should
+periodically recompute $K^\star$-style adequacy diagnostics as new
+valid realizations are observed, rather than treating one-time
+exactness on a fixed corpus as a permanent guarantee: no coefficient
+catalog earns that guarantee here, and even a favorable
+magnitude-response catalog needs periodic reappraisal.
 
+This audit targets magnitude-mask FIR/IIR filters realized as
+direct-form coefficient vectors; cascaded, lattice, or multirate
+realizations~\cite{vaidyanathan1993multirate} were not part of the
+certified universe and are left to future evaluation-methodology
+work.
 The study is finite: 20 magnitude-mask tasks, not general DSP
 software, and eight standard designer families, not all
 implementations.
-A secondary invalid challenge was not balanced across all tasks;
-full results are in the repository.
+A secondary catalog-blind invalid challenge, covering $12/20$ tasks
+($310$ realizations) and therefore not a balanced 20-task holdout,
+found response false acceptance ($96/310$, $31.0\%$) exceeding
+coefficient false acceptance ($38/310$, $12.3\%$) on that subset;
+full per-task results are in the repository.
 No infinite-universe claim is made, and magnitude-response
 matching is not asserted to be sound or complete in general.
 
@@ -367,7 +430,27 @@ Correctness evaluation should distinguish specification
 compliance from realization identity and choose the reference
 representation accordingly.
 
-Code and frozen artifacts are in the accompanying public repository.
+Returning to the three questions: RQ1 (does realization-reference
+matching recover specification membership on the frozen universe?)
+is answered negatively for a single coefficient reference and only
+partially for a single response reference; RQ2 (how large a
+realizable catalog is required?) needs more than ten coefficient
+references on every task, with a median of $23$; RQ3 (does an
+exact base-fitted catalog transfer?) is answered asymmetrically,
+with coefficient catalogs generalizing poorly ($66/614$) and
+magnitude-response catalogs generalizing well but imperfectly
+($585/614$).
+The same audit methodology---freeze catalogs, generate a
+catalog-blind challenge, and measure transfer by representation---
+could be applied to other specification types, such as
+phase-response or group-delay masks, without requiring a new
+correctness definition.
+
+Code and frozen artifacts are in the accompanying public
+repository, where the certified base and prospective corpora, the
+$K^\star$/RCC diagnostics, and a one-line reproduction entry point
+are frozen and tagged so that every number in
+Section~\ref{sec:results} can be regenerated independently.
 
 \clearpage
 \noindent\textbf{Compliance with ethical standards.}
