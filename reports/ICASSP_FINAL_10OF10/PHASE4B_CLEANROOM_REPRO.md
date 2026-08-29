@@ -1,16 +1,17 @@
 # PHASE 4B — Clean-room reproduction
 
-Procedure:
+Date: 2026-08-29
 
-1. Isolated copy of the repository (no developer `.venv`).
-2. Fresh virtualenv.
-3. `pip install -r requirements.txt` (optional for headlines; used to match the declared environment).
-4. `python -m experiments.icassp_final.run_all`
-5. Confirm all headline numbers.
-6. Confirm `manuscript/final/paper.pdf` is 5 pages (compiled in the developer tree; the clean copy compiles if TeX is present).
+1. `git clone --local` of `F:/ICASSP/project_a_public_release` into `%TEMP%\icassp4b_cr`
+2. Checkout `3935587`
+3. Fresh `python -m venv .venv` (CPython 3.12)
+4. `pip install -r requirements.txt` (resolved NumPy 2.5.2 / SciPy 1.18.1; not required for headlines)
+5. `python -m experiments.icassp_final.run_all`
 
-Headline command uses only stdlib + frozen JSON under `results/icassp_10of10_hardening/`. No `F:/` paths, no undocumented environment variables.
+Output: `ALL_PUBLISHED_RESULTS_MATCH = YES` with every locked headline exact.
 
-Cross-platform: `pathlib.Path` throughout `experiments/icassp_final/run_all.py`. CI (`.github/workflows/repro-headlines.yml`) runs the same command on `ubuntu-latest`.
+No `F:/` runtime paths. `pathlib.Path` only.
 
-**Verdict:** filled after the isolated run in this phase.
+CI: `.github/workflows/repro-headlines.yml` runs the same command on `ubuntu-latest` (smoke/full headline validation; does not re-fit catalogs).
+
+**Verdict: `PASS_EXACT`**
