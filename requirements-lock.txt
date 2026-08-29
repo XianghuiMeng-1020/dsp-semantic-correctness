@@ -1,0 +1,5 @@
+# Pinned environment used to develop the frozen scientific package.
+# Headline reproduction (python -m experiments.icassp_final.run_all)
+# does not require these packages.
+numpy==2.3.5
+scipy==1.15.3

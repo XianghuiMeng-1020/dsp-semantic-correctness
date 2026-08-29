@@ -1,0 +1,109 @@
+\begin{thebibliography}{10}
+
+\bibitem{oppenheim2010dsp}
+A.~V. Oppenheim and R.~W. Schafer,
+\newblock {\em Discrete-Time Signal Processing},
+\newblock Prentice Hall, Upper Saddle River, NJ, 3 edition, 2010.
+
+\bibitem{proakis2007dsp}
+J.~G. Proakis and D.~G. Manolakis,
+\newblock {\em Digital Signal Processing: Principles, Algorithms, and
+  Applications},
+\newblock Pearson Prentice Hall, Upper Saddle River, NJ, 4 edition, 2007.
+
+\bibitem{rabiner1975theory}
+L.~R. Rabiner and B.~Gold,
+\newblock {\em Theory and Application of Digital Signal Processing},
+\newblock Prentice Hall, Englewood Cliffs, NJ, 1975.
+
+\bibitem{kaiser1974window}
+J.~F. Kaiser,
+\newblock ``Nonrecursive digital filter design using the {$I_0$}-sinh window
+  function,''
+\newblock in {\em Proc. {IEEE} Int. Symp. Circuits and Systems}, 1974, pp.
+  20--23.
+
+\bibitem{harris1978windows}
+F.~J. Harris,
+\newblock ``On the use of windows for harmonic analysis with the discrete
+  {Fourier} transform,''
+\newblock {\em Proc. {IEEE}}, vol. 66, no. 1, pp. 51--83, Jan. 1978.
+
+\bibitem{rabiner1970freqsamp}
+L.~R. Rabiner, B.~Gold, and C.~A. McGonegal,
+\newblock ``An approach to the approximation problem for nonrecursive digital
+  filters,''
+\newblock {\em {IEEE} Trans. Audio and Electroacoustics}, vol. AU-18, no. 2,
+  pp. 83--106, June 1970.
+
+\bibitem{parks1972chebyshev}
+T.~W. Parks and J.~H. McClellan,
+\newblock ``Chebyshev approximation for nonrecursive digital filters with
+  linear phase,''
+\newblock {\em {IEEE} Trans. Circuit Theory}, vol. CT-19, no. 2, pp. 189--194,
+  Mar. 1972.
+
+\bibitem{mcclellan1973computer}
+J.~H. McClellan, T.~W. Parks, and L.~R. Rabiner,
+\newblock ``A computer program for designing optimum {FIR} linear phase digital
+  filters,''
+\newblock {\em {IEEE} Trans. Audio and Electroacoustics}, vol. AU-21, no. 6,
+  pp. 506--526, Dec. 1973.
+
+\bibitem{rabiner1975fir}
+L.~R. Rabiner, J.~H. McClellan, and T.~W. Parks,
+\newblock ``{FIR} digital filter design techniques using weighted {Chebyshev}
+  approximation,''
+\newblock {\em Proc. {IEEE}}, vol. 63, no. 4, pp. 595--610, Apr. 1975.
+
+\bibitem{butterworth1930}
+S.~Butterworth,
+\newblock ``On the theory of filter amplifiers,''
+\newblock {\em Experimental Wireless and the Wireless Engineer}, vol. 7, pp.
+  536--541, 1930.
+
+\bibitem{constantinides1970}
+A.~G. Constantinides,
+\newblock ``Spectral transformations for digital filters,''
+\newblock {\em Proc. {IEE}}, vol. 117, no. 8, pp. 1585--1590, Aug. 1970.
+
+\bibitem{jackson1996filters}
+L.~B. Jackson,
+\newblock {\em Digital Filters and Signal Processing},
+\newblock Springer, Boston, MA, 3 edition, 1996.
+
+\bibitem{antoniou2006filters}
+A.~Antoniou,
+\newblock {\em Digital Signal Processing: Signals, Systems, and Filters},
+\newblock McGraw-Hill, New York, NY, 2006.
+
+\bibitem{weyuker1982nontestable}
+E.~J. Weyuker,
+\newblock ``On testing non-testable programs,''
+\newblock {\em The Computer Journal}, vol. 25, no. 4, pp. 465--470, 1982.
+
+\bibitem{barr2015oracle}
+E.~T. Barr, M.~Harman, P.~McMinn, M.~Shahbaz, and S.~Yoo,
+\newblock ``The oracle problem in software testing: A survey,''
+\newblock {\em {IEEE} Trans. Software Eng.}, vol. 41, no. 5, pp. 507--525, May
+  2015.
+
+\bibitem{huuhtanen2015dsp}
+T.~Huuhtanen, J.~Itkonen, and C.~Lassenius,
+\newblock ``Combining algebraic and domain testing to design adequate test
+  cases for signal processing algorithms,''
+\newblock in {\em Proc. {IEEE} 8th Int. Conf. Software Testing, Verification
+  and Validation ({ICST})}, 2015, pp. 1--10.
+
+\bibitem{hart1968cnn}
+P.~E. Hart,
+\newblock ``The condensed nearest neighbor rule,''
+\newblock {\em {IEEE} Trans. Inf. Theory}, vol. IT-14, no. 3, pp. 515--516, May
+  1968.
+
+\bibitem{chvatal1979setcover}
+V.~Chv{\'a}tal,
+\newblock ``A greedy heuristic for the set-covering problem,''
+\newblock {\em Math. Oper. Res.}, vol. 4, no. 3, pp. 233--235, Aug. 1979.
+
+\end{thebibliography}

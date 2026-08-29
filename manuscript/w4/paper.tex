@@ -1,6 +1,12 @@
 % ICASSP 2027 manuscript: official SPS conference template (spconf.sty / IEEEbib.bst).
 \documentclass{article}
 \usepackage{spconf,amsmath,amssymb,graphicx,booktabs,placeins,balance,hyperref,flushend}
+\hypersetup{
+  pdfauthor={Xianghui Meng and Jionghao Lin},
+  pdftitle={When Does Reference Matching Transfer? Specification-Certified Audits of FIR/IIR Realizations},
+  pdfsubject={ICASSP 2027 regular paper},
+  pdfkeywords={Digital filters, FIR, IIR, specification testing, reference matching}
+}
 
 \title{When Does Reference Matching Transfer? Specification-Certified\\
 Audits of FIR/IIR Realizations}
@@ -31,12 +37,11 @@ After those catalogs were frozen, a catalog-blind protocol produced
 The frozen coefficient catalogs accepted $66/614$ ($10.7\%$;
 task-macro median $4.8\%$), whereas the frozen magnitude-response
 catalogs accepted $585/614$ ($95.3\%$; task-macro median $100\%$).
-Reference adequacy is therefore representation-dependent:
-coefficient catalogs that are exact on one finite universe
-under-cover later valid designs, while magnitude-response matching
-is a substantially better---but not universally
-sound---surrogate.
-Specification checking remains the correctness definition.
+Reference adequacy therefore depends on representation and on the
+diversity of valid realizations that must be supported:
+coefficient matching is tied to realization identity, while
+magnitude-response matching is a substantially stronger---but not
+universally exact---surrogate on this suite.
 \end{abstract}
 
 \begin{keywords}
@@ -46,37 +51,31 @@ Digital filters, FIR, IIR, specification testing, reference matching
 \section{Introduction}
 \label{sec:intro}
 
-A digital-filter design task is usually stated as a
-\emph{behavior}: passband and stopband edges, ripple, attenuation,
-and, for IIR filters, stability~\cite{oppenheim2010dsp,proakis2007dsp,rabiner1975theory}.
-Those constraints define a feasible set, not a unique coefficient
-vector.
-Window, frequency-sampling, least-squares, and equiripple FIR
-designers~\cite{kaiser1974window,harris1978windows,rabiner1970freqsamp,parks1972chebyshev,mcclellan1973computer,rabiner1975fir},
-and Butterworth, Chebyshev, and elliptic IIR
-sections~\cite{butterworth1930,constantinides1970,jackson1996filters,antoniou2006filters},
-can all satisfy the same magnitude mask.
+A digital-filter task is specified by passband and stopband
+edges, ripple, attenuation, and, for IIR filters,
+stability~\cite{oppenheim2010dsp,proakis2007dsp,rabiner1975theory}:
+a feasible set, not a unique coefficient vector.
+Evaluation nevertheless often scores proximity to a golden
+coefficient vector, a reference magnitude response, or a small
+library catalog.
+That surrogate asks whether a candidate is the \emph{same
+realization}, not whether it satisfies the mask.
+This paper audits whether such realization-reference oracles
+transfer to alternative specification-valid FIR/IIR designs.
 
-Implementation evaluation nevertheless often compares a candidate
-to one golden coefficient vector, one reference magnitude
-response, or a small catalog of library designs.
-That comparison answers a different question:
-whether the candidate is the \emph{same realization}, not whether
-it meets the specification that justified the reference.
-The two coincide when the specification is effectively a unique
-map.
-They need not coincide for non-unique magnitude masks.
-
+That Remez, window, least-squares, frequency-sampling, Butterworth,
+Chebyshev, and elliptic constructions can meet one mask with
+different taps or sections is classical filter
+theory~\cite{kaiser1974window,harris1978windows,rabiner1970freqsamp,parks1972chebyshev,mcclellan1973computer,rabiner1975fir,butterworth1930,constantinides1970,jackson1996filters,antoniou2006filters}
+and is not our contribution.
 The general test-oracle problem, specification-based conformance,
-and prototype or reference-set
-selection are established
-ideas~\cite{weyuker1982nontestable,barr2015oracle,huuhtanen2015dsp,hart1968cnn,chvatal1979setcover}.
-We do not propose a new set-cover algorithm or a new theory of
-oracles.
-The unresolved signal-processing question is narrower: whether
-realization-based coefficient or magnitude-response references
-fitted on one FIR/IIR implementation universe remain adequate for
-later implementations certified against the same mask.
+and prototype or set-cover selection are likewise
+established~\cite{weyuker1982nontestable,barr2015oracle,huuhtanen2015dsp,hart1968cnn,chvatal1979setcover}.
+We do not propose a new oracle theory or a new set-cover algorithm.
+The question is whether coefficient or magnitude-response
+references that exactly fit one specification-certified FIR/IIR
+universe transfer to later catalog-blind implementations of the
+same masks.
 
 This paper makes three contributions.
 (i)~We formulate correctness as membership in a
@@ -189,41 +188,34 @@ recovery?
 RQ3: do exact base-fitted catalogs transfer to later
 implementations that satisfy the same masks?
 
-The prospective challenge was protocol-locked after catalog
-fitting.
-(1)~Fit and freeze base coefficient and response catalogs and
-their max-safe thresholds (the largest $\tau$ that accepts no
-frozen base invalid).
-(2)~Commit catalog identities.
-(3)~Freeze a generation protocol that does not read those
-catalogs, distances, transfer scores, or ambient centers.
-(4)~Schedule $960$ valid-design attempts across all 20 tasks and
-eight ordinary designer families: Remez, FIRLS, frequency
-sampling, and windowed FIR; Butterworth, Chebyshev~I,
-Chebyshev~II, and elliptic IIR.
-(5)~Continuously certify every occupant.
-(6)~Remove exact coefficient duplicates.
-(7)~Freeze $614$ new nonduplicate certified-valid challenge
-implementations ($500$ FIR, $114$ IIR; all 20 tasks; at least
-$13$ per task).
-(8)~Only then unblind reference transfer.
+We first froze the base catalogs and their max-safe thresholds
+(the largest $\tau$ that accepts no frozen base invalid).
+We then protocol-locked generation across all 20 tasks and eight
+standard families---Remez, FIRLS, frequency sampling, and
+windowed FIR; Butterworth, Chebyshev~I,~II, and elliptic
+IIR---scheduled $960$ attempts, continuously certified occupants,
+removed exact coefficient duplicates, and froze $614$ new
+nonduplicate valid realizations ($500$ FIR, $114$ IIR; every
+task; at least $13$ per task) without accessing catalog
+identities, reference distances, transfer scores, or ambient
+centers.
+Only then did we evaluate transfer.
 An earlier same-order probe set participated in catalog fitting
-and is \emph{not} this holdout.
+and is not this holdout.
 The $614$ occupants are prospectively generated, catalog-blind,
-specification-certified realizations; they are not all possible
-filters.
+specification-certified realizations, not all possible filters.
 
 \FloatBarrier
 \section{Results}
 \label{sec:results}
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.98\textwidth]{fig_transfer.pdf}
+\includegraphics[width=0.96\textwidth]{fig_transfer.pdf}
 \caption{Catalog-blind prospective transfer on $614$
 specification-certified realizations.
 Each row is one magnitude-mask task (L/T: loose/tight).
-Red: frozen coefficient catalogs.
-Blue: frozen magnitude-response catalogs.
+Circles: frozen coefficient catalogs.
+Squares: frozen magnitude-response catalogs.
 Guides mark $75\%$ and $95\%$.}
 \label{fig:transfer}
 \end{figure*}
@@ -235,19 +227,16 @@ canonical and 20/20 best-observed non-separable).
 A single magnitude-response reference fails on $19/20$ canonical
 and $18/20$ best-observed tasks (Table~\ref{tab:base}).
 Exact observed-valid coefficient catalogs exist on $20/20$ tasks,
-but never with $K^\star\le 10$: the median is $23$ (range
-$15$--$113$; median $K^\star/\lvert V\rvert=0.512$).
+but $K^\star>10$ on every task (median $23$).
 Library-only catalogs recover membership on $0/20$ tasks in both
 representations.
 Response $K^\star$ has median $17.5$ and equals $1$ on two tasks.
 
-Arbitrary Euclidean ambient centers, which need not be realizable
-filters, separate $19/20$ coefficient and $20/20$ response finite
-universes (only \texttt{iir\_lp\_loose\_8k} has no coefficient
-center).
-Poor later transfer is therefore not generally due to intrinsic
-one-ball inseparability of the labeled point sets; the
-restriction to realizable reference filters matters.
+An arbitrary Euclidean center separates 19/20 coefficient and
+20/20 response base universes (one IIR low-pass task has no
+coefficient center), so the observed failures should not be
+read as intrinsic one-center inseparability; the restriction
+to actual realizations is consequential.
 
 \begin{table}[t]
 \caption{Exact recovery on the frozen base universe.
@@ -286,13 +275,9 @@ task transferred at $70\%$.
 FIR and IIR macros were both about $94.6\%$.
 Response transfer is generally strong and still task-specific.
 
-The coefficient result is not driven by one construction family:
-Remez, FIRLS, frequency-sampling, and windowed FIR transferred at
-$13.8\%$, $13.0\%$, $11.5\%$, and $5.1\%$; Butterworth,
-Chebyshev~I,~II, and elliptic IIR transferred at $18.2\%$,
-$3.6\%$, $6.9\%$, and $5.7\%$.
-Response transfer for those families ranged from $85.7\%$ to
-$100\%$.
+Coefficient transfer failed across all eight generator families
+(family rates $3.6\%$--$18.2\%$); response transfer for those
+families ranged from $85.7\%$ to $100\%$.
 
 Enlarging the coefficient catalog on the \emph{base} universe does
 not rescue prospective transfer.
@@ -337,19 +322,19 @@ $M^\star>0$ on $9/20$ tasks).
 \section{Discussion}
 \label{sec:disc}
 
-That Remez, window, and elliptic designs can meet one mask
-with different coefficients is classical filter theory; the
-audit is whether a catalog of those realizations remains an
-adequate correctness proxy for later valid designs.
-Coefficient proximity records implementation choice: distinct
-constructions that meet the same mask can sit far apart in
-tap or $(b,a)$ space.
-A catalog that is exact on one finite sample of those
-constructions can still miss later legitimate occupants.
-Magnitude-response proximity discards much of that
-realization-specific variation and therefore usually transfers.
-It remains an approximation to $S_t$: it failed on one task in
-Fig.~\ref{fig:transfer}, and it is not a proof of mask
+Coefficient matching retains realization-specific
+parameterization: distinct Remez, window, or elliptic
+occupants of the same mask can sit far apart in tap or
+$(b,a)$ space, so a catalog exact on one sample can miss later
+valid designs ($66/614$).
+Magnitude-response matching quotients out much of that
+coefficient-level variability and aligns more directly with the
+pass/stop mask $S_t$, which is why the same catalogs accept
+$585/614$ occupants.
+The contrast is a signal-processing representation fact, not
+merely that one rate is larger.
+Response matching remains a surrogate: it is not $100\%$, one
+task transferred below $75\%$, and it does not prove mask
 satisfaction.
 
 A golden coefficient vector, or a finite coefficient catalog
@@ -361,21 +346,14 @@ surrogate.
 The criterion used to define correctness in this study is still
 $S_t$.
 
-The study is finite.
-We evaluate 20 magnitude-mask tasks, not general DSP software.
-The prospective challenge uses eight standard designer families,
-not all implementations.
-A secondary invalid set of $310$ occupants covers only $12/20$
-tasks; on that incomplete set, coefficient catalogs falsely
-accepted $38/310$ implementations and magnitude-response
-catalogs $96/310$.
-Those rates are not a 20-task false-acceptance rate.
-Ambient Euclidean centers often exist, so the geometry is not
-intrinsic one-center inseparability.
+The study is finite: 20 magnitude-mask tasks, not general DSP
+software, and eight standard designer families, not all
+implementations.
+A secondary invalid challenge was not balanced across all tasks;
+full results are in the repository.
 No infinite-universe claim is made, and magnitude-response
 matching is not asserted to be sound or complete in general.
 
-\balance
 \section{Conclusion}
 \label{sec:conc}
 
@@ -389,8 +367,7 @@ Correctness evaluation should distinguish specification
 compliance from realization identity and choose the reference
 representation accordingly.
 
-Frozen specifications, certified corpora, protocol locks, and a
-reproduction command are provided in the accompanying repository.
+Code and frozen artifacts are in the accompanying public repository.
 
 \clearpage
 \noindent\textbf{Compliance with ethical standards.}

@@ -44,20 +44,26 @@ def main() -> None:
     xc = np.array([c[t] for t in ORDER])
     xr = np.array([r[t] for t in ORDER])
 
-    fig, ax = plt.subplots(figsize=(7.16, 3.15), dpi=200)
+    fig, ax = plt.subplots(figsize=(7.16, 3.12), dpi=200)
     for y, a, b in zip(ys, xc, xr):
-        ax.plot([a, b], [y, y], color="#9aa3ad", lw=1.15, zorder=1)
-    ax.scatter(xc, ys, s=26, c="#b23a48", zorder=2, label="Coefficient", edgecolors="none")
-    ax.scatter(xr, ys, s=26, c="#2c6e8a", zorder=2, label="Magnitude response", edgecolors="none")
-    ax.axvline(0.75, color="#c4c4c4", ls=":", lw=0.7)
-    ax.axvline(0.95, color="#c4c4c4", ls="--", lw=0.7)
+        ax.plot([a, b], [y, y], color="#7a8188", lw=1.05, zorder=1)
+    ax.scatter(
+        xc, ys, s=30, c="#b23a48", marker="o", zorder=2,
+        label="Coefficient", edgecolors="k", linewidths=0.35,
+    )
+    ax.scatter(
+        xr, ys, s=28, c="#2c6e8a", marker="s", zorder=2,
+        label="Magnitude response", edgecolors="k", linewidths=0.35,
+    )
+    ax.axvline(0.75, color="#b0b0b0", ls=":", lw=0.7)
+    ax.axvline(0.95, color="#b0b0b0", ls="--", lw=0.7)
     ax.set_yticks(ys)
-    ax.set_yticklabels([LABEL[t] for t in ORDER], fontsize=7)
+    ax.set_yticklabels([LABEL[t] for t in ORDER], fontsize=7.4)
     ax.set_xlabel("Prospective valid-realization transfer", fontsize=8)
-    ax.set_xlim(-0.02, 1.04)
-    ax.set_ylim(-0.7, len(ORDER) - 0.3)
-    ax.tick_params(axis="x", labelsize=7)
-    ax.legend(loc="lower right", fontsize=7, frameon=False)
+    ax.set_xlim(-0.03, 1.05)
+    ax.set_ylim(-0.75, len(ORDER) - 0.25)
+    ax.tick_params(axis="x", labelsize=7.4)
+    ax.legend(loc="lower right", fontsize=7.2, frameon=False, handletextpad=0.35)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     fig.tight_layout(pad=0.25)
