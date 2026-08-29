@@ -108,12 +108,13 @@ catalogs or the prospective challenge.
 ## Historical / development artifacts
 
 Earlier suites, independent-verifier strengthening, and internal
-hardening phases live under `reports/`, `experiments/icassp_10of10/`,
-and `experiments/icassp_10of10_hardening/`. Those directories document
-how the frozen package was built. They are **not** the user-facing
-result of this paper. Do not treat construction-era headlines
-(including 374/416, 14-eligible / 9-valid generated-code witnesses, or
-Oracle A/B/C) as the current science.
+hardening/audit reports are preserved in the git history of this
+repository (see the `icassp-10of10-*` tags) rather than in the current
+working tree, which contains only the material needed to read and
+reproduce this paper. They are **not** the user-facing result of this
+paper. Do not treat construction-era headlines (including 374/416,
+14-eligible / 9-valid generated-code witnesses, or Oracle A/B/C) as the
+current science.
 
 ## Citation
 
