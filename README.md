@@ -1,99 +1,124 @@
-# Code and manuscript repository for the ICASSP 2027 paper
+# When Does Reference Matching Transfer? Specification-Certified Audits of FIR/IIR Realizations
 
-*Beyond Reference Matching: Specification-Based Correctness Evaluation for DSP Implementations*
+ICASSP 2027 regular paper (single-anonymous review).
 
-Final manuscript: `manuscript/w4/`  
-Submission PDF: `manuscript/w4/submission/paper.pdf`
+A magnitude-mask filter specification defines a feasible set of FIR/IIR
+realizations, not a unique coefficient vector. Reference-based scoring
+treats proximity to selected realizations as a proxy for specification
+compliance. This repository audits whether that proxy transfers to later
+specification-valid designs.
 
-Frozen constructed-label package: `registry/suite_s.json`,
-`registry/suite_n.json`, `src/spec_checker.py`, Phase 2B/2C scripts
-under `scripts/`, and occupants under `data/valid/` and `data/invalid/`.
+**Authors.** Xianghui Meng (The University of Hong Kong) and
+Jionghao Lin (The University of Hong Kong / Carnegie Mellon University,
+corresponding).
 
-Historical Arm N / identity-suite reproduction scripts remain below.
+**Manuscript.** `manuscript/final/paper.tex`  
+**PDF.** `manuscript/final/paper.pdf`
 
-Paper: specification-set membership \(\mathcal{V}_t=\{h:S_t(h)=1\}\)
-on filter-design tasks that admit more than one valid realization.
-Coefficient agreement with `firwin` / `butter` is a realization
-diagnostic.
+## Headline results (frozen)
 
-## Overview
+| Quantity | Value |
+|---|---|
+| Tasks | 20 magnitude-mask specifications (16 FIR, 4 IIR) |
+| Base constructed valids | 412 (336 FIR, 76 IIR) |
+| Continuous certification | 412/412 |
+| Coefficient single-reference exact recovery | 0/20 (non-separable 20/20) |
+| Coefficient observed-valid catalog complexity, median \(K^\star\) | 23 (\(K^\star>10\) on 20/20) |
+| Prospective catalog-blind certified valids | 614 (500 FIR, 114 IIR; eight standard designer families) |
+| Frozen coefficient catalogs accept | **66/614** (task-macro median 0.047619) |
+| Frozen magnitude-response catalogs accept | **585/614** (task-macro median 1.0) |
+| Expanded coefficient median \(K^\star\) | 23 → 55; every task requires newly admitted references (20/20) |
 
-- **RQ1 / Arm N.** 48 planned generations, 20 execute, 14 eligible, 9
-  specification-valid and coefficient-discordant with the canonical
-  reference (4/4 tasks, 6/12 cells). Pre-generation: 12/12 valid
-  controls pass \(S_t\); 12/12 mutants fail.
-- **RQ2 / P2A.** Hamming windowed-sinc and frequency-sampling FIR
-  designs (`src/first_principles_fir.py`, numpy only) occupy the same
-  frozen masks at the canonical lengths (same-order \(6/6\) in
-  \(\mathcal{V}_t\), \(5/6\) coefficient-discordant).
-- **RQ3 / P2C.** Tight low-pass mask at common length \(N=57\):
-  windowed-sinc and frequency sampling both satisfy \(S_t\), pass
-  \(7/7\) constrained tones, share group delay \(28\), and differ by
-  coefficient \(\ell_2=0.115\).
-- **RQ4 / Oracles A, B, C.** Table III on the 14 eligible
-  implementations. \(T\) is a consistency probe of the same mask as
-  \(S_t\), not an independent gold or correctness oracle.
+These are finite-universe results on magnitude-mask tasks. They are not
+a claim that no reference can exist, that reference matching is
+impossible in general, or that magnitude-response matching is a
+universally exact oracle. \(K^\star\) is an adequacy diagnostic; computing
+it uses standard set-cover / prototype selection and is not claimed as
+a new algorithm. The prospective challenge uses eight ordinary
+design families (Remez, FIRLS, frequency sampling, window; Butterworth,
+Chebyshev I/II, elliptic), not all possible implementations.
 
-Supporting arms H/P/B remain in `data/` so the original identity-suite
-counts still re-score; they are not the paper's primary claim.
+## Reproduce the published headlines
 
-Model generation is not shipped. Every number is computed from the
-extracted implementations in `data/` and from deterministic FIR designs.
-
-## Environment setup
-
-```bash
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-# Unix:    source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-Requires Python 3 with `numpy` and `scipy` (see `requirements.txt`).
-
-## Reproduction commands
+Requires Python 3.10+ (tested on CPython 3.12). The headline command
+reads frozen JSON artifacts and needs **no** compiled extensions:
 
 ```bash
-python scripts/reproduce_all.py
-python scripts/reproduce_first_principles.py
-python scripts/reproduce_p2c.py
-python scripts/reproduce_oracles.py
+python -m experiments.icassp_final.run_all
 ```
 
-## Expected outputs
+Expected terminal (numbers must match exactly):
 
 ```text
-ALL_PUBLISHED_COUNTS_MATCH: YES
-FIRST_PRINCIPLES_SAMEORDER: PASS
-P2C_PUBLISHED_COUNTS_MATCH: YES
-ORACLE_TABLE_MATCH: YES
+ICASSP FINAL REPRODUCTION
+
+BASE_TASKS = 20
+BASE_VALID = 412
+BASE_CONTINUOUSLY_CERTIFIED = 412/412
+
+COEFF_SINGLE_REFERENCE_NONSEPARABLE = 20/20
+COEFF_RCC_MEDIAN = 23
+
+PROSPECTIVE_VALID = 614
+COEFF_PROSPECTIVE_ACCEPT = 66/614
+COEFF_TASK_MACRO_MEDIAN = 0.047619
+
+RESPONSE_PROSPECTIVE_ACCEPT = 585/614
+RESPONSE_TASK_MACRO_MEDIAN = 1.000000
+
+COEFF_EXPANDED_RCC_MEDIAN = 55
+COEFF_TASKS_REQUIRING_NEW_REFERENCES = 20/20
+
+ALL_PUBLISHED_RESULTS_MATCH = YES
 ```
 
-Oracle A uses the frozen coefficient distances in
-`data/arm_n_oracle_a_frozen.json` (one same-order `remez` row sits on
-the \(\tau_R=0.05\) boundary; live SciPy taps can move at \(10^{-4}\)).
-Oracles B and C and the tone check \(T\) are recomputed live.
+To compile the manuscript:
 
-## Repository structure
-
-```text
-src/contracts_arm_n.py                 FIR/IIR specification contracts
-src/first_principles_fir.py            windowed-sinc and frequency sampling
-src/runtime.py                         restricted-namespace exec
-scripts/reproduce_all.py               Arm N / H / P / B published counts
-scripts/reproduce_first_principles.py  RQ2 same-order occupants
-scripts/reproduce_p2c.py               RQ3 tight-mask N=57 pair
-scripts/reproduce_oracles.py           Table III, Oracles A/B/C vs T
-data/arm_n_generations.json            48 scored generations
-data/arm_n_valid_controls/             12 pre-generation controls
-data/arm_n_mutants/                    12 mechanism mutants
-data/arm_n_oracle_a_frozen.json        frozen Oracle A distances
+```bash
+cd manuscript/final
+pdflatex paper
+bibtex paper
+pdflatex paper
+pdflatex paper
 ```
+
+## Environment
+
+- Headline reproduction: stdlib only (`json`, `pathlib`).
+- Optional scientific stack used elsewhere in the repository:
+  see `requirements.txt` (NumPy / SciPy) and pinned
+  `requirements-lock.txt` (tested: CPython 3.12.10, NumPy 2.3.5,
+  SciPy 1.15.3).
+- Figure regeneration (not required to reproduce numbers):
+  `pip install matplotlib` then
+  `python manuscript/final/make_fig_transfer.py`.
+
+CI runs the headline command and fails on any mismatch. That is a
+deterministic validation of frozen artifacts, not a re-derivation of
+catalogs or the prospective challenge.
+
+## What this repository is not
+
+- Not a new FIR/IIR design method
+- Not a new set-cover or prototype-selection algorithm
+- Not a generic software test-oracle theory paper
+- Not an LLM / generated-code leaderboard
+- Not an infinite-universe impossibility theorem
+
+## Historical / development artifacts
+
+Earlier suites, independent-verifier strengthening, and internal
+hardening phases live under `reports/`, `experiments/icassp_10of10/`,
+and `experiments/icassp_10of10_hardening/`. Those directories document
+how the frozen package was built. They are **not** the user-facing
+result of this paper. Do not treat construction-era headlines
+(including 374/416, 14-eligible / 9-valid generated-code witnesses, or
+Oracle A/B/C) as the current science.
 
 ## Citation
 
-Xianghui Meng and Jionghao Lin, “Beyond Reference Matching:
-Specification-Based Correctness Evaluation for DSP Implementations,”
+Xianghui Meng and Jionghao Lin, “When Does Reference Matching Transfer?
+Specification-Certified Audits of FIR/IIR Realizations,” submitted to
 ICASSP 2027.
 
 ## License

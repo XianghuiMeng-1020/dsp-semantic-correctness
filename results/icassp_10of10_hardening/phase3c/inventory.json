@@ -1,0 +1,486 @@
+{
+  "primary_holdout_designation": null,
+  "primary_holdout_name": null,
+  "blocker": "PHASE3C_HOLDOUT_LEAKAGE_BLOCKER",
+  "blocker_reason": "The 1260 Type-I probes existed before Phase 3C and are continuously certified, but they were members of Phase-3B V_t and candidate/selected references. They are not an independent external holdout.",
+  "constructed_n": 412,
+  "constructed_sources": {
+    "library": 88,
+    "first_principles": 24,
+    "random": 300
+  },
+  "probe_n": 1260,
+  "probe_unique": 1260,
+  "probe_per_task": {
+    "fir_bp_loose_16k": 66,
+    "fir_bp_loose_8k": 66,
+    "fir_bp_tight_16k": 90,
+    "fir_bp_tight_8k": 90,
+    "fir_bs_loose_16k": 68,
+    "fir_bs_loose_8k": 68,
+    "fir_bs_tight_16k": 102,
+    "fir_bs_tight_8k": 102,
+    "fir_hp_loose_16k": 68,
+    "fir_hp_loose_8k": 68,
+    "fir_hp_tight_16k": 84,
+    "fir_hp_tight_8k": 84,
+    "fir_lp_loose_16k": 68,
+    "fir_lp_loose_8k": 68,
+    "fir_lp_tight_16k": 84,
+    "fir_lp_tight_8k": 84
+  },
+  "probe_task_coverage": 16,
+  "cid_overlap_constructed_probe": 0,
+  "extra_disk_valid_files": [
+    "data/valid/library/fir_hp_tight_16k__firwin2.npy",
+    "data/valid/library/fir_hp_tight_8k__firwin2.npy",
+    "data/valid/library/fir_lp_tight_16k__firwin2.npy",
+    "data/valid/library/fir_lp_tight_8k__firwin2.npy"
+  ],
+  "label_flip_invalids": [
+    {
+      "id": "data/valid/library/fir_lp_tight_8k__firwin2.npy",
+      "task_id": "fir_lp_tight_8k",
+      "previous_label": "VALID",
+      "independent_label": "INVALID",
+      "in_phase3b_V": 0,
+      "in_phase3b_I": 0
+    },
+    {
+      "id": "data/valid/library/fir_lp_tight_16k__firwin2.npy",
+      "task_id": "fir_lp_tight_16k",
+      "previous_label": "VALID",
+      "independent_label": "INVALID",
+      "in_phase3b_V": 0,
+      "in_phase3b_I": 0
+    },
+    {
+      "id": "data/valid/library/fir_hp_tight_8k__firwin2.npy",
+      "task_id": "fir_hp_tight_8k",
+      "previous_label": "VALID",
+      "independent_label": "INVALID",
+      "in_phase3b_V": 0,
+      "in_phase3b_I": 0
+    },
+    {
+      "id": "data/valid/library/fir_hp_tight_16k__firwin2.npy",
+      "task_id": "fir_hp_tight_16k",
+      "previous_label": "VALID",
+      "independent_label": "INVALID",
+      "in_phase3b_V": 0,
+      "in_phase3b_I": 0
+    }
+  ],
+  "optional_external_invalid_eligible": 1,
+  "catalog_probe_stats": {
+    "total_catalog_refs": 825,
+    "probe_catalog_refs": 467,
+    "tasks_with_probe_reference": 16,
+    "per_task": [
+      {
+        "task": "fir_lp_loose_8k",
+        "n_valid": 89,
+        "K_obs_star": 42,
+        "catalog_n": 42,
+        "probe_in_catalog": 23
+      },
+      {
+        "task": "fir_lp_tight_8k",
+        "n_valid": 104,
+        "K_obs_star": 84,
+        "catalog_n": 84,
+        "probe_in_catalog": 64
+      },
+      {
+        "task": "fir_lp_loose_16k",
+        "n_valid": 89,
+        "K_obs_star": 41,
+        "catalog_n": 41,
+        "probe_in_catalog": 23
+      },
+      {
+        "task": "fir_lp_tight_16k",
+        "n_valid": 104,
+        "K_obs_star": 84,
+        "catalog_n": 84,
+        "probe_in_catalog": 64
+      },
+      {
+        "task": "fir_hp_loose_8k",
+        "n_valid": 90,
+        "K_obs_star": 38,
+        "catalog_n": 38,
+        "probe_in_catalog": 20
+      },
+      {
+        "task": "fir_hp_tight_8k",
+        "n_valid": 104,
+        "K_obs_star": 20,
+        "catalog_n": 20,
+        "probe_in_catalog": 2
+      },
+      {
+        "task": "fir_hp_loose_16k",
+        "n_valid": 90,
+        "K_obs_star": 23,
+        "catalog_n": 23,
+        "probe_in_catalog": 7
+      },
+      {
+        "task": "fir_hp_tight_16k",
+        "n_valid": 104,
+        "K_obs_star": 17,
+        "catalog_n": 17,
+        "probe_in_catalog": 2
+      },
+      {
+        "task": "fir_bp_loose_8k",
+        "n_valid": 87,
+        "K_obs_star": 48,
+        "catalog_n": 48,
+        "probe_in_catalog": 30
+      },
+      {
+        "task": "fir_bp_tight_8k",
+        "n_valid": 111,
+        "K_obs_star": 23,
+        "catalog_n": 23,
+        "probe_in_catalog": 4
+      },
+      {
+        "task": "fir_bp_loose_16k",
+        "n_valid": 87,
+        "K_obs_star": 49,
+        "catalog_n": 49,
+        "probe_in_catalog": 30
+      },
+      {
+        "task": "fir_bp_tight_16k",
+        "n_valid": 111,
+        "K_obs_star": 21,
+        "catalog_n": 21,
+        "probe_in_catalog": 4
+      },
+      {
+        "task": "fir_bs_loose_8k",
+        "n_valid": 90,
+        "K_obs_star": 19,
+        "catalog_n": 19,
+        "probe_in_catalog": 4
+      },
+      {
+        "task": "fir_bs_tight_8k",
+        "n_valid": 123,
+        "K_obs_star": 113,
+        "catalog_n": 113,
+        "probe_in_catalog": 93
+      },
+      {
+        "task": "fir_bs_loose_16k",
+        "n_valid": 90,
+        "K_obs_star": 21,
+        "catalog_n": 21,
+        "probe_in_catalog": 4
+      },
+      {
+        "task": "fir_bs_tight_16k",
+        "n_valid": 123,
+        "K_obs_star": 112,
+        "catalog_n": 112,
+        "probe_in_catalog": 93
+      },
+      {
+        "task": "iir_lp_loose_8k",
+        "n_valid": 19,
+        "K_obs_star": 15,
+        "catalog_n": 15,
+        "probe_in_catalog": 0
+      },
+      {
+        "task": "iir_lp_tight_8k",
+        "n_valid": 19,
+        "K_obs_star": 19,
+        "catalog_n": 19,
+        "probe_in_catalog": 0
+      },
+      {
+        "task": "iir_hp_loose_8k",
+        "n_valid": 19,
+        "K_obs_star": 17,
+        "catalog_n": 17,
+        "probe_in_catalog": 0
+      },
+      {
+        "task": "iir_hp_tight_8k",
+        "n_valid": 19,
+        "K_obs_star": 19,
+        "catalog_n": 19,
+        "probe_in_catalog": 0
+      }
+    ]
+  },
+  "generated_n": 48,
+  "generated_independent_ok": 9,
+  "generated_impl_keys_present": 0,
+  "eligible_primary": [],
+  "eligible_secondary": [],
+  "corpora": [
+    {
+      "corpus": "manuscript_constructed_valids_412",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 1,
+      "tasks_mapped": [
+        "fir_bp_loose_16k",
+        "fir_bp_loose_8k",
+        "fir_bp_tight_16k",
+        "fir_bp_tight_8k",
+        "fir_bs_loose_16k",
+        "fir_bs_loose_8k",
+        "fir_bs_tight_16k",
+        "fir_bs_tight_8k",
+        "fir_hp_loose_16k",
+        "fir_hp_loose_8k",
+        "fir_hp_tight_16k",
+        "fir_hp_tight_8k",
+        "fir_lp_loose_16k",
+        "fir_lp_loose_8k",
+        "fir_lp_tight_16k",
+        "fir_lp_tight_8k",
+        "iir_hp_loose_8k",
+        "iir_hp_tight_8k",
+        "iir_lp_loose_8k",
+        "iir_lp_tight_8k"
+      ],
+      "independently_certified": 1,
+      "used_in_phase3b_catalog_selection": 1,
+      "eligible_external_holdout": 0,
+      "n": 412,
+      "reason": "These occupants are the constructed part of Phase-3B V_t and were candidate references."
+    },
+    {
+      "corpus": "type_i_feasible_probes_1260",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 0,
+      "tasks_mapped": [
+        "fir_bp_loose_16k",
+        "fir_bp_loose_8k",
+        "fir_bp_tight_16k",
+        "fir_bp_tight_8k",
+        "fir_bs_loose_16k",
+        "fir_bs_loose_8k",
+        "fir_bs_tight_16k",
+        "fir_bs_tight_8k",
+        "fir_hp_loose_16k",
+        "fir_hp_loose_8k",
+        "fir_hp_tight_16k",
+        "fir_hp_tight_8k",
+        "fir_lp_loose_16k",
+        "fir_lp_loose_8k",
+        "fir_lp_tight_16k",
+        "fir_lp_tight_8k"
+      ],
+      "independently_certified": 1,
+      "used_in_phase3b_catalog_selection": 1,
+      "eligible_external_holdout": 0,
+      "n": 1260,
+      "reason": "Phase-3B load_frozen_universe() sets valids = constructed + probe_valids. Probes were candidate references; many were selected into R*."
+    },
+    {
+      "corpus": "first_principles_occupants",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 1,
+      "tasks_mapped": [
+        "fir_bp_loose_16k",
+        "fir_bp_loose_8k",
+        "fir_bp_tight_16k",
+        "fir_bp_tight_8k",
+        "fir_bs_loose_16k",
+        "fir_bs_loose_8k",
+        "fir_bs_tight_16k",
+        "fir_bs_tight_8k",
+        "fir_hp_loose_16k",
+        "fir_hp_loose_8k",
+        "fir_hp_tight_16k",
+        "fir_hp_tight_8k",
+        "fir_lp_loose_16k",
+        "fir_lp_loose_8k",
+        "fir_lp_tight_16k",
+        "fir_lp_tight_8k"
+      ],
+      "independently_certified": 1,
+      "used_in_phase3b_catalog_selection": 1,
+      "eligible_external_holdout": 0,
+      "n": 24,
+      "reason": "Subset of the 412 constructed valids."
+    },
+    {
+      "corpus": "library_occupants_in_412",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 1,
+      "tasks_mapped": [
+        "fir_bp_loose_16k",
+        "fir_bp_loose_8k",
+        "fir_bp_tight_16k",
+        "fir_bp_tight_8k",
+        "fir_bs_loose_16k",
+        "fir_bs_loose_8k",
+        "fir_bs_tight_16k",
+        "fir_bs_tight_8k",
+        "fir_hp_loose_16k",
+        "fir_hp_loose_8k",
+        "fir_hp_tight_16k",
+        "fir_hp_tight_8k",
+        "fir_lp_loose_16k",
+        "fir_lp_loose_8k",
+        "fir_lp_tight_16k",
+        "fir_lp_tight_8k",
+        "iir_hp_loose_8k",
+        "iir_hp_tight_8k",
+        "iir_lp_loose_8k",
+        "iir_lp_tight_8k"
+      ],
+      "independently_certified": 1,
+      "used_in_phase3b_catalog_selection": 1,
+      "eligible_external_holdout": 0,
+      "n": 88,
+      "reason": "Subset of the 412 constructed valids."
+    },
+    {
+      "corpus": "random_occupants_in_412",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 1,
+      "tasks_mapped": [
+        "fir_bp_loose_16k",
+        "fir_bp_loose_8k",
+        "fir_bp_tight_16k",
+        "fir_bp_tight_8k",
+        "fir_bs_loose_16k",
+        "fir_bs_loose_8k",
+        "fir_bs_tight_16k",
+        "fir_bs_tight_8k",
+        "fir_hp_loose_16k",
+        "fir_hp_loose_8k",
+        "fir_hp_tight_16k",
+        "fir_hp_tight_8k",
+        "fir_lp_loose_16k",
+        "fir_lp_loose_8k",
+        "fir_lp_tight_16k",
+        "fir_lp_tight_8k",
+        "iir_hp_loose_8k",
+        "iir_hp_tight_8k",
+        "iir_lp_loose_8k",
+        "iir_lp_tight_8k"
+      ],
+      "independently_certified": 1,
+      "used_in_phase3b_catalog_selection": 1,
+      "eligible_external_holdout": 0,
+      "n": 300,
+      "reason": "Subset of the 412 constructed valids."
+    },
+    {
+      "corpus": "generated_code_witness_records",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 0,
+      "tasks_mapped": [
+        "fir_bp_loose_8k",
+        "fir_bs_loose_8k",
+        "fir_lp_loose_8k",
+        "iir_lp_loose_8k"
+      ],
+      "independently_certified": 0,
+      "used_in_phase3b_catalog_selection": 0,
+      "eligible_external_holdout": 0,
+      "n": 48,
+      "n_independent_ok": 9,
+      "reason": "Pre-existing generation metadata only. No stored coefficient/response artifacts (impl_keys_present=False). Cannot be scored under frozen S_t semantics."
+    },
+    {
+      "corpus": "failed_or_non_genuine_type_i_probe_rows",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 0,
+      "tasks_mapped": [],
+      "independently_certified": 0,
+      "used_in_phase3b_catalog_selection": 0,
+      "eligible_external_holdout": 0,
+      "n": 0,
+      "reason": "Not independently certified valid. Invalid as a valid-holdout."
+    },
+    {
+      "corpus": "mechanism_invalids",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 0,
+      "tasks_mapped": [
+        "fir_bp_loose_16k",
+        "fir_bp_loose_8k",
+        "fir_bp_tight_16k",
+        "fir_bp_tight_8k",
+        "fir_bs_loose_16k",
+        "fir_bs_loose_8k",
+        "fir_bs_tight_16k",
+        "fir_bs_tight_8k",
+        "fir_hp_loose_16k",
+        "fir_hp_loose_8k",
+        "fir_hp_tight_16k",
+        "fir_hp_tight_8k",
+        "fir_lp_loose_16k",
+        "fir_lp_loose_8k",
+        "fir_lp_tight_16k",
+        "fir_lp_tight_8k",
+        "iir_hp_loose_8k",
+        "iir_hp_tight_8k",
+        "iir_lp_loose_8k",
+        "iir_lp_tight_8k"
+      ],
+      "independently_certified": 1,
+      "used_in_phase3b_catalog_selection": 1,
+      "eligible_external_holdout": 0,
+      "n": 144,
+      "reason": "Used as Phase-3B primary invalids for D_I and tau. Not a valid holdout."
+    },
+    {
+      "corpus": "boundary_invalids",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 0,
+      "tasks_mapped": "frozen_boundary_invalids.json",
+      "independently_certified": 1,
+      "used_in_phase3b_catalog_selection": 1,
+      "eligible_external_holdout": 0,
+      "n": "see_boundary_invalids.json",
+      "reason": "Used as Phase-3B primary invalids for D_I and tau. Not a valid holdout."
+    },
+    {
+      "corpus": "independent_invalid_label_flips",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 0,
+      "tasks_mapped": [
+        "fir_hp_tight_16k",
+        "fir_hp_tight_8k",
+        "fir_lp_tight_16k",
+        "fir_lp_tight_8k"
+      ],
+      "independently_certified": 1,
+      "used_in_phase3b_catalog_selection": 0,
+      "eligible_external_holdout": 0,
+      "eligible_external_invalid": 1,
+      "n": 4,
+      "reason": "Four library firwin2 occupants were previously labeled valid and independently certified INVALID. They are absent from Phase-3B V_t and from recertify invalids used for D_I. Eligible only as optional external-invalid transfer, not as valid holdout."
+    },
+    {
+      "corpus": "disk_valid_npy_not_in_recertify_412",
+      "existed_pre_phase3c": 1,
+      "in_base_412": 0,
+      "tasks_mapped": [],
+      "independently_certified": 0,
+      "used_in_phase3b_catalog_selection": 0,
+      "eligible_external_holdout": 0,
+      "n": 4,
+      "reason": "After excluding the 412 constructed valids, leftover npy files are the same four independent-INVALID label flips (path-normalized)."
+    }
+  ],
+  "hashes": {
+    "recertify.json": "8813dd637962f6e28d6511295cfb105f10bc517ecc937b56db3edf2f39c2539a",
+    "feasible_probe.json": "bad0223edec5b62ef72e05dd17c2a8eb135f1f0831d10b0dfdf4da314e0a6b10",
+    "reference_catalog_complexity.json": "92c1c94c4c4de6a4ff660da3c3abd87f6022ae67f11534ad24459cfa7f11d061"
+  },
+  "dedup_rule": "Exact IEEE-754 identity after Phase-1 coefficient canonicalize. Not applied: no eligible holdout."
+}

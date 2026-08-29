@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Reproduce RQ2: same-order first-principles FIR occupants of frozen Arm N masks."""
+"""HISTORICAL Phase-2 helper. Not the ICASSP 2027 experiment.
+
+Authoritative reproduction: python -m experiments.icassp_10of10.run_all
+"""
 from __future__ import annotations
 
 import sys

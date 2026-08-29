@@ -1,0 +1,92 @@
+{
+  "audits": [
+    {
+      "occupant": "data/valid/library/iir_lp_loose_8k__butter.npz",
+      "task": "iir_lp_loose_8k",
+      "final": "CERTIFIED_VALID",
+      "numerical_violation": 0,
+      "agree": 1
+    },
+    {
+      "occupant": "data/valid/random/iir_lp_loose_8k__r008.npz",
+      "task": "iir_lp_loose_8k",
+      "final": "CERTIFIED_VALID",
+      "numerical_violation": 0,
+      "agree": 1
+    },
+    {
+      "occupant": "data/invalid/iir_lp_loose_8k/iir_lp_loose_8k__M1.npz",
+      "task": "iir_lp_loose_8k",
+      "final": "CERTIFIED_INVALID",
+      "numerical_violation": 1,
+      "agree": 1
+    },
+    {
+      "occupant": "data/valid/library/iir_lp_tight_8k__butter.npz",
+      "task": "iir_lp_tight_8k",
+      "final": "CERTIFIED_VALID",
+      "numerical_violation": 0,
+      "agree": 1
+    },
+    {
+      "occupant": "data/valid/random/iir_lp_tight_8k__r008.npz",
+      "task": "iir_lp_tight_8k",
+      "final": "CERTIFIED_VALID",
+      "numerical_violation": 0,
+      "agree": 1
+    },
+    {
+      "occupant": "data/invalid/iir_lp_tight_8k/iir_lp_tight_8k__M1.npz",
+      "task": "iir_lp_tight_8k",
+      "final": "CERTIFIED_INVALID",
+      "numerical_violation": 1,
+      "agree": 1
+    },
+    {
+      "occupant": "data/valid/library/iir_hp_loose_8k__butter.npz",
+      "task": "iir_hp_loose_8k",
+      "final": "CERTIFIED_VALID",
+      "numerical_violation": 0,
+      "agree": 1
+    },
+    {
+      "occupant": "data/valid/random/iir_hp_loose_8k__r007.npz",
+      "task": "iir_hp_loose_8k",
+      "final": "CERTIFIED_VALID",
+      "numerical_violation": 0,
+      "agree": 1
+    },
+    {
+      "occupant": "data/invalid/iir_hp_loose_8k/iir_hp_loose_8k__M1.npz",
+      "task": "iir_hp_loose_8k",
+      "final": "CERTIFIED_INVALID",
+      "numerical_violation": 1,
+      "agree": 1
+    },
+    {
+      "occupant": "data/valid/library/iir_hp_tight_8k__butter.npz",
+      "task": "iir_hp_tight_8k",
+      "final": "CERTIFIED_VALID",
+      "numerical_violation": 0,
+      "agree": 1
+    },
+    {
+      "occupant": "data/valid/random/iir_hp_tight_8k__r005.npz",
+      "task": "iir_hp_tight_8k",
+      "final": "CERTIFIED_VALID",
+      "numerical_violation": 0,
+      "agree": 1
+    },
+    {
+      "occupant": "data/invalid/iir_hp_tight_8k/iir_hp_tight_8k__M1.npz",
+      "task": "iir_hp_tight_8k",
+      "final": "CERTIFIED_INVALID",
+      "numerical_violation": 1,
+      "agree": 1
+    }
+  ],
+  "n": 12,
+  "agree": 12,
+  "notes": 0,
+  "verdict": "PASS"
+}

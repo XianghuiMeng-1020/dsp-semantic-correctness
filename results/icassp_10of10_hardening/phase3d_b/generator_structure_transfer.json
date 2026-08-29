@@ -1,0 +1,108 @@
+{
+  "generator_groups_frozen_before_transfer": 1,
+  "inferred_from_failure": 0,
+  "generators": [
+    {
+      "generator": "F1_remez",
+      "n": 152,
+      "coeff_transfer": 0.13815789473684212,
+      "resp_transfer": 0.9473684210526315
+    },
+    {
+      "generator": "F2_firls",
+      "n": 146,
+      "coeff_transfer": 0.13013698630136986,
+      "resp_transfer": 1.0
+    },
+    {
+      "generator": "F3_freqsamp",
+      "n": 104,
+      "coeff_transfer": 0.11538461538461539,
+      "resp_transfer": 0.9230769230769231
+    },
+    {
+      "generator": "F4_window",
+      "n": 98,
+      "coeff_transfer": 0.05102040816326531,
+      "resp_transfer": 0.9591836734693877
+    },
+    {
+      "generator": "I1_butter",
+      "n": 22,
+      "coeff_transfer": 0.18181818181818182,
+      "resp_transfer": 1.0
+    },
+    {
+      "generator": "I2_cheby1",
+      "n": 28,
+      "coeff_transfer": 0.03571428571428571,
+      "resp_transfer": 1.0
+    },
+    {
+      "generator": "I3_cheby2",
+      "n": 29,
+      "coeff_transfer": 0.06896551724137931,
+      "resp_transfer": 0.8620689655172413
+    },
+    {
+      "generator": "I4_ellip",
+      "n": 35,
+      "coeff_transfer": 0.05714285714285714,
+      "resp_transfer": 0.8571428571428571
+    }
+  ],
+  "generator_effect_verdict": "MIXED",
+  "structure": {
+    "coeff": {
+      "family": {
+        "fir": 0.114,
+        "iir": 0.07894736842105263
+      },
+      "tightness": {
+        "loose": 0.09832134292565947,
+        "tight": 0.12690355329949238
+      },
+      "filter_type": {
+        "lp": 0.06532663316582915,
+        "hp": 0.14054054054054055,
+        "bp": 0.0967741935483871,
+        "bs": 0.14150943396226415
+      },
+      "order_bin": {
+        "low_le_q33": 0.12962962962962962,
+        "mid_q33_q67": 0.13025210084033614,
+        "high_gt_q67": 0.04375
+      }
+    },
+    "resp": {
+      "family": {
+        "fir": 0.96,
+        "iir": 0.9210526315789473
+      },
+      "tightness": {
+        "loose": 0.9688249400479616,
+        "tight": 0.9187817258883249
+      },
+      "filter_type": {
+        "lp": 0.9547738693467337,
+        "hp": 0.9621621621621622,
+        "bp": 0.9112903225806451,
+        "bs": 0.9811320754716981
+      },
+      "order_bin": {
+        "low_le_q33": 0.9212962962962963,
+        "mid_q33_q67": 0.9621848739495799,
+        "high_gt_q67": 0.98125
+      }
+    }
+  },
+  "order_bin_definition": {
+    "rule": "descriptive tertiles of frozen H_VALID n_taps (FIR) or IIR order; not inferred from rejection",
+    "q33": 37,
+    "q67": 71,
+    "inferential": 0
+  },
+  "task_macros_from_primary": {
+    "note": "FIR/IIR/loose/tight/type macros in transfer_*.json are unweighted task means"
+  }
+}

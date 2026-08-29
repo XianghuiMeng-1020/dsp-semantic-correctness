@@ -1,0 +1,14 @@
+name: headline-reproduction
+on:
+  push:
+  pull_request:
+jobs:
+  headlines:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reproduce frozen ICASSP headlines
+        run: python -m experiments.icassp_final.run_all

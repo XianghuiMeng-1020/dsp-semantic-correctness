@@ -1,0 +1,6 @@
+_checkpoint.jsonl
+_checkpoint.done.jsonl
+_running.lock
+progress.json
+progress.json.tmp
+autoresume.log

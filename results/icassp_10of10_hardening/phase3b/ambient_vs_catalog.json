@@ -1,0 +1,210 @@
+{
+  "rows": [
+    {
+      "task": "fir_lp_loose_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 42,
+      "rho": 0.47191011235955055,
+      "burden_band": "high",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 25
+    },
+    {
+      "task": "fir_lp_tight_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 84,
+      "rho": 0.8076923076923077,
+      "burden_band": "near_enumerative",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 2
+    },
+    {
+      "task": "fir_lp_loose_16k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 41,
+      "rho": 0.4606741573033708,
+      "burden_band": "high",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 25
+    },
+    {
+      "task": "fir_lp_tight_16k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 84,
+      "rho": 0.8076923076923077,
+      "burden_band": "near_enumerative",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 2
+    },
+    {
+      "task": "fir_hp_loose_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 38,
+      "rho": 0.4222222222222222,
+      "burden_band": "high",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 17
+    },
+    {
+      "task": "fir_hp_tight_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 20,
+      "rho": 0.19230769230769232,
+      "burden_band": "moderate",
+      "class": "R4",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 48
+    },
+    {
+      "task": "fir_hp_loose_16k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 23,
+      "rho": 0.25555555555555554,
+      "burden_band": "moderate",
+      "class": "R4",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 17
+    },
+    {
+      "task": "fir_hp_tight_16k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 17,
+      "rho": 0.16346153846153846,
+      "burden_band": "moderate",
+      "class": "R4",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 49
+    },
+    {
+      "task": "fir_bp_loose_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 48,
+      "rho": 0.5517241379310345,
+      "burden_band": "high",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 18
+    },
+    {
+      "task": "fir_bp_tight_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 23,
+      "rho": 0.2072072072072072,
+      "burden_band": "moderate",
+      "class": "R4",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 81
+    },
+    {
+      "task": "fir_bp_loose_16k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 49,
+      "rho": 0.5632183908045977,
+      "burden_band": "high",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 18
+    },
+    {
+      "task": "fir_bp_tight_16k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 21,
+      "rho": 0.1891891891891892,
+      "burden_band": "moderate",
+      "class": "R4",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 83
+    },
+    {
+      "task": "fir_bs_loose_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 19,
+      "rho": 0.2111111111111111,
+      "burden_band": "moderate",
+      "class": "R4",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 26
+    },
+    {
+      "task": "fir_bs_tight_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 113,
+      "rho": 0.9186991869918699,
+      "burden_band": "near_enumerative",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 4
+    },
+    {
+      "task": "fir_bs_loose_16k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 21,
+      "rho": 0.23333333333333334,
+      "burden_band": "moderate",
+      "class": "R4",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 26
+    },
+    {
+      "task": "fir_bs_tight_16k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 112,
+      "rho": 0.9105691056910569,
+      "burden_band": "near_enumerative",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 4
+    },
+    {
+      "task": "iir_lp_loose_8k",
+      "ambient": "NO_AMBIENT_CENTER",
+      "K_obs_star": 15,
+      "rho": 0.7894736842105263,
+      "burden_band": "near_enumerative",
+      "class": "R3",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 4
+    },
+    {
+      "task": "iir_lp_tight_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 19,
+      "rho": 1.0,
+      "burden_band": "near_enumerative",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 1
+    },
+    {
+      "task": "iir_hp_loose_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 17,
+      "rho": 0.8947368421052632,
+      "burden_band": "near_enumerative",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 2
+    },
+    {
+      "task": "iir_hp_tight_8k",
+      "ambient": "AMBIENT_SEPARABLE",
+      "K_obs_star": 19,
+      "rho": 1.0,
+      "burden_band": "near_enumerative",
+      "class": "R2",
+      "resp_ambient": "AMBIENT_SEPARABLE",
+      "resp_K": 1
+    }
+  ],
+  "counts": {
+    "R1": 0,
+    "R2": 12,
+    "R3": 1,
+    "R4": 7
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "python": "3.12.10",
+  "platform": "Windows",
+  "numpy": "2.3.5",
+  "out_dir": "results/icassp_10of10_hardening/phase2a",
+  "note": "elapsed_s printed only"
+}
