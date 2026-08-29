@@ -2,11 +2,20 @@
 __pycache__/
 *.pyc
 *.zip
-# Keep only the final ICASSP manuscript tree.
+# Keep only the ICASSP manuscript trees.
 manuscript/*
 !manuscript/w4/
 !manuscript/w4/**
+!manuscript/final/
+!manuscript/final/**
 manuscript/w4/*.aux
 manuscript/w4/*.log
 manuscript/w4/*.out
 manuscript/w4/*.blg
+manuscript/final/*.aux
+manuscript/final/*.log
+manuscript/final/*.out
+manuscript/final/*.blg
+manuscript/final/_preview/
+manuscript/final/_*.py
+manuscript/final/_pdf_pages.txt
