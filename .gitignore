@@ -2,9 +2,6 @@
 __pycache__/
 *.pyc
 *.zip
-!ICASSP2027_ReferenceMatching_Submission.zip
-!ICASSP2027_ReferenceMatching_Reproducibility.zip
-!submission/ICASSP2027/*.zip
 
 # Keep only the ICASSP final manuscript tree (single source of truth).
 manuscript/*
