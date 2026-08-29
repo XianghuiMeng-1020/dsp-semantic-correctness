@@ -1,6 +1,6 @@
 % ICASSP 2027 manuscript: official SPS conference template (spconf.sty / IEEEbib.bst).
 \documentclass{article}
-\usepackage{spconf,amsmath,amssymb,graphicx,booktabs,placeins,balance,hyperref,flushend}
+\usepackage{spconf,amsmath,amssymb,booktabs,placeins,balance,hyperref,flushend}
 \hypersetup{
   pdfauthor={Xianghui Meng and Jionghao Lin},
   pdftitle={When Does Reference Matching Transfer? Specification-Certified Audits of FIR/IIR Realizations},
@@ -248,17 +248,36 @@ specification-certified realizations, not all possible filters.
 \FloatBarrier
 \section{Results}
 \label{sec:results}
-\begin{figure*}[t]
+\begin{table*}[t]
 \centering
-\includegraphics[width=0.96\textwidth]{fig_transfer.pdf}
 \caption{Catalog-blind prospective transfer on $614$
-specification-certified realizations.
-Each row is one magnitude-mask task (L/T: loose/tight).
-Circles: frozen coefficient catalogs.
-Squares: frozen magnitude-response catalogs.
-Guides mark $75\%$ and $95\%$.}
-\label{fig:transfer}
-\end{figure*}
+specification-certified realizations, by magnitude-mask task
+(L/T: loose/tight).
+Coeff.\ and Resp.\ are the frozen coefficient- and
+magnitude-response-catalog acceptance rates; $N$ is the number of
+prospective valids for that task.}
+\label{tab:transfer}
+\setlength{\tabcolsep}{4pt}
+\footnotesize
+\begin{tabular}{@{}lrrr@{}|lrrr@{}}
+\toprule
+Task & $N$ & Coeff.\ & Resp.\ & Task & $N$ & Coeff.\ & Resp.\ \\
+\midrule
+FIR LP, L, 8k  & 44 & $6.8\%$  & $100\%$ & FIR BS, L, 8k  & 40 & $32.5\%$ & $97.5\%$ \\
+FIR LP, L, 16k & 44 & $4.5\%$  & $100\%$ & FIR BS, L, 16k & 40 & $5.0\%$  & $97.5\%$ \\
+FIR LP, T, 8k  & 26 & $3.8\%$  & $100\%$ & FIR BS, T, 8k  & 13 & $0.0\%$  & $100\%$ \\
+FIR LP, T, 16k & 26 & $0.0\%$  & $100\%$ & FIR BS, T, 16k & 13 & $0.0\%$  & $100\%$ \\
+FIR HP, L, 8k  & 41 & $19.5\%$ & $97.6\%$ & IIR LP, L, 8k  & 41 & $17.1\%$ & $78.0\%$ \\
+FIR HP, L, 16k & 41 & $2.4\%$  & $97.6\%$ & IIR LP, T, 8k  & 18 & $0.0\%$  & $100\%$ \\
+FIR HP, T, 8k  & 24 & $50.0\%$ & $91.7\%$ & IIR HP, L, 8k  & 42 & $4.8\%$  & $100\%$ \\
+FIR HP, T, 16k & 24 & $12.5\%$ & $87.5\%$ & IIR HP, T, 8k  & 13 & $0.0\%$  & $100\%$ \\
+FIR BP, L, 8k  & 42 & $2.4\%$  & $100\%$ &                &    &          & \\
+FIR BP, L, 16k & 42 & $4.8\%$  & $100\%$ &                &    &          & \\
+FIR BP, T, 8k  & 20 & $15.0\%$ & $70.0\%$ &                &    &          & \\
+FIR BP, T, 16k & 20 & $30.0\%$ & $75.0\%$ &                &    &          & \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \subsection{Base-universe adequacy}
 On the frozen $412$-valid universe, no single observed valid
@@ -296,7 +315,7 @@ Resp.  & $19/20$ & $18/20$ & $17.5$ & $0/20$ \\
 \end{table}
 
 \subsection{Prospective transfer}
-This is the primary empirical result (Fig.~\ref{fig:transfer},
+This is the primary empirical result (Table~\ref{tab:transfer},
 Table~\ref{tab:xfer}).
 Frozen coefficient $K^\star_{\mathrm{obs}}$ catalogs accepted
 $66/614$ prospective valids (pooled $10.7\%$; task-macro mean

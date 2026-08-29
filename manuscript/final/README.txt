@@ -4,7 +4,9 @@ Authoritative source: paper.tex
 Authoritative PDF:    paper.pdf
 Bibliography:         refs.bib
 Style:                spconf.sty + IEEEbib.bst
-Main figure:          fig_transfer.pdf  (built from frozen Phase-3D-B transfer JSON)
+
+The manuscript has no figures; the transfer results are reported as
+Table 1 (Section 4), sourced from the frozen Phase-3D-B transfer JSON.
 
 The pre-reconstruction manuscript is preserved at
   manuscript/w4/paper_pre4a.tex

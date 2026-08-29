@@ -89,10 +89,6 @@ pdflatex paper
   see `requirements.txt` (NumPy / SciPy) and pinned
   `requirements-lock.txt` (tested: CPython 3.12.10, NumPy 2.3.5,
   SciPy 1.15.3).
-- Figure regeneration (not required to reproduce numbers):
-  `pip install matplotlib` then
-  `python manuscript/final/make_fig_transfer.py`.
-
 CI runs the headline command and fails on any mismatch. That is a
 deterministic validation of frozen artifacts, not a re-derivation of
 catalogs or the prospective challenge.
